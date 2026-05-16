@@ -1,37 +1,185 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>5 Brother's Fitness</title>
 
 <style>
+
 body{
-background:black;
-color:white;
+margin:0;
 font-family:Arial;
-text-align:center;
-padding:40px;
+background:#0d0d0d;
+color:white;
 }
 
-.box{
-border:2px solid gold;
+header{
+background:black;
 padding:20px;
-border-radius:20px;
+text-align:center;
+border-bottom:2px solid gold;
 }
+
+header h1{
+color:gold;
+margin:0;
+font-size:32px;
+}
+
+.search-box{
+text-align:center;
+margin:20px;
+}
+
+.search-box input{
+width:90%;
+max-width:400px;
+padding:12px;
+border-radius:10px;
+border:none;
+font-size:16px;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:#1a1a1a;
+padding:15px;
+border-radius:15px;
+box-shadow:0 0 10px rgba(255,215,0,0.3);
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.03);
+}
+
+.card img{
+width:100%;
+border-radius:10px;
+}
+
+.card h2{
+font-size:20px;
+margin-top:10px;
+color:gold;
+}
+
+.price{
+font-size:22px;
+margin:10px 0;
+}
+
+.verify{
+background:green;
+display:inline-block;
+padding:6px 12px;
+border-radius:8px;
+font-size:14px;
+}
+
+.contact{
+margin-top:15px;
+display:inline-block;
+background:gold;
+color:black;
+padding:10px 15px;
+border-radius:10px;
+text-decoration:none;
+font-weight:bold;
+}
+
+footer{
+text-align:center;
+padding:20px;
+border-top:2px solid gold;
+margin-top:20px;
+}
+
 </style>
+
 </head>
 
 <body>
 
-<div class="box">
-
+<header>
 <h1>5 Brother's Fitness</h1>
+<p>Verified Supplement Store</p>
+</header>
 
-<h2>✅ Product Verified Successfully</h2>
+<div class="search-box">
+<input type="text" id="search" placeholder="Search Products..." onkeyup="searchProducts()">
+</div>
 
-<p>100% Authentic Product</p>
+<div class="products" id="productList">
 
+<div class="card">
+<img src="https://i.imgur.com/UPrs1EW.png">
+<h2>MuscleBlaze Creatine</h2>
+<div class="price">₹910</div>
+<div class="verify">✅ Verified Product</div><br>
+<a class="contact" href="tel:9140417259">Call Now</a>
+</div>
+
+<div class="card">
+<img src="https://i.imgur.com/0R8FQxE.png">
+<h2>Whey Protein</h2>
+<div class="price">₹2499</div>
+<div class="verify">✅ Verified Product</div><br>
+<a class="contact" href="tel:9140417259">Call Now</a>
+</div>
+
+<div class="card">
+<img src="https://i.imgur.com/JRbRL8x.png">
+<h2>Pre Workout</h2>
+<div class="price">₹1499</div>
+<div class="verify">✅ Verified Product</div><br>
+<a class="contact" href="tel:9140417259">Call Now</a>
+</div>
+
+<div class="card">
+<img src="https://i.imgur.com/uhK6BPN.png">
+<h2>Mass Gainer</h2>
+<div class="price">₹3200</div>
+<div class="verify">✅ Verified Product</div><br>
+<a class="contact" href="tel:9140417259">Call Now</a>
+</div>
+
+</div>
+
+<footer>
 <p>Owner: Saurabh Singh Chandel</p>
-
 <p>Contact: 9140417259</p>
+<p>Location: Umrao Khera Akrampur Unnao</p>
+</footer>
 
-<p>Location: Um
+<script>
+
+function searchProducts() {
+let input = document.getElementById('search').value.toLowerCase();
+let cards = document.getElementsByClassName('card');
+
+for(let i = 0; i < cards.length; i++) {
+
+let title = cards[i].getElementsByTagName('h2')[0];
+
+if(title.innerHTML.toLowerCase().indexOf(input) > -1){
+cards[i].style.display = "";
+}
+else{
+cards[i].style.display = "none";
+}
+
+}
+}
+
+</script>
+
+</body>
+</html>
