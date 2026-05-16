@@ -29,20 +29,32 @@
             letter-spacing: 1px;
         }
 
-        .search-box {
-            text-align: center;
+        /* Line-wise Category Navigation Buttons */
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
             margin: 25px 10px;
         }
 
-        .search-box input {
-            width: 90%;
-            max-width: 500px;
-            padding: 14px;
-            border-radius: 8px;
-            border: 1px solid #333;
-            background-color: #1a1a1a;
-            color: white;
+        .category-btn {
+            background: #1a1a1a;
+            color: #ffffff;
+            border: 2px solid #333;
+            padding: 12px 24px;
             font-size: 16px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: #ffcc00;
+            color: #000000;
+            border-color: #ffcc00;
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
         }
 
         /* Responsive Grid Layout */
@@ -53,6 +65,15 @@
             padding: 0 20px;
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        /* Target sections for filtering */
+        .product-section {
+            display: none; /* Initially hidden, controlled via JS */
+        }
+
+        .product-section.active-section {
+            display: grid;
         }
 
         .supplement-card {
@@ -160,22 +181,88 @@
         <h1>5 Brother's Fitness Supplement Store</h1>
     </header>
 
-    <div class="search-box">
-        <input type="text" placeholder="Search supplements...">
+    <div class="category-nav">
+        <button class="category-btn active" onclick="filterCategory('whey')">Whey Protein</button>
+        <button class="category-btn" onclick="filterCategory('creatine')">Creatine</button>
+        <button class="category-btn" onclick="filterCategory('gainer')">Gainer</button>
     </div>
 
-    <section class="catalog">
+    <section id="whey" class="catalog product-section active-section">
+        
+        <div class="supplement-card">
+            <div class="image-container">
+                <img src="https://i.ibb.co/ynbr1YCw/download-1.webp" alt="Muscletech Nitrotech Whey Protein">
+            </div>
+            <h2>Muscletech Whey Protein</h2>
+            <p class="tag">Premium Quality</p>
+            <ul class="features">
+                <li>Nitrotech Performance Series</li>
+                <li>Lean Muscle Building</li>
+                <li>Highest Protein Percentage</li>
+            </ul>
+            <p class="price">₹4800/-</p>
+            <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
+        </div>
+
+        <div class="supplement-card">
+            <div class="image-container">
+                <img src="https://i.ibb.co/ynbr1YCw/download-1.webp" alt="Ultimate Nutrition Pro Star Whey">
+            </div>
+            <h2>Ultimate Pro Whey Protein</h2>
+            <p class="tag">Best Recovery</p>
+            <ul class="features">
+                <li>Prostar 100% Whey</li>
+                <li>Essential Amino Acids</li>
+                <li>Great Mixability</li>
+            </ul>
+            <p class="price">₹4200/-</p>
+            <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
+        </div>
+
+        <div class="supplement-card">
+            <div class="image-container">
+                <img src="https://i.ibb.co/ynbr1YCw/download-1.webp" alt="ON Gold Standard Whey">
+            </div>
+            <h2>ON Gold Whey Protein</h2>
+            <p class="tag">Top Seller</p>
+            <ul class="features">
+                <li>Gold Standard 100% Whey</li>
+                <li>Isolate Primary Source</li>
+                <li>World's #1 Brand</li>
+            </ul>
+            <p class="price">₹5200/-</p>
+            <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
+        </div>
+
+        <div class="supplement-card">
+            <div class="image-container">
+                <img src="https://i.ibb.co/ynbr1YCw/download-1.webp" alt="Labrada Whey Protein">
+            </div>
+            <h2>Labrada Whey Protein</h2>
+            <p class="tag">100% Authentic</p>
+            <ul class="features">
+                <li>Premium Protein Source</li>
+                <li>Muscle Growth Support</li>
+                <li>Delicious Taste</li>
+            </ul>
+            <p class="price">₹3699/-</p>
+            <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
+        </div>
+
+    </section>
+
+    <section id="creatine" class="catalog product-section">
         
         <div class="supplement-card">
             <div class="image-container">
                 <img src="https://i.ibb.co/hvDTM6H/prd-3979255-Muscle-Blaze-Creatine-Monohydrate-Cre-AMP-0-71-lb-Watermelon-Kool-Aid-o.jpg" alt="MuscleBlaze Creatine Monohydrate">
             </div>
-            <h2>MB Creatine Monohydrate</h2>
-            <p class="tag">Verified Product</p>
+            <h2>MuscleBlaze Creatine Monohydrate</h2>
+            <p class="tag">CreAMP Certified</p>
             <ul class="features">
                 <li>Helps Increase Strength</li>
-                <li>Faster Recovery</li>
-                <li>Original & Verified</li>
+                <li>Faster ATP Recovery</li>
+                <li>Labdoor Certified</li>
             </ul>
             <p class="price">320g • ₹1199/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
@@ -183,13 +270,47 @@
 
         <div class="supplement-card">
             <div class="image-container">
+                <img src="https://i.ibb.co/hvDTM6H/prd-3979255-Muscle-Blaze-Creatine-Monohydrate-Cre-AMP-0-71-lb-Watermelon-Kool-Aid-o.jpg" alt="GNC Creatine Monohydrate">
+            </div>
+            <h2>GNC Creatine Monohydrate</h2>
+            <p class="tag">Pure Micronized</p>
+            <ul class="features">
+                <li>100% Pure Micronized</li>
+                <li>Improves Athletic Power</li>
+                <li>Unflavored Easy Mix</li>
+            </ul>
+            <p class="price">₹1299/-</p>
+            <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
+        </div>
+
+        <div class="supplement-card">
+            <div class="image-container">
+                <img src="https://i.ibb.co/hvDTM6H/prd-3979255-Muscle-Blaze-Creatine-Monohydrate-Cre-AMP-0-71-lb-Watermelon-Kool-Aid-o.jpg" alt="Muscletech Platinum Creatine">
+            </div>
+            <h2>Muscletech Creatine Monohydrate</h2>
+            <p class="tag">Platinum Series</p>
+            <ul class="features">
+                <li>5g Pure Creatine Per Serve</li>
+                <li>Builds Lean Muscle</li>
+                <li>HPLC-Tested Quality</li>
+            </ul>
+            <p class="price">₹1499/-</p>
+            <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
+        </div>
+
+    </section>
+
+    <section id="gainer" class="catalog product-section">
+        
+        <div class="supplement-card">
+            <div class="image-container">
                 <img src="https://i.ibb.co/sJjstZh7/Gainer-Choc-1-K-Front-1200x.jpg" alt="Labrada Mass Gainer">
             </div>
             <h2>Labrada Mass Gainer</h2>
             <p class="tag">Best Gainer</p>
             <ul class="features">
-                <li>High Quality Mass Gainer</li>
-                <li>Muscle Growth & Recovery</li>
+                <li>High Quality Calories</li>
+                <li>Muscle Mass Growth</li>
                 <li>100% Authentic</li>
             </ul>
             <p class="price">₹3000/-</p>
@@ -198,20 +319,40 @@
 
         <div class="supplement-card">
             <div class="image-container">
-                <img src="https://i.ibb.co/Fb3RymGS/100-Whey-Choc-500-Side2-1200x.jpg" alt="Labrada Whey Protein">
+                <img src="https://i.ibb.co/sJjstZh7/Gainer-Choc-1-K-Front-1200x.jpg" alt="Monster Mass Gainer">
             </div>
-            <h2>Labrada Whey Protein</h2>
-            <p class="tag">Best Seller</p>
+            <h2>Monster Mass Gainer</h2>
+            <p class="tag">Heavy Bulk</p>
             <ul class="features">
-                <li>Premium Protein Source</li>
-                <li>Lean Muscle Building</li>
-                <li>Great Taste & Mixability</li>
+                <li>High Protein Gainer</li>
+                <li>Packed with BCAAs</li>
+                <li>Extreme Size Gain</li>
             </ul>
-            <p class="price">₹3699/-</p>
+            <p class="price">₹3500/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
         </div>
 
     </section>
+
+    <script>
+        function filterCategory(categoryName) {
+            // Remove active status from all buttons
+            let buttons = document.getElementsByClassName('category-btn');
+            for (let button of buttons) {
+                button.classList.remove('active');
+            }
+            
+            // Hide all sections
+            let sections = document.getElementsByClassName('product-section');
+            for (let section of sections) {
+                section.classList.remove('active-section');
+            }
+
+            // Activate targeted button and section
+            event.currentTarget.classList.add('active');
+            document.getElementById(categoryName).classList.add('active-section');
+        }
+    </script>
 
 </body>
 </html>
