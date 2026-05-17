@@ -29,20 +29,111 @@
             letter-spacing: 1px;
         }
 
-        /* Line-wise Category Navigation Buttons */
+        /* Full Screen Verification Splash Overlay */
+        #verification-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0d0d0d;
+            z-index: 9999;
+            display: none; /* Controlled by JavaScript */
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .verify-card {
+            background: #141414;
+            border: 3px solid #00ff00;
+            padding: 40px 30px;
+            border-radius: 20px;
+            max-width: 500px;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+            animation: popIn 0.5s ease-out;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .verify-card h2 {
+            color: #ffffff;
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .verify-card .brand-name {
+            color: #ffcc00;
+            font-size: 28px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 25px;
+        }
+
+        .success-badge {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .verify-status {
+            color: #00ff00;
+            font-size: 22px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .verify-desc {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: normal;
+            margin: 0 0 25px 0;
+        }
+
+        .redirect-loader {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #333;
+            border-top: 2px solid #ffcc00;
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Category Navigation Buttons */
         .category-nav {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             margin: 25px 10px;
+            flex-wrap: wrap;
         }
 
         .category-btn {
             background: #1a1a1a;
             color: #ffffff;
             border: 2px solid #333;
-            padding: 12px 24px;
-            font-size: 16px;
+            padding: 12px 20px;
+            font-size: 14px;
             font-weight: bold;
             border-radius: 30px;
             cursor: pointer;
@@ -67,7 +158,6 @@
             margin: 0 auto;
         }
 
-        /* Target sections for filtering */
         .product-section {
             display: none;
         }
@@ -99,7 +189,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px; /* Space between front and back images */
+            gap: 10px;
             margin-bottom: 15px;
             background: #1f1f1f;
             border-radius: 8px;
@@ -108,7 +198,7 @@
 
         .supplement-card img {
             max-height: 100%;
-            max-width: 48%; /* Adjusted to fit two images side-by-side if available */
+            max-width: 48%;
             object-fit: contain;
             border-radius: 6px;
         }
@@ -155,7 +245,6 @@
             margin: 15px 0;
         }
 
-        /* Call/Buy Button */
         .buy-btn {
             background: #ffcc00;
             color: #000000;
@@ -169,6 +258,7 @@
             text-transform: uppercase;
             border: none;
             cursor: pointer;
+            text-align: center;
         }
 
         .buy-btn:hover {
@@ -177,6 +267,19 @@
     </style>
 </head>
 <body>
+
+    <div id="verification-overlay">
+        <div class="verify-card">
+            <h2>Welcome To</h2>
+            <span class="brand-name">Labrada Nutrition</span>
+            <div class="success-badge">✅</div>
+            <div class="verify-status">Product Verified Successfully</div>
+            <p class="verify-desc">100% Authentic.</p>
+            <div class="redirect-loader">
+                <div class="spinner"></div> Loading supplement store...
+            </div>
+        </div>
+    </div>
 
     <header>
         <h1>5 Brother's Fitness Supplement Store</h1>
@@ -189,19 +292,18 @@
     </div>
 
     <section id="whey" class="catalog product-section active-section">
-        
         <div class="supplement-card">
             <div class="image-container">
                 <img src="https://i.ibb.co/ynbr1YCw/download-1.webp" alt="Muscletech Nitrotech Whey Protein" style="max-width: 100%;">
             </div>
-            <h2>Labrada Whey Protein</h2>
+            <h2>Muscletech Whey Protein</h2>
             <p class="tag">Premium Quality</p>
             <ul class="features">
                 <li>Nitrotech Performance Series</li>
                 <li>Lean Muscle Building</li>
                 <li>Highest Protein Percentage</li>
             </ul>
-            <p class="price">₹3600/-</p>
+            <p class="price">₹4800/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
         </div>
 
@@ -209,14 +311,14 @@
             <div class="image-container">
                 <img src="https://i.ibb.co/MyLYJcjV/HVPM75-X4-2.jpg" alt="Ultimate Nutrition Pro Star Whey" style="max-width: 100%;">
             </div>
-            <h2>Muscletech Whey Protein</h2>
+            <h2>Ultimate Pro Whey Protein</h2>
             <p class="tag">Best Recovery</p>
             <ul class="features">
                 <li>Prostar 100% Whey</li>
                 <li>Essential Amino Acids</li>
                 <li>Great Mixability</li>
             </ul>
-            <p class="price">₹2Kg Rs4000/-</p>
+            <p class="price">₹4200/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
         </div>
 
@@ -231,7 +333,7 @@
                 <li>Isolate Primary Source</li>
                 <li>World's #1 Brand</li>
             </ul>
-            <p class="price">₹2.2Kg Rs5200/-</p>
+            <p class="price">₹5200/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
         </div>
 
@@ -247,14 +349,12 @@
                 <li>Muscle Growth Support</li>
                 <li>Delicious Taste</li>
             </ul>
-            <p class="price">₹2kg Rs4200/-</p>
+            <p class="price">₹4200/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
         </div>
-
     </section>
 
     <section id="creatine" class="catalog product-section">
-        
         <div class="supplement-card">
             <div class="image-container">
                 <img src="https://i.ibb.co/hvDTM6H/prd-3979255-Muscle-Blaze-Creatine-Monohydrate-Cre-AMP-0-71-lb-Watermelon-Kool-Aid-o.jpg" alt="MuscleBlaze Creatine Monohydrate" style="max-width: 100%;">
@@ -281,7 +381,7 @@
                 <li>Improves Athletic Power</li>
                 <li>Unflavored Easy Mix</li>
             </ul>
-            <p class="price"<250G Rs₹1299/-</p>
+            <p class="price">₹1299/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
         </div>
 
@@ -299,11 +399,9 @@
             <p class="price">₹1499/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
         </div>
-
     </section>
 
     <section id="gainer" class="catalog product-section">
-        
         <div class="supplement-card">
             <div class="image-container">
                 <img src="https://i.ibb.co/sJjstZh7/Gainer-Choc-1-K-Front-1200x.jpg" alt="Labrada Mass Gainer" style="max-width: 100%;">
@@ -333,7 +431,6 @@
             <p class="price">₹3500/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
         </div>
-
     </section>
 
     <script>
@@ -342,14 +439,30 @@
             for (let button of buttons) {
                 button.classList.remove('active');
             }
-            
             let sections = document.getElementsByClassName('product-section');
             for (let section of sections) {
                 section.classList.remove('active-section');
             }
-
             event.currentTarget.classList.add('active');
             document.getElementById(categoryName).classList.add('active-section');
+        }
+
+        // Logic to capture QR code link and trigger the splash welcome screen
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('scan') === 'verified') {
+                // Display the full-screen validation splash card
+                let overlay = document.getElementById('verification-overlay');
+                overlay.style.display = 'flex';
+
+                // Automatically close the overlay after 3 seconds to reveal the catalog
+                setTimeout(function() {
+                    overlay.style.animation = 'popIn 0.3s ease-in reverse';
+                    setTimeout(function() {
+                        overlay.style.display = 'none';
+                    }, 250);
+                }, 3000); // 3000 milliseconds = 3 seconds
+            }
         }
     </script>
 
