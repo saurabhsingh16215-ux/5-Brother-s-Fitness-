@@ -3,277 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>5 Brother's Fitness | Premium Supplement Store</title>
+    <title>5 Brother's Fitness Supplement Store</title>
     <style>
-        /* US Supplements Inspired Premium Design Base */
-        :root {
-            --primary: #ffcc00;
-            --primary-hover: #ffe066;
-            --bg-dark: #0a0a0a;
-            --card-bg: #121212;
-            --text-main: #ffffff;
-            --text-muted: #aaaaaa;
-            --border-color: #222222;
-        }
-
+        /* Premium Dark Gym Theme */
         body {
             margin: 0;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            padding-bottom: 60px;
-            -webkit-font-smoothing: antialiased;
+            font-family: 'Arial', sans-serif;
+            background-color: #0d0d0d;
+            color: #ffffff;
+            padding-bottom: 40px;
         }
 
-        /* Top Announcement Bar */
-        .top-bar {
-            background: #ffcc00;
-            color: #000000;
-            text-align: center;
-            padding: 8px 10px;
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Main Premium Header */
         header {
             background: #000000;
-            padding: 25px 20px;
+            padding: 20px;
             text-align: center;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 3px solid #ffcc00;
         }
 
         header h1 {
-            color: #ffffff;
+            color: #ffcc00;
             margin: 0;
-            font-size: 28px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-        
-        header h1 span {
-            color: var(--primary);
-        }
-
-        /* US Supplements Style Premium Navigation Tabs */
-        .category-nav {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 25px auto;
-            padding: 0 20px;
-            max-width: 1200px;
-            box-sizing: border-box;
-            flex-wrap: wrap;
-        }
-
-        .category-btn {
-            background: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            padding: 12px 28px;
-            font-size: 13px;
-            font-weight: 600;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .category-btn:hover, .category-btn.active {
-            background: #ffffff;
-            color: #000000;
-            border-color: #ffffff;
-        }
-
-        .category-btn#btn-manual {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-        .category-btn#btn-manual:hover, .category-btn#btn-manual.active {
-            background: var(--primary);
-            color: #000000;
-        }
-
-        /* Clean Layout Grid */
-        .catalog {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 0 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .product-section { display: none; }
-        .product-section.active-section { display: grid; }
-
-        /* Premium E-Commerce Product Cards */
-        .supplement-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 0px;
-            padding: 25px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-        
-        .supplement-card:hover {
-            transform: translateY(-5px);
-            border-color: #444444;
-        }
-
-        .image-container {
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            background: #161616;
-            padding: 15px;
-        }
-
-        .supplement-card img { 
-            max-height: 100%; 
-            max-width: 100%; 
-            object-fit: contain; 
-        }
-
-        .supplement-card h2 {
-            font-size: 18px;
-            font-weight: 700;
-            margin: 10px 0;
-            color: var(--text-main);
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1.4;
-        }
-
-        .tag {
-            background: #1a1a1a;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            display: inline-block;
-            padding: 4px 14px;
-            font-weight: 700;
-            font-size: 11px;
-            text-transform: uppercase;
-            margin: 5px auto 15px auto;
-            letter-spacing: 0.5px;
-        }
-
-        .features { 
-            text-align: left; 
-            font-size: 13px; 
-            color: var(--text-muted); 
-            margin: 0 0 20px 0; 
-            padding-left: 20px;
-            line-height: 1.6;
-        }
-        
-        .features li { margin-bottom: 6px; }
-        
-        .price { 
-            font-size: 24px; 
-            font-weight: 800; 
-            color: #ffffff; 
-            margin: 10px 0 20px 0; 
-            border-top: 1px solid var(--border-color);
-            padding-top: 15px;
-        }
-
-        /* Elegant Purchase Button */
-        .buy-btn {
-            background: var(--primary);
-            color: #000000;
-            text-decoration: none;
-            padding: 14px;
-            font-size: 14px;
-            font-weight: 700;
-            display: block;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: background 0.2s ease;
-        }
-        
-        .buy-btn:hover {
-            background: var(--primary-hover);
-        }
-
-        /* Manual Verification Form Section */
-        .verify-input-section {
-            background: var(--card-bg);
-            border: 1px solid var(--primary);
-            max-width: 480px;
-            margin: 40px auto;
-            padding: 35px 25px;
-            text-align: center;
-        }
-
-        .verify-input-section h3 { 
-            color: var(--primary); 
-            margin-top: 0; 
-            font-size: 20px;
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-        }
-        
-        .verify-input-section p {
-            color: var(--text-muted);
-            font-size: 13px;
-            margin-bottom: 25px;
-        }
-
-        .verify-input-section input {
-            width: 85%;
-            padding: 14px;
-            border: 1px solid var(--border-color);
-            background: #000000;
-            color: #ffffff;
-            font-size: 16px;
-            text-align: center;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .verify-input-section input:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .verify-action-btn {
-            background: var(--primary);
-            color: #000000;
-            border: none;
-            padding: 14px;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            width: 92%;
+            font-size: 26px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* Full Screen Error Security Overlay - STRICT ADAPTIVE VISIBILITY WITH Z-INDEX RESET */
+        /* Full Screen OVERLAY - Displays Only On Errors Now */
         #verification-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: #000000;
-            z-index: -1; /* Piche rahega jab tak display flex na ho */
-            display: none; /* Invisible by default to unlock homepage clicks completely */
+            background: #0d0d0d;
+            z-index: 99999;
+            display: none;
             align-items: center;
             justify-content: center;
             text-align: center;
@@ -282,52 +47,207 @@
         }
 
         .verify-card {
-            background: var(--card-bg);
-            padding: 45px 35px;
-            border: 2px solid #ff3333;
+            background: #141414;
+            padding: 40px 30px;
+            border-radius: 20px;
             width: 100%;
             max-width: 450px;
             box-sizing: border-box;
             animation: popIn 0.4s ease-out;
         }
 
+        .card-fail { border: 3px solid #ff0000; box-shadow: 0 0 35px rgba(255, 0, 0, 0.4); }
+
         @keyframes popIn {
-            0% { transform: scale(0.9); opacity: 0; }
+            0% { transform: scale(0.85); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
 
         .verify-card .warning-title {
             color: #ff3333;
-            font-size: 26px;
-            font-weight: 800;
+            font-size: 28px;
+            font-weight: bold;
             display: block;
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .fail-badge { font-size: 70px; margin-bottom: 15px; }
-        .verify-status-fail { color: #ff3333; font-size: 22px; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; }
-        .verify-desc { color: #ffffff; font-size: 15px; margin: 0 0 30px 0; line-height: 1.5; }
+        .fail-badge { font-size: 65px; margin-bottom: 15px; }
+        .verify-status-fail { color: #ff0000; font-size: 24px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; }
+        .verify-desc { color: #ffffff; font-size: 18px; margin: 0 0 25px 0; line-height: 1.4; }
 
         .try-again-btn {
             background: #ff3333;
             color: #ffffff;
             border: none;
-            padding: 14px;
-            font-size: 14px;
-            font-weight: 700;
+            padding: 12px 25px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 6px;
             cursor: pointer;
             width: 100%;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            margin-top: 10px;
+            transition: 0.2s;
+        }
+        .try-again-btn:hover { background: #ff6666; }
+
+        /* Category Menu Tabs - Left Aligned */
+        .category-nav {
+            display: flex;
+            justify-content: flex-start;
+            gap: 12px;
+            margin: 30px auto;
+            padding: 0 20px;
+            max-width: 1200px;
+            box-sizing: border-box;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: #1a1a1a;
+            color: #ffffff;
+            border: 2px solid #333;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: #ffcc00;
+            color: #000000;
+            border-color: #ffcc00;
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+        }
+
+        /* Verification Form Section */
+        .verify-input-section {
+            background: #141414;
+            border: 2px dashed #ffcc00;
+            max-width: 450px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .verify-input-section h3 { color: #ffcc00; margin-top: 0; text-transform: uppercase; }
+        .verify-input-section input {
+            width: 85%;
+            padding: 13px;
+            border-radius: 6px;
+            border: 1px solid #333;
+            background: #000;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .verify-action-btn {
+            background: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 90%;
+            text-transform: uppercase;
+        }
+
+        /* Responsive Grid Layout */
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-section { display: none; }
+        .product-section.active-section { display: grid; }
+
+        .supplement-card {
+            background: #141414;
+            border: 1px solid #262626;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .image-container {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            background: #1f1f1f;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .supplement-card img { max-height: 100%; max-width: 48%; object-fit: contain; border-radius: 6px; }
+        .supplement-card h2 {
+            font-size: 19px;
+            margin: 10px 0 5px 0;
+            color: #ffffff;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tag {
+            background: #ffcc00;
+            color: #000000;
+            display: inline-block;
+            padding: 4px 12px;
+            font-weight: bold;
+            border-radius: 4px;
+            font-size: 11px;
+            text-transform: uppercase;
+            margin: 5px auto;
+            width: fit-content;
+        }
+
+        .features { text-align: left; font-size: 13px; color: #b3b3b3; margin: 10px 0; padding-left: 15px; }
+        .features li { margin-bottom: 4px; }
+        .price { font-size: 22px; font-weight: bold; color: #ffcc00; margin: 15px 0; }
+
+        .buy-btn {
+            background: #ffcc00;
+            color: #000000;
+            text-decoration: none;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            display: block;
+            text-transform: uppercase;
+            border: none;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
     <div id="verification-overlay">
-        <div id="overlay-card" class="verify-card">
+        <div id="overlay-card" class="verify-card card-fail">
             <span class="warning-title">⚠️ SECURITY WARNING</span>
             <div class="fail-badge">❌</div>
             <div class="verify-status-fail">Verification Failed</div>
@@ -338,32 +258,28 @@
         </div>
     </div>
 
-    <div class="top-bar">
-        ⚡ 100% Original & Genuine Supplements Store ⚡
-    </div>
-
     <header>
-        <h1>5 Brother's Fitness <span>Supplement Store</span></h1>
+        <h1>5 Brother's Fitness Supplement Store</h1>
     </header>
 
     <div class="category-nav">
         <button class="category-btn active" id="btn-whey" onclick="filterCategory('whey')">Whey Protein</button>
         <button class="category-btn" id="btn-creatine" onclick="filterCategory('creatine')">Creatine</button>
         <button class="category-btn" id="btn-gainer" onclick="filterCategory('gainer')">Gainer</button>
-        <button class="category-btn" id="btn-manual" onclick="filterCategory('manual-verify')">Verify Code</button>
+        <button class="category-btn" id="btn-manual" onclick="filterCategory('manual-verify')" style="border-color: #ffcc00; color: #ffcc00;">Verify Code</button>
     </div>
 
     <section id="whey" class="catalog product-section active-section">
         <div class="supplement-card">
             <div class="image-container">
-                <img src="https://i.ibb.co/ynbr1YCw/download-1.webp" alt="Muscletech">
+                <img src="https://i.ibb.co/ynbr1YCw/download-1.webp" alt="Muscletech" style="max-width: 100%;">
             </div>
             <h2>Muscletech Whey Protein</h2>
-            <p class="tag">Rich Chocolate</p>
+            <p class="tag">Premium Quality</p>
             <ul class="features">
                 <li>Nitrotech Performance Series</li>
-                <li>Lean Muscle Building Formula</li>
-                <li>Original Sourced Core Ingredients</li>
+                <li>Lean Muscle Building</li>
+                <li>Original Formula</li>
             </ul>
             <p class="price">₹4800/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
@@ -371,14 +287,14 @@
 
         <div class="supplement-card">
             <div class="image-container">
-                <img src="https://i.ibb.co/MyLYJcjV/HVPM75-X4-2.jpg" alt="Ultimate Nutrition">
+                <img src="https://i.ibb.co/MyLYJcjV/HVPM75-X4-2.jpg" alt="Ultimate Nutrition" style="max-width: 100%;">
             </div>
             <h2>Ultimate Pro Whey Protein</h2>
-            <p class="tag">Rich Chocolate</p>
+            <p class="tag">Best Recovery</p>
             <ul class="features">
-                <li>Prostar 100% Premium Whey</li>
-                <li>Packed with Essential Amino Acids</li>
-                <li>Great Mixability & Taste Profile</li>
+                <li>Prostar 100% Whey</li>
+                <li>Essential Amino Acids</li>
+                <li>Great Mixability</li>
             </ul>
             <p class="price">₹4200/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
@@ -386,14 +302,14 @@
 
         <div class="supplement-card">
             <div class="image-container">
-                <img src="https://i.ibb.co/68vDhmb5/image.png" alt="ON Gold Standard">
+                <img src="https://i.ibb.co/68vDhmb5/image.png" alt="ON Gold Standard" style="max-width: 100%;">
             </div>
-            <h2>Optimum Nutrition (ON) Gold Standard</h2>
-            <p class="tag">Rich Chocolate</p>
+            <h2>Optimum Nutrition (ON) Gold Standard 100% Whey</h2>
+            <p class="tag">Top Seller</p>
             <ul class="features">
-                <li>Gold Standard 100% Authentic Whey</li>
-                <li>Isolate Primary Sourced Formulation</li>
-                <li>World's Leading #1 Selling Brand</li>
+                <li>Gold Standard 100% Whey</li>
+                <li>Isolate Primary Source</li>
+                <li>World's #1 Brand</li>
             </ul>
             <p class="price">₹5200/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
@@ -401,14 +317,14 @@
 
         <div class="supplement-card">
             <div class="image-container">
-                <img src="https://i.ibb.co/8nP9m7jP/IMG-20260517-053830.jpg" alt="Labrada Front">
+                <img src="https://i.ibb.co/8nP9m7jP/IMG-20260517-053830.jpg" alt="Labrada Front" style="max-width: 100%;">
             </div>
-            <h2>Labrada Premium Whey Protein</h2>
-            <p class="tag">Rich Chocolate</p>
+            <h2>Labrada Whey Protein</h2>
+            <p class="tag">Made in USA</p>
             <ul class="features">
-                <li>Premium High-Tier Protein Source</li>
-                <li>Muscle Development & Growth Support</li>
-                <li>100% Genuine Lab Tested Product</li>
+                <li>Premium Protein Source</li>
+                <li>Muscle Growth Support</li>
+                <li>100% Authentic Product</li>
             </ul>
             <p class="price">₹4200/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
@@ -416,14 +332,14 @@
 
         <div class="supplement-card">
             <div class="image-container">
-                <img src="https://i.ibb.co/v4bNfLp6/61y-G82-P3p-L-SL1500.jpg" alt="MuscleBlaze Biozyme">
+                <img src="https://i.ibb.co/v4bNfLp6/61y-G82-P3p-L-SL1500.jpg" alt="MuscleBlaze Biozyme" style="max-width: 100%;">
             </div>
             <h2>MuscleBlaze Biozyme Performance Whey</h2>
             <p class="tag">Rich Chocolate</p>
             <ul class="features">
-                <li>Enhanced Absorption Formula (EAF)</li>
-                <li>Clinical Tested High-tier Protein</li>
-                <li>Maximum Muscle Recovery Matrix</li>
+                <li>Enhanced Absorption Formula</li>
+                <li>Clinical Tested EAF Protein</li>
+                <li>High Muscle Recovery Rate</li>
             </ul>
             <p class="price">₹4800/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
@@ -431,14 +347,14 @@
 
         <div class="supplement-card">
             <div class="image-container">
-                <img src="https://i.ibb.co/gL0mPzZz/71-Uunvks2-SL-SL1500.jpg" alt="Avatar Whey Protein">
+                <img src="https://i.ibb.co/gL0mPzZz/71-Uunvks2-SL-SL1500.jpg" alt="Avatar Whey Protein" style="max-width: 100%;">
             </div>
-            <h2>Avatar 100% Whey Protein Isolate</h2>
-            <p class="tag">Rich Chocolate</p>
+            <h2>Avatar 100% Whey Protein Isolate Blend</h2>
+            <p class="tag">Malai Kulfi Flavor</p>
             <ul class="features">
-                <li>Premium Fresh Farm Sourced Whey</li>
-                <li>Rich in Branch Chain Amino Acids</li>
-                <li>100% Genuine Grass-Fed Milk Processing</li>
+                <li>Premium Fresh Whey</li>
+                <li>Rich in BCAAs & Glutamic Acid</li>
+                <li>100% Genuine Grass-Fed</li>
             </ul>
             <p class="price">₹4500/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
@@ -448,14 +364,14 @@
     <section id="creatine" class="catalog product-section">
         <div class="supplement-card">
             <div class="image-container">
-                <img src="https://i.ibb.co/hvDTM6H/prd-3979255-Muscle-Blaze-Creatine-Monohydrate-Cre-AMP-0-71-lb-Watermelon-Kool-Aid-o.jpg" alt="MuscleBlaze">
+                <img src="https://i.ibb.co/hvDTM6H/prd-3979255-Muscle-Blaze-Creatine-Monohydrate-Cre-AMP-0-71-lb-Watermelon-Kool-Aid-o.jpg" alt="MuscleBlaze" style="max-width: 100%;">
             </div>
             <h2>MuscleBlaze Creatine Monohydrate</h2>
             <p class="tag">CreAMP Certified</p>
             <ul class="features">
-                <li>Helps Increase Core Power & Strength</li>
-                <li>Accelerated ATP Cell Recovery</li>
-                <li>Labdoor USA Certified Product</li>
+                <li>Helps Increase Strength</li>
+                <li>Faster ATP Recovery</li>
+                <li>Labdoor Certified</li>
             </ul>
             <p class="price">320g • ₹1199/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
@@ -463,14 +379,14 @@
 
         <div class="supplement-card">
             <div class="image-container">
-                <img src="https://i.ibb.co/vv3V6zxX/IMG-20260517-141925.jpg" alt="GNC Creatine Official">
+                <img src="https://i.ibb.co/MknmZg96/61-A7rff-N6-L-SL1500.jpg" alt="GNC Creatine 200g" style="max-width: 100%;">
             </div>
             <h2>GNC Creatine Monohydrate</h2>
             <p class="tag">Pure Micronized</p>
             <ul class="features">
-                <li>100% Pure Premium Micronized Powder</li>
-                <li>Improves Athletic Stamina & Output</li>
-                <li>Unflavored Immediate Blend Matrix</li>
+                <li>100% Pure Micronized</li>
+                <li>Improves Athletic Power</li>
+                <li>Unflavored Easy Mix</li>
             </ul>
             <p class="price">200g • ₹634/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
@@ -478,14 +394,14 @@
 
         <div class="supplement-card">
             <div class="image-container">
-                <img src="https://i.ibb.co/wZ8D0m8w/81-Uq7r6e-SML-SL1500.jpg" alt="Wellcore Creatine">
+                <img src="https://i.ibb.co/wZ8D0m8w/81-Uq7r6e-SML-SL1500.jpg" alt="Wellcore Creatine" style="max-width: 100%;">
             </div>
-            <h2>Wellcore Micronized Creatine</h2>
+            <h2>Wellcore Micronized Creatine Monohydrate</h2>
             <p class="tag">Tropical Tango</p>
             <ul class="features">
-                <li>Ultra Micronized Dust Layer Particles</li>
-                <li>Explosive Cellular Hydration Support</li>
-                <li>Delicious Rich Juicy Taste Profile</li>
+                <li>Ultra Micronized Formula</li>
+                <li>Explosive Power & Strength</li>
+                <li>Amazing Juicy Flavor</li>
             </ul>
             <p class="price">307g • ₹1000/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
@@ -495,14 +411,14 @@
     <section id="gainer" class="catalog product-section">
         <div class="supplement-card">
             <div class="image-container">
-                <img src="https://i.ibb.co/sJjstZh7/Gainer-Choc-1-K-Front-1200x.jpg" alt="Labrada Mass">
+                <img src="https://i.ibb.co/sJjstZh7/Gainer-Choc-1-K-Front-1200x.jpg" alt="Labrada Mass" style="max-width: 100%;">
             </div>
-            <h2>Labrada Muscle Mass Gainer</h2>
-            <p class="tag">Rich Chocolate</p>
+            <h2>Labrada Mass Gainer</h2>
+            <p class="tag">Best Gainer</p>
             <ul class="features">
-                <li>High Clean Sourced Caloric Matrix</li>
-                <li>Accelerated Muscle Mass Volumization</li>
-                <li>100% Fully Genuine Imported Blend</li>
+                <li>High Quality Calories</li>
+                <li>Muscle Mass Growth</li>
+                <li>100% Authentic</li>
             </ul>
             <p class="price">₹3000/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
@@ -510,14 +426,14 @@
 
         <div class="supplement-card">
             <div class="image-container">
-                <img src="https://i.ibb.co/sJjstZh7/Gainer-Choc-1-K-Front-1200x.jpg" alt="Monster Mass">
+                <img src="https://i.ibb.co/sJjstZh7/Gainer-Choc-1-K-Front-1200x.jpg" alt="Monster Mass" style="max-width: 100%;">
             </div>
             <h2>Monster Mass Gainer</h2>
-            <p class="tag">Rich Chocolate</p>
+            <p class="tag">Heavy Bulk</p>
             <ul class="features">
-                <li>High Density Protein Formulation</li>
-                <li>Packed heavily with natural BCAAs</li>
-                <li>Engineered for Hard Gaining Trainees</li>
+                <li>High Protein Gainer</li>
+                <li>Packed with BCAAs</li>
+                <li>Extreme Size Gain</li>
             </ul>
             <p class="price">₹3500/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
@@ -527,9 +443,9 @@
     <section id="manual-verify" class="product-section" style="padding: 10px;">
         <div class="verify-input-section">
             <h3>Secure Product Authenticator</h3>
-            <p>Enter the 8-character official brand verification code printed on your product label.</p>
+            <p style="font-size: 14px; color: #aaa; margin-bottom: 20px;">Enter the 8-character official brand code printed on your label.</p>
             <input type="text" id="manualCodeInput" placeholder="e.g. LBR7F29K">
-            <button class="verify-action-btn" onclick="triggerManualCheck()">Verify Brand Product</button>
+            <button class="verify-action-btn" onclick="triggerManualCheck()">Verify Product</button>
         </div>
     </section>
 
@@ -556,4 +472,48 @@
             for (let section of sections) { section.classList.remove('active-section'); }
             
             if (categoryName === 'whey') document.getElementById('btn-whey').classList.add('active');
-            else if (categoryName === 'creatine') document.getElementById('btn-
+            else if (categoryName === 'creatine') document.getElementById('btn-creatine').classList.add('active');
+            else if (categoryName === 'gainer') document.getElementById('btn-gainer').classList.add('active');
+            else if (categoryName === 'manual-verify') document.getElementById('btn-manual').classList.add('active');
+
+            document.getElementById(categoryName).classList.add('active-section');
+        }
+
+        function runVerificationProcess(inputCode) {
+            let code = inputCode.toLowerCase().trim();
+            let overlay = document.getElementById('verification-overlay');
+
+            if (secureDatabase[code]) {
+                // REDIRECTS DIRECTLY TO HOME PAGE TABS WITHOUT INTERRUPTIONS
+                overlay.style.display = 'none'; 
+                filterCategory(secureDatabase[code].tab);
+            } else {
+                // ONLY SHOWS WARNING OVERLAY ON WRONG CODES
+                overlay.style.display = 'flex';
+            }
+        }
+
+        function resetFailOverlay() {
+            document.getElementById('verification-overlay').style.display = 'none';
+            filterCategory('manual-verify');
+            let inputField = document.getElementById('manualCodeInput');
+            inputField.value = "";
+            inputField.focus();
+        }
+
+        function triggerManualCheck() {
+            let inputField = document.getElementById('manualCodeInput');
+            if(inputField.value.trim() === "") { alert("Please type a valid code first!"); return; }
+            runVerificationProcess(inputField.value);
+        }
+
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let codeParam = urlParams.get('code');
+            if (codeParam) {
+                runVerificationProcess(codeParam);
+            }
+        }
+    </script>
+</body>
+</html>
