@@ -81,12 +81,40 @@
             text-transform: uppercase;
         }
 
+        /* Red Warning Title Style */
+        .verify-card .warning-title {
+            color: #ff3333;
+            font-size: 28px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         .success-badge, .fail-badge { font-size: 65px; margin-bottom: 15px; }
         .verify-status-ok { color: #00ff00; font-size: 24px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; }
         .verify-status-fail { color: #ff0000; font-size: 24px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; }
 
-        .verify-desc { color: #ffffff; font-size: 18px; margin: 0 0 25px 0; }
+        .verify-desc { color: #ffffff; font-size: 18px; margin: 0 0 25px 0; line-height: 1.4; }
         .redirect-loader { font-size: 14px; color: #888; }
+
+        /* Try Again Button Style */
+        .try-again-btn {
+            background: #ff3333;
+            color: #ffffff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            text-transform: uppercase;
+            margin-top: 10px;
+            transition: 0.2s;
+        }
+        .try-again-btn:hover { background: #ff6666; }
 
         .spinner {
             width: 18px;
@@ -257,14 +285,14 @@
 
     <div id="verification-overlay">
         <div id="overlay-card" class="verify-card">
-            <h2>Welcome To</h2>
-            <span id="dynamic-brand" class="brand-name">Supplement Nutrition</span>
+            <div id="header-text-container"></div>
             <div id="dynamic-badge"></div>
             <div id="dynamic-status"></div>
             <p id="dynamic-desc" class="verify-desc"></p>
             <div id="loader-box" class="redirect-loader">
                 <div class="spinner"></div> Loading supplement store...
             </div>
+            <div id="button-container"></div>
         </div>
     </div>
 
@@ -493,18 +521,22 @@
         function runVerificationProcess(inputCode, isAutoScan) {
             let code = inputCode.toLowerCase().trim();
             let card = document.getElementById('overlay-card');
-            let brandDisplay = document.getElementById('dynamic-brand');
+            let headerTextContainer = document.getElementById('header-text-container');
             let badge = document.getElementById('dynamic-badge');
             let status = document.getElementById('dynamic-status');
             let desc = document.getElementById('dynamic-desc');
             let loader = document.getElementById('loader-box');
+            let btnContainer = document.getElementById('button-container');
             let overlay = document.getElementById('verification-overlay');
 
             card.className = "verify-card";
+            headerTextContainer.innerHTML = "";
+            btnContainer.innerHTML = "";
 
             if (secureDatabase[code]) {
+                // SUCCESS SYSTEM
                 card.classList.add('card-success');
-                brandDisplay.innerText = secureDatabase[code].brand;
+                headerTextContainer.innerHTML = '<h2>Welcome To</h2><span class="brand-name">' + secureDatabase[code].brand + '</span>';
                 badge.className = "success-badge";
                 badge.innerText = "✅";
                 status.className = "verify-status-ok";
@@ -518,4 +550,56 @@
                     loader.style.display = "block";
                     setTimeout(function() {
                         overlay.style.animation = 'popIn 0.3s ease-in reverse';
-                        setTimeout(function() { overlay.style.
+                        setTimeout(function() { overlay.style.display = 'none'; }, 230);
+                    }, 3500);
+                } else {
+                    loader.style.display = "none";
+                    overlay.onclick = function() { overlay.style.display = 'none'; };
+                }
+
+            } else {
+                // FAIL SYSTEM (UPDATED ACCORDING TO YOUR PROBLEM)
+                card.classList.add('card-fail');
+                headerTextContainer.innerHTML = '<span class="warning-title">⚠️ SECURITY WARNING</span>';
+                badge.className = "fail-badge";
+                badge.innerText = "❌";
+                status.className = "verify-status-fail";
+                status.innerText = "Verification Failed";
+                desc.innerText = "Invalid or Duplicate Code. Beware of fake products!";
+                loader.style.display = "none";
+                overlay.style.display = 'flex';
+
+                // Disabling backdrop click close to force using the Back Button
+                overlay.onclick = null;
+
+                // Added Premium "Try Again / Back" Button to avoid locking screen
+                let backBtn = document.createElement('button');
+                backBtn.className = "try-again-btn";
+                backBtn.innerText = "Try Again / Back";
+                backBtn.onclick = function(e) {
+                    e.stopPropagation(); // Stops event bubbles
+                    overlay.style.display = 'none'; // Closes overlay smoothly
+                    filterCategory('manual-verify'); // Takes them safely to verification form
+                    document.getElementById('manualCodeInput').value = ""; // Clears the wrong input
+                    document.getElementById('manualCodeInput').focus(); // Ready for new type
+                };
+                btnContainer.appendChild(backBtn);
+            }
+        }
+
+        function triggerManualCheck() {
+            let inputField = document.getElementById('manualCodeInput');
+            if(inputField.value.trim() === "") { alert("Please type a valid code first!"); return; }
+            runVerificationProcess(inputField.value, false);
+        }
+
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let codeParam = urlParams.get('code');
+            if (codeParam) {
+                runVerificationProcess(codeParam, true);
+            }
+        }
+    </script>
+</body>
+</html>
