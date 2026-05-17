@@ -81,40 +81,12 @@
             text-transform: uppercase;
         }
 
-        /* Red Warning Title Style */
-        .verify-card .warning-title {
-            color: #ff3333;
-            font-size: 28px;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
         .success-badge, .fail-badge { font-size: 65px; margin-bottom: 15px; }
         .verify-status-ok { color: #00ff00; font-size: 24px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; }
         .verify-status-fail { color: #ff0000; font-size: 24px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; }
 
-        .verify-desc { color: #ffffff; font-size: 18px; margin: 0 0 25px 0; line-height: 1.4; }
+        .verify-desc { color: #ffffff; font-size: 18px; margin: 0 0 25px 0; }
         .redirect-loader { font-size: 14px; color: #888; }
-
-        /* Try Again Button Style */
-        .try-again-btn {
-            background: #ff3333;
-            color: #ffffff;
-            border: none;
-            padding: 12px 25px;
-            font-size: 15px;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            width: 100%;
-            text-transform: uppercase;
-            margin-top: 10px;
-            transition: 0.2s;
-        }
-        .try-again-btn:hover { background: #ff6666; }
 
         .spinner {
             width: 18px;
@@ -285,14 +257,14 @@
 
     <div id="verification-overlay">
         <div id="overlay-card" class="verify-card">
-            <div id="header-text-container"></div>
+            <h2>Welcome To</h2>
+            <span id="dynamic-brand" class="brand-name">Supplement Nutrition</span>
             <div id="dynamic-badge"></div>
             <div id="dynamic-status"></div>
             <p id="dynamic-desc" class="verify-desc"></p>
             <div id="loader-box" class="redirect-loader">
                 <div class="spinner"></div> Loading supplement store...
             </div>
-            <div id="button-container"></div>
         </div>
     </div>
 
@@ -521,10 +493,29 @@
         function runVerificationProcess(inputCode, isAutoScan) {
             let code = inputCode.toLowerCase().trim();
             let card = document.getElementById('overlay-card');
-            let headerTextContainer = document.getElementById('header-text-container');
+            let brandDisplay = document.getElementById('dynamic-brand');
             let badge = document.getElementById('dynamic-badge');
             let status = document.getElementById('dynamic-status');
             let desc = document.getElementById('dynamic-desc');
             let loader = document.getElementById('loader-box');
-            let btnContainer = document.getElementById('button-container');
-            let overlay = document.get
+            let overlay = document.getElementById('verification-overlay');
+
+            card.className = "verify-card";
+
+            if (secureDatabase[code]) {
+                card.classList.add('card-success');
+                brandDisplay.innerText = secureDatabase[code].brand;
+                badge.className = "success-badge";
+                badge.innerText = "✅";
+                status.className = "verify-status-ok";
+                status.innerText = "Product Verified Successfully";
+                desc.innerText = "100% Authentic.";
+                overlay.style.display = 'flex';
+
+                filterCategory(secureDatabase[code].tab);
+
+                if (isAutoScan) {
+                    loader.style.display = "block";
+                    setTimeout(function() {
+                        overlay.style.animation = 'popIn 0.3s ease-in reverse';
+                        setTimeout(function() { overlay.style.
