@@ -340,6 +340,36 @@
             <p class="price">₹4200/-</p>
             <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
         </div>
+
+        <div class="supplement-card">
+            <div class="image-container">
+                <img src="https://i.ibb.co/v4bNfLp6/61y-G82-P3p-L-SL1500.jpg" alt="MuscleBlaze Biozyme" style="max-width: 100%;">
+            </div>
+            <h2>MuscleBlaze Biozyme Performance Whey</h2>
+            <p class="tag">Rich Chocolate</p>
+            <ul class="features">
+                <li>Enhanced Absorption Formula</li>
+                <li>Clinical Tested EAF Protein</li>
+                <li>High Muscle Recovery Rate</li>
+            </ul>
+            <p class="price">₹4800/-</p>
+            <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
+        </div>
+
+        <div class="supplement-card">
+            <div class="image-container">
+                <img src="https://i.ibb.co/gL0mPzZz/71-Uunvks2-SL-SL1500.jpg" alt="Avatar Whey Protein" style="max-width: 100%;">
+            </div>
+            <h2>Avatar 100% Whey Protein Isolate Blend</h2>
+            <p class="tag">Malai Kulfi Flavor</p>
+            <ul class="features">
+                <li>Premium Fresh Whey</li>
+                <li>Rich in BCAAs & Glutamic Acid</li>
+                <li>100% Genuine Grass-Fed</li>
+            </ul>
+            <p class="price">₹4500/-</p>
+            <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
+        </div>
     </section>
 
     <section id="creatine" class="catalog product-section">
@@ -440,7 +470,9 @@
             "gnc3m78b": { brand: "GNC Nutrition", tab: "creatine" },
             "wel4c8t2": { brand: "Wellcore Nutrition", tab: "creatine" },
             "lmg5p62c": { brand: "Labrada Mass Gainer", tab: "gainer" },
-            "mon8k43d": { brand: "Monster Mass Gainer", tab: "gainer" }
+            "mon8k43d": { brand: "Monster Mass Gainer", tab: "gainer" },
+            "mbw7x92k": { brand: "MuscleBlaze Biozyme Whey", tab: "whey" },
+            "avt5p31m": { brand: "Avatar Whey Protein", tab: "whey" }
         };
 
         function filterCategory(categoryName) {
@@ -486,41 +518,4 @@
                     loader.style.display = "block";
                     setTimeout(function() {
                         overlay.style.animation = 'popIn 0.3s ease-in reverse';
-                        setTimeout(function() { overlay.style.display = 'none'; }, 230);
-                    }, 3500);
-                } else {
-                    loader.style.display = "none";
-                    overlay.onclick = function() { overlay.style.display = 'none'; };
-                }
-
-            } else {
-                card.classList.add('card-fail');
-                brandDisplay.innerText = "UNKNOWN BRAND";
-                badge.className = "fail-badge";
-                badge.innerText = "❌";
-                status.className = "verify-status-fail";
-                status.innerText = "Verification Failed";
-                desc.innerText = "Invalid or Duplicate Code. Beware of fake products!";
-                loader.style.display = "none";
-                overlay.style.display = 'flex';
-
-                overlay.onclick = function() { overlay.style.display = 'none'; };
-            }
-        }
-
-        function triggerManualCheck() {
-            let inputField = document.getElementById('manualCodeInput');
-            if(inputField.value.trim() === "") { alert("Please type a valid code first!"); return; }
-            runVerificationProcess(inputField.value, false);
-        }
-
-        window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            let codeParam = urlParams.get('code');
-            if (codeParam) {
-                runVerificationProcess(codeParam, true);
-            }
-        }
-    </script>
-</body>
-</html>
+                        setTimeout(function() { overlay.style.
