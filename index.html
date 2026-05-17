@@ -29,7 +29,7 @@
             letter-spacing: 1px;
         }
 
-        /* Full Screen OVERLAY - Displays Only On Errors Now */
+        /* Full Screen OVERLAY - Smoothly resets now */
         #verification-overlay {
             position: fixed;
             top: 0;
@@ -44,6 +44,7 @@
             text-align: center;
             padding: 20px;
             box-sizing: border-box;
+            pointer-events: auto; /* Controls freeze bugs */
         }
 
         .verify-card {
@@ -56,11 +57,29 @@
             animation: popIn 0.4s ease-out;
         }
 
+        .card-success { border: 3px solid #00ff00; box-shadow: 0 0 35px rgba(0, 255, 0, 0.4); }
         .card-fail { border: 3px solid #ff0000; box-shadow: 0 0 35px rgba(255, 0, 0, 0.4); }
 
         @keyframes popIn {
             0% { transform: scale(0.85); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
+        }
+
+        .verify-card h2 {
+            color: #ffffff;
+            font-size: 22px;
+            margin: 0 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .verify-card .brand-name {
+            color: #ffcc00;
+            font-size: 28px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 20px;
+            text-transform: uppercase;
         }
 
         .verify-card .warning-title {
@@ -73,9 +92,12 @@
             letter-spacing: 1px;
         }
 
-        .fail-badge { font-size: 65px; margin-bottom: 15px; }
+        .success-badge, .fail-badge { font-size: 65px; margin-bottom: 15px; }
+        .verify-status-ok { color: #00ff00; font-size: 24px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; }
         .verify-status-fail { color: #ff0000; font-size: 24px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; }
+
         .verify-desc { color: #ffffff; font-size: 18px; margin: 0 0 25px 0; line-height: 1.4; }
+        .redirect-loader { font-size: 14px; color: #888; }
 
         .try-again-btn {
             background: #ff3333;
@@ -92,6 +114,20 @@
             transition: 0.2s;
         }
         .try-again-btn:hover { background: #ff6666; }
+
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #333;
+            border-top: 2px solid #ffcc00;
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         /* Category Menu Tabs - Left Aligned */
         .category-nav {
@@ -247,14 +283,15 @@
 <body>
 
     <div id="verification-overlay">
-        <div id="overlay-card" class="verify-card card-fail">
-            <span class="warning-title">⚠️ SECURITY WARNING</span>
-            <div class="fail-badge">❌</div>
-            <div class="verify-status-fail">Verification Failed</div>
-            <p class="verify-desc">Invalid or Duplicate Code. Beware of fake products!</p>
-            <div id="button-container">
-                <button class="try-again-btn" onclick="resetFailOverlay()">Try Again / Back</button>
+        <div id="overlay-card" class="verify-card">
+            <div id="header-text-container"></div>
+            <div id="dynamic-badge"></div>
+            <div id="dynamic-status"></div>
+            <p id="dynamic-desc" class="verify-desc"></p>
+            <div id="loader-box" class="redirect-loader">
+                <div class="spinner"></div> Loading supplement store...
             </div>
+            <div id="button-container"></div>
         </div>
     </div>
 
@@ -317,7 +354,8 @@
 
         <div class="supplement-card">
             <div class="image-container">
-                <img src="https://i.ibb.co/8nP9m7jP/IMG-20260517-053830.jpg" alt="Labrada Front" style="max-width: 100%;">
+                <img src="https://i.ibb.co/8nP9m7jP/IMG-20260517-053830.jpg" alt="Labrada Front">
+                <img src="https://i.ibb.co/5gGsY2pf/IMG-20260517-053845.jpg" alt="Labrada Back">
             </div>
             <h2>Labrada Whey Protein</h2>
             <p class="tag">Made in USA</p>
@@ -479,41 +517,13 @@
             document.getElementById(categoryName).classList.add('active-section');
         }
 
-        function runVerificationProcess(inputCode) {
+        function runVerificationProcess(inputCode, isAutoScan) {
             let code = inputCode.toLowerCase().trim();
-            let overlay = document.getElementById('verification-overlay');
-
-            if (secureDatabase[code]) {
-                // REDIRECTS DIRECTLY TO HOME PAGE TABS WITHOUT INTERRUPTIONS
-                overlay.style.display = 'none'; 
-                filterCategory(secureDatabase[code].tab);
-            } else {
-                // ONLY SHOWS WARNING OVERLAY ON WRONG CODES
-                overlay.style.display = 'flex';
-            }
-        }
-
-        function resetFailOverlay() {
-            document.getElementById('verification-overlay').style.display = 'none';
-            filterCategory('manual-verify');
-            let inputField = document.getElementById('manualCodeInput');
-            inputField.value = "";
-            inputField.focus();
-        }
-
-        function triggerManualCheck() {
-            let inputField = document.getElementById('manualCodeInput');
-            if(inputField.value.trim() === "") { alert("Please type a valid code first!"); return; }
-            runVerificationProcess(inputField.value);
-        }
-
-        window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            let codeParam = urlParams.get('code');
-            if (codeParam) {
-                runVerificationProcess(codeParam);
-            }
-        }
-    </script>
-</body>
-</html>
+            let card = document.getElementById('overlay-card');
+            let headerTextContainer = document.getElementById('header-text-container');
+            let badge = document.getElementById('dynamic-badge');
+            let status = document.getElementById('dynamic-status');
+            let desc = document.getElementById('dynamic-desc');
+            let loader = document.getElementById('loader-box');
+            let btnContainer = document.getElementById('button-container');
+            let overlay = document.getElementById('verification-ove
