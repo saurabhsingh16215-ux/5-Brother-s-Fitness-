@@ -69,7 +69,7 @@
 
         /* Target sections for filtering */
         .product-section {
-            display: none; /* Initially hidden, controlled via JS */
+            display: none;
         }
 
         .product-section.active-section {
@@ -206,7 +206,7 @@
 
         <div class="supplement-card">
             <div class="image-container">
-                <img src="https://i.ibb.co/ynbr1YCw/download-1.webp" alt="Ultimate Nutrition Pro Star Whey">
+                <img src="https://i.ibb.co/MyLYJcjV/HVPM75-X4-2.jpg" alt="Ultimate Nutrition Pro Star Whey">
             </div>
             <h2>Ultimate Pro Whey Protein</h2>
             <p class="tag">Best Recovery</p>
@@ -336,19 +336,16 @@
 
     <script>
         function filterCategory(categoryName) {
-            // Remove active status from all buttons
             let buttons = document.getElementsByClassName('category-btn');
             for (let button of buttons) {
                 button.classList.remove('active');
             }
             
-            // Hide all sections
             let sections = document.getElementsByClassName('product-section');
             for (let section of sections) {
                 section.classList.remove('active-section');
             }
 
-            // Activate targeted button and section
             event.currentTarget.classList.add('active');
             document.getElementById(categoryName).classList.add('active-section');
         }
