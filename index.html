@@ -414,17 +414,12 @@
 
     <script>
         const secureDatabase = {
-            // WHEY PROTEIN CODES
             "lbr7f29k": { brand: "Labrada Nutrition", tab: "whey" },
             "tru5mp91": { brand: "Muscletech Nutrition", tab: "whey" },
             "la24x8q2": { brand: "Ultimate Nutrition", tab: "whey" },
             "mpn84k2l": { brand: "ON Gold Standard", tab: "whey" },
-            
-            // CREATINE CODES
             "mbz9x14a": { brand: "MuscleBlaze Nutrition", tab: "creatine" },
             "gnc3m78b": { brand: "GNC Nutrition", tab: "creatine" },
-            
-            // GAINER CODES
             "lmg5p62c": { brand: "Labrada Mass Gainer", tab: "gainer" },
             "mon8k43d": { brand: "Monster Mass Gainer", tab: "gainer" }
         };
@@ -444,7 +439,7 @@
             document.getElementById(categoryName).classList.add('active-section');
         }
 
-        function runVerificationProcess(inputCode) {
+        function runVerificationProcess(inputCode, isAutoScan) {
             let code = inputCode.toLowerCase().trim();
             let card = document.getElementById('overlay-card');
             let brandDisplay = document.getElementById('dynamic-brand');
@@ -457,7 +452,7 @@
             card.className = "verify-card";
 
             if (secureDatabase[code]) {
-                // SUCCESS MATCH
+                // SUCCESS
                 card.classList.add('card-success');
                 brandDisplay.innerText = secureDatabase[code].brand;
                 badge.className = "success-badge";
@@ -465,18 +460,25 @@
                 status.className = "verify-status-ok";
                 status.innerText = "Product Verified Successfully";
                 desc.innerText = "100% Authentic.";
-                loader.style.display = "block";
                 overlay.style.display = 'flex';
 
                 filterCategory(secureDatabase[code].tab);
 
-                setTimeout(function() {
-                    overlay.style.animation = 'popIn 0.3s ease-in reverse';
-                    setTimeout(function() { overlay.style.display = 'none'; }, 230);
-                }, 3000);
+                // AGAR QR CODE SCAN SE AAYA HAI, TOH 3.5 SECONDS BAAD AUTO-CLOSE HOGA
+                if (isAutoScan) {
+                    loader.style.display = "block";
+                    setTimeout(function() {
+                        overlay.style.animation = 'popIn 0.3s ease-in reverse';
+                        setTimeout(function() { overlay.style.display = 'none'; }, 230);
+                    }, 3500); // 3.5 Seconds timer
+                } else {
+                    // Manual form check karne par close karne ke liye background tap enable
+                    loader.style.display = "none";
+                    overlay.onclick = function() { overlay.style.display = 'none'; };
+                }
 
             } else {
-                // INVALID CODE ALERT
+                // FAIL
                 card.classList.add('card-fail');
                 brandDisplay.innerText = "UNKNOWN BRAND";
                 badge.className = "fail-badge";
@@ -494,18 +496,17 @@
         function triggerManualCheck() {
             let inputField = document.getElementById('manualCodeInput');
             if(inputField.value.trim() === "") { alert("Please type a valid code first!"); return; }
-            runVerificationProcess(inputField.value);
+            runVerificationProcess(inputField.value, false); // false means manual typing
         }
 
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             let codeParam = urlParams.get('code');
             if (codeParam) {
-                runVerificationProcess(codeParam);
+                runVerificationProcess(codeParam, true); // true means scanning auto-mode
             }
         }
     </script>
 </body>
-</html>
-
-
+    </html>
+    
