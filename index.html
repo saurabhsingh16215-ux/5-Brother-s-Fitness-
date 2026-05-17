@@ -29,7 +29,7 @@
             letter-spacing: 1px;
         }
 
-        /* Full Screen OVERLAY - FIXED DISPLAY AND Z-INDEX BUG */
+        /* Full Screen OVERLAY - JAD SE FIX KAR DIYA */
         #verification-overlay {
             position: fixed;
             top: 0;
@@ -37,8 +37,8 @@
             width: 100%;
             height: 100%;
             background: #0d0d0d;
-            z-index: -1; /* Piche chhipa rahega jab tak scan na ho */
-            display: none; /* Hide by default */
+            z-index: 99999;
+            display: none; /* Default hidden to avoid click blocking */
             align-items: center;
             justify-content: center;
             text-align: center;
@@ -46,7 +46,7 @@
             box-sizing: border-box;
         }
 
-        /* Nutrition Details Modal (Popup) - FIXED CLICK LOGIC */
+        /* Nutrition Details Modal - JAD SE FIX KAR DIYA */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -54,8 +54,8 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.85);
-            z-index: -1; /* Piche rahega jab tak link click na ho */
-            display: none;
+            z-index: 9999;
+            display: none; /* Default hidden to avoid click blocking */
             align-items: center;
             justify-content: center;
             padding: 20px;
@@ -528,4 +528,4 @@
         </div>
     </section>
 
-    <section id="g
+    <section id="gainer" class="catalog product-se
