@@ -29,7 +29,7 @@
             letter-spacing: 1px;
         }
 
-        /* Full Screen OVERLAY - JAD SE FIX KAR DIYA */
+        /* Full Screen OVERLAY - Scan karne par sabse pehle khulega */
         #verification-overlay {
             position: fixed;
             top: 0;
@@ -38,7 +38,7 @@
             height: 100%;
             background: #0d0d0d;
             z-index: 99999;
-            display: none; /* Default hidden to avoid click blocking */
+            display: none;
             align-items: center;
             justify-content: center;
             text-align: center;
@@ -46,43 +46,25 @@
             box-sizing: border-box;
         }
 
-        /* Nutrition Details Modal - JAD SE FIX KAR DIYA */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 9999;
-            display: none; /* Default hidden to avoid click blocking */
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .verify-card, .modal-card {
+        .verify-card {
             background: #141414;
-            padding: 30px;
+            padding: 40px 30px;
             border-radius: 20px;
             width: 100%;
             max-width: 450px;
             box-sizing: border-box;
             animation: popIn 0.4s ease-out;
-            position: relative;
         }
 
         .card-success { border: 3px solid #00ff00; box-shadow: 0 0 35px rgba(0, 255, 0, 0.4); }
         .card-fail { border: 3px solid #ff0000; box-shadow: 0 0 35px rgba(255, 0, 0, 0.4); }
-        .modal-card { border: 2px solid #ffcc00; box-shadow: 0 0 25px rgba(255, 204, 0, 0.2); text-align: left; }
 
         @keyframes popIn {
             0% { transform: scale(0.85); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
 
-        .verify-card h2, .modal-card h2 {
+        .verify-card h2 {
             color: #ffffff;
             font-size: 22px;
             margin: 0 0 5px 0;
@@ -99,57 +81,12 @@
             text-transform: uppercase;
         }
 
-        .verify-card .warning-title {
-            color: #ff3333;
-            font-size: 28px;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .success-badge, .fail-badge { font-size: 65px; margin-bottom: 15px; }
+        .verify-status-ok { color: #00ff00; font-size: 24px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; }
+        .verify-status-fail { color: #ff0000; font-size: 24px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; }
 
-        .success-badge, .fail-badge { font-size: 65px; margin-bottom: 15px; text-align: center; }
-        .verify-status-ok { color: #00ff00; font-size: 24px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; text-align: center; }
-        .verify-status-fail { color: #ff0000; font-size: 24px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; text-align: center; }
-
-        .verify-desc { color: #ffffff; font-size: 18px; margin: 0 0 25px 0; line-height: 1.4; text-align: center; }
-        .redirect-loader { font-size: 14px; color: #888; text-align: center; }
-
-        .try-again-btn, .close-modal-btn {
-            background: #ff3333;
-            color: #ffffff;
-            border: none;
-            padding: 12px 25px;
-            font-size: 15px;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            width: 100%;
-            text-transform: uppercase;
-            margin-top: 15px;
-            transition: 0.2s;
-        }
-        .try-again-btn:hover { background: #ff6666; }
-        .close-modal-btn { background: #ffcc00; color: #000; }
-        .close-modal-btn:hover { background: #ffe066; }
-
-        /* Nutrition Table Style */
-        .nutrition-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            background: #1a1a1a;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .nutrition-table th, .nutrition-table td {
-            padding: 10px 12px;
-            text-align: left;
-            border-bottom: 1px solid #2d2d2d;
-            font-size: 14px;
-        }
-        .nutrition-table th { background: #262626; color: #ffcc00; text-transform: uppercase; }
+        .verify-desc { color: #ffffff; font-size: 18px; margin: 0 0 25px 0; }
+        .redirect-loader { font-size: 14px; color: #888; }
 
         .spinner {
             width: 18px;
@@ -165,7 +102,7 @@
 
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* Category Menu Tabs */
+        /* Category Menu Tabs - Left Aligned */
         .category-nav {
             display: flex;
             justify-content: flex-start;
@@ -236,7 +173,7 @@
             text-transform: uppercase;
         }
 
-        /* Catalog Grid Layout */
+        /* Responsive Grid Layout */
         .catalog {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -259,12 +196,6 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            cursor: pointer;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-        .supplement-card:hover {
-            transform: translateY(-5px);
-            border-color: #ffcc00;
         }
 
         .image-container {
@@ -320,51 +251,20 @@
             border: none;
             text-align: center;
         }
-        
-        .click-hint {
-            font-size: 11px;
-            color: #777;
-            margin-top: 5px;
-            text-transform: uppercase;
-        }
     </style>
 </head>
 <body>
 
     <div id="verification-overlay">
         <div id="overlay-card" class="verify-card">
-            <div id="header-text-container"></div>
+            <h2>Welcome To</h2>
+            <span id="dynamic-brand" class="brand-name">Supplement Nutrition</span>
             <div id="dynamic-badge"></div>
             <div id="dynamic-status"></div>
             <p id="dynamic-desc" class="verify-desc"></p>
             <div id="loader-box" class="redirect-loader">
                 <div class="spinner"></div> Loading supplement store...
             </div>
-            <div id="button-container"></div>
-        </div>
-    </div>
-
-    <div id="details-modal" class="modal-overlay" onclick="closeDetailsModal()">
-        <div class="modal-card" onclick="event.stopPropagation()">
-            <h2 id="modal-product-title">Product Details</h2>
-            <p id="modal-product-flavor" style="color: #ffcc00; font-weight: bold; margin: 5px 0 15px 0; text-transform: uppercase;"></p>
-            
-            <h3 style="color:#ffcc00; font-size:16px; margin:10px 0 5px 0; text-transform: uppercase;">Nutrition Facts</h3>
-            <table class="nutrition-table">
-                <thead>
-                    <tr>
-                        <th>Nutrient</th>
-                        <th>Amount per Serving</th>
-                    </tr>
-                </thead>
-                <tbody id="modal-nutrition-body">
-                    </tbody>
-            </table>
-            
-            <h3 style="color:#ffcc00; font-size:16px; margin:15px 0 5px 0; text-transform: uppercase;">Product Info</h3>
-            <p id="modal-product-desc" style="color:#b3b3b3; font-size:14px; line-height:1.5; margin:0;"></p>
-            
-            <button class="close-modal-btn" onclick="closeDetailsModal()">Close Details</button>
         </div>
     </div>
 
@@ -380,110 +280,74 @@
     </div>
 
     <section id="whey" class="catalog product-section active-section">
-        <div class="supplement-card" onclick="showProductDetails('muscletech_whey')">
+        <div class="supplement-card">
             <div class="image-container">
                 <img src="https://i.ibb.co/ynbr1YCw/download-1.webp" alt="Muscletech" style="max-width: 100%;">
             </div>
             <h2>Muscletech Whey Protein</h2>
-            <p class="tag">Rich Chocolate</p>
+            <p class="tag">Premium Quality</p>
             <ul class="features">
                 <li>Nitrotech Performance Series</li>
                 <li>Lean Muscle Building</li>
                 <li>Original Formula</li>
             </ul>
             <p class="price">₹4800/-</p>
-            <a href="tel:9990954574" class="buy-btn" onclick="event.stopPropagation()">Call to Buy</a>
-            <span class="click-hint">➔ Click to view details</span>
+            <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
         </div>
 
-        <div class="supplement-card" onclick="showProductDetails('ultimate_whey')">
+        <div class="supplement-card">
             <div class="image-container">
                 <img src="https://i.ibb.co/MyLYJcjV/HVPM75-X4-2.jpg" alt="Ultimate Nutrition" style="max-width: 100%;">
             </div>
             <h2>Ultimate Pro Whey Protein</h2>
-            <p class="tag">Rich Chocolate</p>
+            <p class="tag">Best Recovery</p>
             <ul class="features">
                 <li>Prostar 100% Whey</li>
                 <li>Essential Amino Acids</li>
                 <li>Great Mixability</li>
             </ul>
             <p class="price">₹4200/-</p>
-            <a href="tel:9990954574" class="buy-btn" onclick="event.stopPropagation()">Call to Buy</a>
-            <span class="click-hint">➔ Click to view details</span>
+            <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
         </div>
 
-        <div class="supplement-card" onclick="showProductDetails('on_whey')">
+        <div class="supplement-card">
             <div class="image-container">
                 <img src="https://i.ibb.co/68vDhmb5/image.png" alt="ON Gold Standard" style="max-width: 100%;">
             </div>
-            <h2>Optimum Nutrition (ON) Gold Standard</h2>
-            <p class="tag">Rich Chocolate</p>
+            <h2>Optimum Nutrition (ON) Gold Standard 100% Whey</h2>
+            <p class="tag">Top Seller</p>
             <ul class="features">
                 <li>Gold Standard 100% Whey</li>
                 <li>Isolate Primary Source</li>
                 <li>World's #1 Brand</li>
             </ul>
             <p class="price">₹5200/-</p>
-            <a href="tel:9990954574" class="buy-btn" onclick="event.stopPropagation()">Call to Buy</a>
-            <span class="click-hint">➔ Click to view details</span>
+            <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
         </div>
 
-        <div class="supplement-card" onclick="showProductDetails('labrada_whey')">
+        <div class="supplement-card">
             <div class="image-container">
                 <img src="https://i.ibb.co/8nP9m7jP/IMG-20260517-053830.jpg" alt="Labrada Front">
                 <img src="https://i.ibb.co/5gGsY2pf/IMG-20260517-053845.jpg" alt="Labrada Back">
             </div>
             <h2>Labrada Whey Protein</h2>
-            <p class="tag">Rich Chocolate</p>
+            <p class="tag">Made in USA</p>
             <ul class="features">
                 <li>Premium Protein Source</li>
                 <li>Muscle Growth Support</li>
                 <li>100% Authentic Product</li>
             </ul>
             <p class="price">₹4200/-</p>
-            <a href="tel:9990954574" class="buy-btn" onclick="event.stopPropagation()">Call to Buy</a>
-            <span class="click-hint">➔ Click to view details</span>
-        </div>
-
-        <div class="supplement-card" onclick="showProductDetails('mb_whey')">
-            <div class="image-container">
-                <img src="https://i.ibb.co/v4bNfLp6/61y-G82-P3p-L-SL1500.jpg" alt="MuscleBlaze Biozyme" style="max-width: 100%;">
-            </div>
-            <h2>MuscleBlaze Biozyme Whey</h2>
-            <p class="tag">Rich Chocolate</p>
-            <ul class="features">
-                <li>Enhanced Absorption Formula</li>
-                <li>Clinical Tested EAF Protein</li>
-                <li>High Muscle Recovery Rate</li>
-            </ul>
-            <p class="price">₹4800/-</p>
-            <a href="tel:9990954574" class="buy-btn" onclick="event.stopPropagation()">Call to Buy</a>
-            <span class="click-hint">➔ Click to view details</span>
-        </div>
-
-        <div class="supplement-card" onclick="showProductDetails('avatar_whey')">
-            <div class="image-container">
-                <img src="https://i.ibb.co/gL0mPzZz/71-Uunvks2-SL-SL1500.jpg" alt="Avatar Whey Protein" style="max-width: 100%;">
-            </div>
-            <h2>Avatar 100% Whey Protein</h2>
-            <p class="tag">Rich Chocolate</p>
-            <ul class="features">
-                <li>Premium Fresh Whey</li>
-                <li>Rich in BCAAs & Glutamic Acid</li>
-                <li>100% Genuine Grass-Fed</li>
-            </ul>
-            <p class="price">₹4500/-</p>
-            <a href="tel:9990954574" class="buy-btn" onclick="event.stopPropagation()">Call to Buy</a>
-            <span class="click-hint">➔ Click to view details</span>
+            <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
         </div>
     </section>
 
     <section id="creatine" class="catalog product-section">
-        <div class="supplement-card" onclick="showProductDetails('mb_creatine')">
+        <div class="supplement-card">
             <div class="image-container">
                 <img src="https://i.ibb.co/hvDTM6H/prd-3979255-Muscle-Blaze-Creatine-Monohydrate-Cre-AMP-0-71-lb-Watermelon-Kool-Aid-o.jpg" alt="MuscleBlaze" style="max-width: 100%;">
             </div>
-            <h2>MuscleBlaze Creatine</h2>
+            <h2>MuscleBlaze Creatine Monohydrate</h2>
             <p class="tag">CreAMP Certified</p>
             <ul class="features">
                 <li>Helps Increase Strength</li>
@@ -491,11 +355,10 @@
                 <li>Labdoor Certified</li>
             </ul>
             <p class="price">320g • ₹1199/-</p>
-            <a href="tel:9990954574" class="buy-btn" onclick="event.stopPropagation()">Call to Buy</a>
-            <span class="click-hint">➔ Click to view details</span>
+            <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
         </div>
 
-        <div class="supplement-card" onclick="showProductDetails('gnc_creatine')">
+        <div class="supplement-card">
             <div class="image-container">
                 <img src="https://i.ibb.co/MknmZg96/61-A7rff-N6-L-SL1500.jpg" alt="GNC Creatine 200g" style="max-width: 100%;">
             </div>
@@ -507,15 +370,14 @@
                 <li>Unflavored Easy Mix</li>
             </ul>
             <p class="price">200g • ₹634/-</p>
-            <a href="tel:9990954574" class="buy-btn" onclick="event.stopPropagation()">Call to Buy</a>
-            <span class="click-hint">➔ Click to view details</span>
+            <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
         </div>
 
-        <div class="supplement-card" onclick="showProductDetails('wellcore_creatine')">
+        <div class="supplement-card">
             <div class="image-container">
                 <img src="https://i.ibb.co/wZ8D0m8w/81-Uq7r6e-SML-SL1500.jpg" alt="Wellcore Creatine" style="max-width: 100%;">
             </div>
-            <h2>Wellcore Micronized Creatine</h2>
+            <h2>Wellcore Micronized Creatine Monohydrate</h2>
             <p class="tag">Tropical Tango</p>
             <ul class="features">
                 <li>Ultra Micronized Formula</li>
@@ -523,9 +385,142 @@
                 <li>Amazing Juicy Flavor</li>
             </ul>
             <p class="price">307g • ₹1000/-</p>
-            <a href="tel:9990954574" class="buy-btn" onclick="event.stopPropagation()">Call to Buy</a>
-            <span class="click-hint">➔ Click to view details</span>
+            <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
         </div>
     </section>
 
-    <section id="gainer" class="catalog product-se
+    <section id="gainer" class="catalog product-section">
+        <div class="supplement-card">
+            <div class="image-container">
+                <img src="https://i.ibb.co/sJjstZh7/Gainer-Choc-1-K-Front-1200x.jpg" alt="Labrada Mass" style="max-width: 100%;">
+            </div>
+            <h2>Labrada Mass Gainer</h2>
+            <p class="tag">Best Gainer</p>
+            <ul class="features">
+                <li>High Quality Calories</li>
+                <li>Muscle Mass Growth</li>
+                <li>100% Authentic</li>
+            </ul>
+            <p class="price">₹3000/-</p>
+            <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
+        </div>
+
+        <div class="supplement-card">
+            <div class="image-container">
+                <img src="https://i.ibb.co/sJjstZh7/Gainer-Choc-1-K-Front-1200x.jpg" alt="Monster Mass" style="max-width: 100%;">
+            </div>
+            <h2>Monster Mass Gainer</h2>
+            <p class="tag">Heavy Bulk</p>
+            <ul class="features">
+                <li>High Protein Gainer</li>
+                <li>Packed with BCAAs</li>
+                <li>Extreme Size Gain</li>
+            </ul>
+            <p class="price">₹3500/-</p>
+            <a href="tel:9990954574" class="buy-btn">Call to Buy</a>
+        </div>
+    </section>
+
+    <section id="manual-verify" class="product-section" style="padding: 10px;">
+        <div class="verify-input-section">
+            <h3>Secure Product Authenticator</h3>
+            <p style="font-size: 14px; color: #aaa; margin-bottom: 20px;">Enter the 8-character official brand code printed on your label.</p>
+            <input type="text" id="manualCodeInput" placeholder="e.g. LBR7F29K">
+            <button class="verify-action-btn" onclick="triggerManualCheck()">Verify Product</button>
+        </div>
+    </section>
+
+    <script>
+        const secureDatabase = {
+            "lbr7f29k": { brand: "Labrada Nutrition", tab: "whey" },
+            "tru5mp91": { brand: "Muscletech Nutrition", tab: "whey" },
+            "la24x8q2": { brand: "Ultimate Nutrition", tab: "whey" },
+            "mpn84k2l": { brand: "ON Gold Standard", tab: "whey" },
+            "mbz9x14a": { brand: "MuscleBlaze Nutrition", tab: "creatine" },
+            "gnc3m78b": { brand: "GNC Nutrition", tab: "creatine" },
+            "wel4c8t2": { brand: "Wellcore Nutrition", tab: "creatine" },
+            "lmg5p62c": { brand: "Labrada Mass Gainer", tab: "gainer" },
+            "mon8k43d": { brand: "Monster Mass Gainer", tab: "gainer" }
+        };
+
+        function filterCategory(categoryName) {
+            let buttons = document.getElementsByClassName('category-btn');
+            for (let button of buttons) { button.classList.remove('active'); }
+            
+            let sections = document.getElementsByClassName('product-section');
+            for (let section of sections) { section.classList.remove('active-section'); }
+            
+            if (categoryName === 'whey') document.getElementById('btn-whey').classList.add('active');
+            else if (categoryName === 'creatine') document.getElementById('btn-creatine').classList.add('active');
+            else if (categoryName === 'gainer') document.getElementById('btn-gainer').classList.add('active');
+            else if (categoryName === 'manual-verify') document.getElementById('btn-manual').classList.add('active');
+
+            document.getElementById(categoryName).classList.add('active-section');
+        }
+
+        function runVerificationProcess(inputCode, isAutoScan) {
+            let code = inputCode.toLowerCase().trim();
+            let card = document.getElementById('overlay-card');
+            let brandDisplay = document.getElementById('dynamic-brand');
+            let badge = document.getElementById('dynamic-badge');
+            let status = document.getElementById('dynamic-status');
+            let desc = document.getElementById('dynamic-desc');
+            let loader = document.getElementById('loader-box');
+            let overlay = document.getElementById('verification-overlay');
+
+            card.className = "verify-card";
+
+            if (secureDatabase[code]) {
+                card.classList.add('card-success');
+                brandDisplay.innerText = secureDatabase[code].brand;
+                badge.className = "success-badge";
+                badge.innerText = "✅";
+                status.className = "verify-status-ok";
+                status.innerText = "Product Verified Successfully";
+                desc.innerText = "100% Authentic.";
+                overlay.style.display = 'flex';
+
+                filterCategory(secureDatabase[code].tab);
+
+                if (isAutoScan) {
+                    loader.style.display = "block";
+                    setTimeout(function() {
+                        overlay.style.animation = 'popIn 0.3s ease-in reverse';
+                        setTimeout(function() { overlay.style.display = 'none'; }, 230);
+                    }, 3500);
+                } else {
+                    loader.style.display = "none";
+                    overlay.onclick = function() { overlay.style.display = 'none'; };
+                }
+
+            } else {
+                card.classList.add('card-fail');
+                brandDisplay.innerText = "UNKNOWN BRAND";
+                badge.className = "fail-badge";
+                badge.innerText = "❌";
+                status.className = "verify-status-fail";
+                status.innerText = "Verification Failed";
+                desc.innerText = "Invalid or Duplicate Code. Beware of fake products!";
+                loader.style.display = "none";
+                overlay.style.display = 'flex';
+
+                overlay.onclick = function() { overlay.style.display = 'none'; };
+            }
+        }
+
+        function triggerManualCheck() {
+            let inputField = document.getElementById('manualCodeInput');
+            if(inputField.value.trim() === "") { alert("Please type a valid code first!"); return; }
+            runVerificationProcess(inputField.value, false);
+        }
+
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let codeParam = urlParams.get('code');
+            if (codeParam) {
+                runVerificationProcess(codeParam, true);
+            }
+        }
+    </script>
+</body>
+</html>
