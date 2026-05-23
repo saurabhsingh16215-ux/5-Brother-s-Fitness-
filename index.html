@@ -18,20 +18,21 @@
 body::before {
     content: "";
     position: fixed;
-    bottom: 20px;
+
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    width: 260px;
-    height: 260px;
+    transform: translate(-50%, -50%);
+
+    width: 220px;
+    height: 220px;
 
     background-image: url('https://i.ibb.co/KcmwdFHm/file-00000000848c7208aecb1fd1667683cb.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
 
-    opacity: 0.18;
-    z-index: -1;
     pointer-events: none;
+    z-index: -1;
 }
 
         header {
