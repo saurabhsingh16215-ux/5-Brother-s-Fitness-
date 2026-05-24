@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>BIGBROTHERS Supplement Store</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:Arial,sans-serif;
-scroll-behavior:smooth;
 }
 
 body{
@@ -23,7 +19,6 @@ color:white;
 }
 
 /* HEADER */
-
 header{
 background:black;
 padding:18px;
@@ -43,1201 +38,213 @@ gap:10px;
 
 .logo h1{
 color:#ffcc00;
-font-size:28px;
 }
 
-.logo p{
-font-size:12px;
-color:#ccc;
-}
-
-.head-btns{
-display:flex;
-gap:10px;
-}
-
-.call-btn,
-.whatsapp-btn{
-padding:12px 18px;
-border-radius:10px;
+.head-btns a{
+margin-left:10px;
+padding:10px 15px;
+border-radius:8px;
 text-decoration:none;
 font-weight:bold;
 }
 
-.call-btn{
-background:#ffcc00;
-color:black;
-}
-
-.whatsapp-btn{
-background:#25D366;
-color:white;
-}
-
-/* MENU */
-
-.menu{
-display:flex;
-gap:10px;
-overflow:auto;
-padding:15px;
-background:#111;
-}
-
-.menu button{
-border:none;
-background:#1b1b1b;
-color:white;
-padding:12px 18px;
-border-radius:40px;
-font-weight:bold;
-cursor:pointer;
-white-space:nowrap;
-}
-
-.menu button:hover{
-background:#ffcc00;
-color:black;
-}
-
-/* HERO */
-
-.hero{
-padding:50px 20px;
-text-align:center;
-}
-
-.hero h2{
-font-size:42px;
-color:#ffcc00;
-margin-bottom:10px;
-}
-
-.hero p{
-color:#bbb;
-margin-bottom:20px;
-font-size:18px;
-}
-
-.search-box{
-max-width:500px;
-margin:auto;
-}
-
-.search-box input{
-width:100%;
-padding:16px;
-border:none;
-border-radius:15px;
-font-size:17px;
-}
-
-/* TRUST */
-
-.trust{
-padding:40px 20px;
-}
-
-.trust-box{
-background:#111;
-border:2px solid #ffcc00;
-border-radius:20px;
-padding:25px;
-}
-
-.trust-box h2{
-text-align:center;
-margin-bottom:15px;
-color:#ffcc00;
-}
-
-.trust-item{
-background:#1a1a1a;
-padding:14px;
-margin:10px 0;
-border-radius:12px;
-}
+.call-btn{background:#ffcc00;color:black;}
+.whatsapp-btn{background:#25D366;color:white;}
 
 /* PRODUCTS */
-
-.section-title{
-text-align:center;
-font-size:34px;
-margin:30px 0;
-color:#ffcc00;
-}
-
 .product-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 padding:20px;
 }
 
 .card{
 background:#141414;
-border-radius:20px;
 padding:20px;
+border-radius:15px;
 text-align:center;
-border:1px solid #333;
 }
 
 .card img{
 width:100%;
-height:250px;
+height:220px;
 object-fit:contain;
-margin-bottom:15px;
-}
-
-.card h3{
-margin-bottom:10px;
 }
 
 .price{
-font-size:28px;
-font-weight:bold;
 color:#ffcc00;
-margin:15px 0;
+font-size:22px;
+margin:10px 0;
 }
 
 .buy-btn{
 display:block;
-padding:14px;
+margin-top:10px;
+padding:12px;
 border-radius:10px;
-margin:8px 0;
-font-weight:bold;
 text-decoration:none;
+font-weight:bold;
+cursor:pointer;
+border:none;
 }
 
-.buy-call{
-background:#ffcc00;
-color:black;
-}
+.buy-call{background:#ffcc00;color:black;}
+.buy-wa{background:#25D366;color:white;}
 
-.buy-wa{
-background:#25D366;
-color:white;
-}
-
-/* VERIFY */
-
-#verification-overlay{
+/* POPUP */
+.popup{
 display:none;
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,.9);
+background:rgba(0,0,0,0.9);
 justify-content:center;
 align-items:center;
-z-index:99999;
+z-index:9999;
 padding:20px;
 }
 
-.verify-card{
+.popup-box{
 background:#141414;
-padding:40px;
-border-radius:25px;
-text-align:center;
-max-width:450px;
+padding:30px;
+border-radius:20px;
 width:100%;
-border:3px solid #00ff00;
+max-width:600px;
+border:2px solid #ffcc00;
 }
 
-.verify-card h2{
-margin-bottom:10px;
-}
-
-.brand{
-font-size:30px;
-font-weight:bold;
+.popup-box h2{
 color:#ffcc00;
-margin-bottom:10px;
-}
-
-/* FOOTER */
-
-footer{
-margin-top:50px;
-background:black;
-padding:40px;
 text-align:center;
-border-top:3px solid #ffcc00;
+margin-bottom:15px;
 }
 
+.popup-box p{
+line-height:1.7;
+color:#ddd;
+}
+
+.close-btn{
+margin-top:20px;
+width:100%;
+background:#ffcc00;
+padding:12px;
+border:none;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-
 <div class="topbar">
-
 <div class="logo">
 <h1>BIGBROTHERS</h1>
-<p>Multi Brand Supplement Store</p>
 </div>
 
 <div class="head-btns">
-
-<a href="tel:9990954574"
-class="call-btn">
-📞 Call
-</a>
-
-<a href="https://wa.me/919990954574"
-class="whatsapp-btn">
-WhatsApp
-</a>
-
+<a href="tel:9990954574" class="call-btn">Call</a>
+<a href="https://wa.me/919990954574" class="whatsapp-btn">WhatsApp</a>
 </div>
-
 </div>
-
 </header>
 
-<!-- MENU -->
-
-<div class="menu">
-
-<button>Whey</button>
-<button>Creatine</button>
-<button>Gainer</button>
-<button>About</button>
-<button>Policy</button>
-<button>Verify</button>
-
-</div>
-
-<!-- HERO -->
-
-<section class="hero">
-
-<h2>
-100% Authentic Supplements
-</h2>
-
-<p>
-Premium Supplements For Real Results
-</p>
-
-<div class="search-box">
-
-<input type="text"
-placeholder="Search supplements...">
-
-</div>
-
-</section>
-
-<!-- TRUST -->
-
-<section class="trust">
-
-<div class="trust-box">
-
-<h2>
-Why Choose BigBrothers?
-</h2>
-
-<div class="trust-item">
-✅ 100% Authentic Supplements
-</div>
-
-<div class="trust-item">
-🔒 QR Verification Available
-</div>
-
-<div class="trust-item">
-🚚 Fast WhatsApp Orders
-</div>
-
-<div class="trust-item">
-💪 Premium Brands Available
-</div>
-
-</div>
-
-</section>
-
 <!-- PRODUCTS -->
-
-<h2 class="section-title">
-🔥 Popular Supplements
-</h2>
-
 <div class="product-grid">
 
-<!-- PRODUCT 1 -->
-
+<!-- LABRADA -->
 <div class="card">
-
 <img src="https://i.ibb.co/ynbr1YCw/download-1.webp">
+<h3>Labrada Whey</h3>
+<div class="price">₹4200</div>
 
-<h3>Labrada Whey Protein</h3>
-
-<p>Original Labrada Nutrition</p>
-
-<div class="price">
-₹4200
+<button onclick="openPopup('labrada')" class="buy-btn buy-call">View Details</button>
 </div>
 
-<button
-onclick="openLabradaDetails()"
-class="buy-btn buy-call">
-
-View Details
-
-</button>
-
-<a href="https://wa.me/919990954574"
-class="buy-btn buy-wa">
-WhatsApp Order
-</a>
-
-<a href="tel:9990954574"
-class="buy-btn buy-call">
-Call Now
-</a>
-
-</div>
-<div id="labrada-popup" style="
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.92);
-z-index:999999;
-justify-content:center;
-align-items:center;
-padding:20px;
-">
-
-<div style="
-background:#141414;
-max-width:700px;
-width:100%;
-padding:35px;
-border-radius:25px;
-border:2px solid #ffcc00;
-overflow:auto;
-max-height:90vh;
-">
-
-<h2 style="
-color:#ffcc00;
-margin-bottom:20px;
-text-align:center;
-">
-
-Labrada 100% Whey Protein
-
-</h2>
-
-<p style="
-line-height:1.9;
-color:#ddd;
-font-size:15px;
-">
-
-✅ 24g Protein Per Serving<br><br>
-
-✅ 0g Sugar Formula<br><br>
-
-✅ Whey Protein Concentrate Formula<br><br>
-
-✅ Rich In Essential Amino Acids<br><br>
-
-✅ Contains BCAAs & Glutamine<br><br>
-
-✅ Helps Build & Repair Muscle Tissue<br><br>
-
-✅ Supports Faster Recovery<br><br>
-
-✅ Helps Increase Muscle Growth<br><br>
-
-✅ Easily Mixes With Water, Milk & Juice<br><br>
-
-✅ Chocolate Flavor • 4lbs (1.8kg)
-
-</p>
-
-<button
-onclick="closeLabradaDetails()"
-style="
-padding:14px 25px;
-background:#ffcc00;
-border:none;
-border-radius:12px;
-font-weight:bold;
-cursor:pointer;
-width:100%;
-">
-
-Close
-
-</button>
-
-</div>
-
-</div>
-  
-<!-- PRODUCT 2 -->
-
+<!-- MUSCLETECH -->
 <div class="card">
-
 <img src="https://i.ibb.co/MyLYJcjV/HVPM75-X4-2.jpg">
-
 <h3>Muscletech Nitro Tech</h3>
+<div class="price">₹4200</div>
 
-<p>Premium Whey Protein</p>
-
-<div class="price">
-₹4200
+<button onclick="openPopup('muscle')" class="buy-btn buy-call">View Details</button>
 </div>
 
-<button
-onclick="openMuscletechDetails()"
-class="buy-btn buy-call">
-
-View Details
-
-</button>
-
-<a href="https://wa.me/919990954574"
-class="buy-btn buy-wa">
-WhatsApp Order
-</a>
-
-<a href="tel:9990954574"
-class="buy-btn buy-call">
-Call Now
-</a>
-
-</div>
-<!-- MUSCLETECH DETAILS POPUP -->
-
-<div id="muscletech-popup" style="
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.92);
-z-index:999999;
-justify-content:center;
-align-items:center;
-padding:20px;
-">
-
-<div style="
-background:#141414;
-max-width:700px;
-width:100%;
-padding:35px;
-border-radius:25px;
-border:2px solid #ffcc00;
-overflow:auto;
-max-height:90vh;
-">
-
-<h2 style="
-color:#ffcc00;
-margin-bottom:20px;
-text-align:center;
-">
-
-Muscletech Nitro Tech
-
-</h2>
-
-<p style="
-line-height:1.9;
-color:#ddd;
-font-size:15px;
-">
-
-✅ 30g Protein Per Serving<br><br>
-
-✅ Ultra Pure Whey Peptides & Isolate<br><br>
-
-✅ Helps Build Lean Muscle Faster<br><br>
-
-✅ Supports Strength & Recovery<br><br>
-
-✅ Fast Absorbing Formula<br><br>
-
-✅ Rich In BCAAs & Amino Acids<br><br>
-
-✅ Great Taste & Easy Mixing<br><br>
-
-✅ Premium Imported Whey Protein
-
-</p>
-
-<br>
-
-<button
-onclick="closeMuscletechDetails()"
-style="
-padding:14px 25px;
-background:#ffcc00;
-border:none;
-border-radius:12px;
-font-weight:bold;
-cursor:pointer;
-width:100%;
-">
-
-Close
-
-</button>
-
-</div>
-
-</div>
-<!-- PRODUCT 3 -->
-
+<!-- ON -->
 <div class="card">
-
 <img src="https://i.ibb.co/68vDhmb5/image.png">
+<h3>ON Gold Standard</h3>
+<div class="price">₹5200</div>
 
-<h3>ON Gold Standard Whey</h3>
-
-<p>100% Whey Protein</p>
-
-<div class="price">
-₹5200
-<button onclick="openONDetails()" class="buy-btn buy-call">
-
-View Details
-
-</button>
-
+<button onclick="openPopup('on')" class="buy-btn buy-call">View Details</button>
 </div>
 
-<a href="https://wa.me/919990954574"
-class="buy-btn buy-wa">
-WhatsApp Order
-</a>
-
-<a href="tel:9990954574"
-class="buy-btn buy-call">
-Call Now
-</a>
-
-<!-- GNC DETAILS POPUP -->
-
-</div>
-  
-<!-- PRODUCT 4 -->
-
+<!-- GNC -->
 <div class="card">
-
-<img src="https://i.ibb.co/hvDTM6H/prd-3979255-Muscle-Blaze-Creatine-Monohydrate-Cre-AMP-0-71-lb-Watermelon-Kool-Aid-o.jpg">
-
-<h3>MuscleBlaze Creatine</h3>
-
-<p>Creatine Monohydrate</p>
-
-<div class="price">
-₹1199
-</div>
-
-<a href="https://wa.me/919990954574"
-class="buy-btn buy-wa">
-WhatsApp Order
-</a>
-
-<a href="tel:9990954574"
-class="buy-btn buy-call">
-Call Now
-</a>
-
-</div>
-  
-<!-- PRODUCT 5 -->
- <!-- GNC PRO WHEY PRODUCT -->
-
-<div class="card">
-
-<img src="https://i.ibb.co/5X9kDRYM/4lbs-pista-3-3ffccae1-fcf4-4562-ab55-72b977649d30.jpg">
-
-<h3>GNC Pro Whey Protein</h3>
-
-<p>
-24g Protein • 5.7g BCAAs • Easy Digestion
-</p>
-
-<div class="price">
-₹5300
-</div>
-
-<button
-onclick="openGNCDetails()"
-class="buy-btn buy-call">
-
-View Details
-
-</button>
-
-<a href="https://wa.me/919990954574"
-class="buy-btn buy-wa">
-
-WhatsApp Order
-
-</a>
-
-<a href="tel:9990954574"
-class="buy-btn buy-call">
-
-Call Now
-
-</a>
-
-</div>
-
-
-<!-- GNC DETAILS POPUP -->
-
-<div id="gnc-popup" style="
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.92);
-z-index:999999;
-justify-content:center;
-align-items:center;
-padding:20px;
-">
-
-<div style="
-background:#141414;
-max-width:700px;
-width:100%;
-padding:35px;
-border-radius:25px;
-border:2px solid #ffcc00;
-overflow:auto;
-max-height:90vh;
-">
-
-<h2 style="
-color:#ffcc00;
-margin-bottom:20px;
-text-align:center;
-">
-
-GNC Pro Whey Protein
-
-</h2>
-
-<p style="
-line-height:1.9;
-color:#ddd;
-font-size:15px;
-">
-
-✅ 24g High-Quality Whey Protein – supports lean muscle growth<br><br>
-
-✅ 5.7g BCAAs – helps reduce muscle fatigue and improve endurance<br><br>
-
-✅ 12.3g EAAs – aids faster recovery and muscle repair<br><br>
-
-✅ Leucine-rich profile – supports muscle protein synthesis<br><br>
-
-✅ DigeZyme® Enzyme Blend – easy digestion & reduced bloating<br><br>
-
-✅ Zero Added Sugar<br><br>
-
-✅ No Maltodextrin<br><br>
-
-✅ No Artificial Colors or Flavors<br><br>
-
-✅ Gluten-Free & Non-GMO<br><br>
-
-✅ 100% Vegetarian
-
-</p>
-
-<br>
-
-<button
-onclick="closeGNCDetails()"
-style="
-padding:14px 25px;
-background:#ffcc00;
-border:none;
-border-radius:12px;
-font-weight:bold;
-cursor:pointer;
-width:100%;
-">
-
-Close
-
-</button>
-
-</div>
-
-</div>
-<!-- PRODUCT -->
-
-<div class="card">
-
-<img src=https://i.ibb.co/LjyCZMk/Artboard-1-copy.png">
-
-<h3>GNC Creatine Monohydrate</h3>
-
-<p>250g Unflavoured Creatine</p>
-
-<div class="price">
-₹899
-</div>
-
-<a href="https://wa.me/919990954574"
-class="buy-btn buy-wa">
-WhatsApp Order
-</a>
-
-<a href="tel:9990954574"
-class="buy-btn buy-call">
-Call Now
-</a>
-
-</div>
-
-<!-- PRODUCT 5 -->
-
-<div class="card">
-
-<img src="https://i.ibb.co/sJjstZh7/Gainer-Choc-1-K-Front-1200x.jpg">
-
-<h3>Labrada Mass Gainer</h3>
-
-<p>Mass Gainer</p>
-
-<div class="price">
-₹3000
-</div>
-
-<a href="https://wa.me/919990954574"
-class="buy-btn buy-wa">
-WhatsApp Order
-</a>
-
-<a href="tel:9990954574"
-class="buy-btn buy-call">
-Call Now
-</a>
-
+<img src="https://i.ibb.co/5X9kDRYM/gnc.jpg">
+<h3>GNC Whey</h3>
+<div class="price">₹5300</div>
+
+<button onclick="openPopup('gnc')" class="buy-btn buy-call">View Details</button>
 </div>
 
 </div>
 
-<!-- VERIFY SECTION -->
+<!-- POPUPS -->
 
-<section style="padding:40px 20px;text-align:center">
-
-<h2 class="section-title">
-Verify Product
-</h2>
-
-<input
-id="manualCodeInput"
-placeholder="Enter Product Code"
-style="
-padding:15px;
-width:90%;
-max-width:400px;
-border:none;
-border-radius:15px;
-font-size:18px;
-">
-
-<br><br>
-
-<button
-onclick="verifyCode()"
-style="
-padding:15px 30px;
-background:#ffcc00;
-border:none;
-border-radius:15px;
-font-weight:bold;
-font-size:18px;
-cursor:pointer;
-">
-
-Verify Product
-
-</button>
-
-</section>
-
-<!-- POPUP -->
-
-<div id="verification-overlay">
-
-<div class="verify-card">
-
-<h2>
-WELCOME TO
-</h2>
-
-<div class="brand">
-BIGBROTHERS
+<!-- LABRADA -->
+<div id="labrada" class="popup">
+<div class="popup-box">
+<h2>Labrada Whey</h2>
+<p>24g Protein, fast absorption, muscle recovery support.</p>
+<button class="close-btn" onclick="closePopup('labrada')">Close</button>
+</div>
 </div>
 
-<h3 id="verifyText">
-PRODUCT VERIFIED
-</h3>
-
-<p>
-100% Authentic Product
-</p>
-
-<br>
-
-<button
-onclick="closePopup()"
-style="
-padding:12px 20px;
-border:none;
-border-radius:12px;
-background:#ffcc00;
-font-weight:bold;
-cursor:pointer;
-">
-
-Close
-
-</button>
-
+<!-- MUSCLETECH -->
+<div id="muscle" class="popup">
+<div class="popup-box">
+<h2>Muscletech Nitro Tech</h2>
+<p>30g Protein, BCAA rich, strength & recovery formula.</p>
+<button class="close-btn" onclick="closePopup('muscle')">Close</button>
+</div>
 </div>
 
+<!-- ON -->
+<div id="on" class="popup">
+<div class="popup-box">
+<h2>ON Gold Standard Whey</h2>
+<p>Isolate + concentrate blend, lean muscle support, fast digestion.</p>
+<button class="close-btn" onclick="closePopup('on')">Close</button>
+</div>
 </div>
 
-<!-- SCRIPT -->
+<!-- GNC -->
+<div id="gnc" class="popup">
+<div class="popup-box">
+<h2>GNC Whey Protein</h2>
+<p>24g protein, digestive enzymes, clean formula.</p>
+<button class="close-btn" onclick="closePopup('gnc')">Close</button>
+</div>
+</div>
 
 <script>
 
-const productDatabase = {
-
-"LBR7F29K":{
-name:"Labrada Whey Protein"
-},
-
-"TRU5MP91":{
-name:"Muscletech Whey Protein"
-},
-
-"LA24X8Q2":{
-name:"Ultimate Nutrition Whey"
-},
-
-"MPN84K2L":{
-name:"ON Gold Standard Whey"
-},
-
-"MBZ9X14A":{
-name:"MuscleBlaze Creatine"
-},
-
-"GNC3M78B":{
-name:"GNC Creatine"
-},
-
-"WEL4C8T2":{
-name:"Wellcore Creatine"
-},
-
-"LMG5P62C":{
-name:"Labrada Mass Gainer"
-},
-
-"MON8K43D":{
-name:"Monster Mass Gainer"
+function openPopup(id){
+document.getElementById(id).style.display="flex";
 }
 
-};
-
-
-/* VERIFY FUNCTION */
-
-function verifyCode(){
-
-let code = document
-.getElementById("manualCodeInput")
-.value
-.trim()
-.toUpperCase();
-
-if(code===""){
-
-alert("Please Enter Product Code");
-
-return;
-
+function closePopup(id){
+document.getElementById(id).style.display="none";
 }
 
-
-/* OPEN POPUP */
-
-document.getElementById(
-"verification-overlay"
-).style.display="flex";
-
-
-/* REAL PRODUCT */
-
-if(productDatabase[code]){
-
-document.querySelector(".brand").innerText =
-productDatabase[code].name;
-
-document.getElementById("verifyText").innerHTML =
-"✅ PRODUCT IS REAL & AUTHENTIC";
-
-document.querySelector(".verify-card p").innerText =
-"This Product Has Been Successfully Verified";
-
-document.querySelector(".verify-card").style.border =
-"3px solid #00ff00";
-setTimeout(function(){
-
-document.getElementById(
-"manualCodeInput"
-).value = "";
-
-},300);
-}
-
-
-/* FAKE PRODUCT */
-
-else{
-
-document.querySelector(".brand").innerText =
-"UNKNOWN PRODUCT";
-
-document.getElementById("verifyText").innerHTML =
-"❌ PRODUCT IS FAKE";
-
-document.querySelector(".verify-card p").innerText =
-"Fake or Duplicate Product Code Detected";
-
-document.querySelector(".verify-card").style.border =
-"3px solid red";
-
-}
-
-}
-
-
-/* CLOSE POPUP */
-
-function closePopup(){
-
-document.getElementById(
-"verification-overlay"
-).style.display="none";
-
-}
-
-
-/* AUTO QR VERIFY */
-
-window.onload = function(){
-
-const params =
-new URLSearchParams(
-window.location.search
-);
-
-const code =
-params.get("code");
-
-if(code){
-
-document.getElementById(
-"manualCodeInput"
-).value =
-code.toUpperCase();
-
-verifyCode();
-
-}
-
-};
-
-
-/* MENU BUTTONS */
-
-const menuButtons =
-document.querySelectorAll(
-".menu button"
-);
-
-menuButtons[0].onclick=function(){
-
-window.scrollTo({
-top:700,
-behavior:'smooth'
-});
-
-};
-
-menuButtons[1].onclick=function(){
-
-window.scrollTo({
-top:1300,
-behavior:'smooth'
-});
-
-};
-
-menuButtons[2].onclick=function(){
-
-window.scrollTo({
-top:1800,
-behavior:'smooth'
-});
-
-};
-
-menuButtons[3].onclick=function(){
-
-window.scrollTo({
-top:2300,
-behavior:'smooth'
-});
-
-};
-
-menuButtons[4].onclick=function(){
-
-window.scrollTo({
-top:2700,
-behavior:'smooth'
-});
-
-};
-
-menuButtons[5].onclick=function(){
-
-window.scrollTo({
-top:3100,
-behavior:'smooth'
-});
-
-};
-function openGNCDetails(){
-
-document.getElementById(
-"gnc-popup"
-).style.display="flex";
-
-}
-
-function closeGNCDetails(){
-
-document.getElementById(
-"gnc-popup"
-).style.display="none";
-
-}
-function openLabradaDetails(){
-
-document.getElementById(
-"labrada-popup"
-).style.display="flex";
-
-}
-
-function closeLabradaDetails(){
-
-document.getElementById(
-"labrada-popup"
-).style.display="none";
-
-  }
-  function openMuscletechDetails(){
-
-document.getElementById(
-"muscletech-popup"
-).style.display="flex";
-
-}
-
-function closeMuscletechDetails(){
-
-document.getElementById(
-"muscletech-popup"
-).style.display="none";
-
-}
-
-function openONDetails(){
-document.getElementById("on-popup").style.display="flex";
-}
-
-function closeONDetails(){
-document.getElementById("on-popup").style.display="none";
-  }
-  
 </script>
-
-<!-- FOOTER -->
-
-<footer>
-
-<h2 style="color:#ffcc00">
-BIGBROTHERS
-</h2>
-
-<p>
-Multi Brand Supplement Store
-</p>
-
-<br>
-
-<a href="tel:9990954574"
-style="
-color:white;
-text-decoration:none;
-font-size:18px;
-">
-
-📞 9990954574
-
-</a>
-
-<br><br>
-
-<a href="https://wa.me/919990954574"
-style="
-background:#25D366;
-padding:14px 20px;
-border-radius:12px;
-text-decoration:none;
-color:white;
-font-weight:bold;
-">
-
-WhatsApp Order
-
-</a>
-
-</footer>
 
 </body>
 </html>
