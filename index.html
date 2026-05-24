@@ -403,7 +403,89 @@ Call Now
 </a>
 
 </div>
+<div id="labrada-popup" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.92);
+z-index:999999;
+justify-content:center;
+align-items:center;
+padding:20px;
+">
 
+<div style="
+background:#141414;
+max-width:700px;
+width:100%;
+padding:35px;
+border-radius:25px;
+border:2px solid #ffcc00;
+overflow:auto;
+max-height:90vh;
+">
+
+<h2 style="
+color:#ffcc00;
+margin-bottom:20px;
+text-align:center;
+">
+
+Labrada 100% Whey Protein
+
+</h2>
+
+<p style="
+line-height:1.9;
+color:#ddd;
+font-size:15px;
+">
+
+✅ 24g Protein Per Serving<br><br>
+
+✅ 0g Sugar Formula<br><br>
+
+✅ Whey Protein Concentrate Formula<br><br>
+
+✅ Rich In Essential Amino Acids<br><br>
+
+✅ Contains BCAAs & Glutamine<br><br>
+
+✅ Helps Build & Repair Muscle Tissue<br><br>
+
+✅ Supports Faster Recovery<br><br>
+
+✅ Helps Increase Muscle Growth<br><br>
+
+✅ Easily Mixes With Water, Milk & Juice<br><br>
+
+✅ Chocolate Flavor • 4lbs (1.8kg)
+
+</p>
+
+<button
+onclick="closeLabradaDetails()"
+style="
+padding:14px 25px;
+background:#ffcc00;
+border:none;
+border-radius:12px;
+font-weight:bold;
+cursor:pointer;
+width:100%;
+">
+
+Close
+
+</button>
+
+</div>
+
+</div>
+  
 <!-- PRODUCT 2 -->
 
 <div class="card">
@@ -976,7 +1058,21 @@ document.getElementById(
 ).style.display="none";
 
 }
+function openLabradaDetails(){
 
+document.getElementById(
+"labrada-popup"
+).style.display="flex";
+
+}
+
+function closeLabradaDetails(){
+
+document.getElementById(
+"labrada-popup"
+).style.display="none";
+
+  }
 </script>
 
 <!-- FOOTER -->
