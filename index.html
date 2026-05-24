@@ -4,7 +4,160 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BigBrothers Multi Brand Supplement Store</title>
+  
+        /* Full Screen OVERLAY - Scan karne par sabse pehle khulega */
+        #verification-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0d0d0d;
+            z-index: 99999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
 
+        .verify-card {
+            background: #141414;
+            padding: 40px 30px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 450px;
+            box-sizing: border-box;
+            animation: popIn 0.4s ease-out;
+        }
+
+        .card-success { border: 3px solid #00ff00; box-shadow: 0 0 35px rgba(0, 255, 0, 0.4); }
+        .card-fail { border: 3px solid #ff0000; box-shadow: 0 0 35px rgba(255, 0, 0, 0.4); }
+
+        @keyframes popIn {
+            0% { transform: scale(0.85); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .verify-card h2 {
+            color: #ffffff;
+            font-size: 22px;
+            margin: 0 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .verify-card .brand-name {
+            color: #ffcc00;
+            font-size: 28px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .success-badge, .fail-badge { font-size: 65px; margin-bottom: 15px; }
+        .verify-status-ok { color: #00ff00; font-size: 24px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; }
+        .verify-status-fail { color: #ff0000; font-size: 24px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; }
+
+        .verify-desc { color: #ffffff; font-size: 18px; margin: 0 0 25px 0; }
+        .redirect-loader { font-size: 14px; color: #888; }
+
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #333;
+            border-top: 2px solid #ffcc00;
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Category Menu Tabs - Left Aligned */
+        .category-nav {
+            display: flex;
+            justify-content: flex-start;
+            gap: 12px;
+            margin: 30px auto;
+            padding: 0 20px;
+            max-width: 1200px;
+            box-sizing: border-box;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: #1a1a1a;
+            color: #ffffff;
+            border: 2px solid #333;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: #ffcc00;
+            color: #000000;
+            border-color: #ffcc00;
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+        }
+
+        /* Verification Form Section */
+        .verify-input-section {
+            background: #141414;
+            border: 2px dashed #ffcc00;
+            max-width: 450px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .verify-input-section h3 { color: #ffcc00; margin-top: 0; text-transform: uppercase; }
+        .verify-input-section input {
+            width: 85%;
+            padding: 13px;
+            border-radius: 6px;
+            border: 1px solid #333;
+            background: #000;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .verify-action-btn {
+            background: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 90%;
+            text-transform: uppercase;
+        }
+
+        /* Responsive Grid Layout */
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 <style>
 *{
 margin:0;
