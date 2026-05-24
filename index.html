@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -629,138 +630,6 @@ name:"Monster Mass Gainer"
 };
 
 
-<!-- VERIFY SECTION -->
-
-<section style="padding:40px 20px;text-align:center">
-
-<h2 class="section-title">
-Verify Product
-</h2>
-
-<div id="verifyArea">
-
-<input
-id="manualCodeInput"
-placeholder="Enter Product Code"
-style="
-padding:15px;
-width:90%;
-max-width:400px;
-border:none;
-border-radius:15px;
-font-size:18px;
-">
-
-<br><br>
-
-<button
-onclick="verifyCode()"
-style="
-padding:15px 30px;
-background:#ffcc00;
-border:none;
-border-radius:15px;
-font-weight:bold;
-font-size:18px;
-cursor:pointer;
-">
-
-Verify Product
-
-</button>
-
-</div>
-
-</section>
-
-<!-- POPUP -->
-
-<div id="verification-overlay">
-
-<div class="verify-card">
-
-<h2>
-WELCOME TO
-</h2>
-
-<div class="brand">
-BIGBROTHERS
-</div>
-
-<h3 id="verifyText">
-PRODUCT VERIFIED
-</h3>
-
-<p>
-100% Authentic Product
-</p>
-
-<br>
-
-<button
-onclick="closePopup()"
-style="
-padding:12px 20px;
-border:none;
-border-radius:12px;
-background:#ffcc00;
-font-weight:bold;
-cursor:pointer;
-">
-
-Close
-
-</button>
-
-</div>
-
-</div>
-
-<!-- SCRIPT -->
-
-<script>
-
-const productDatabase = {
-
-"LBR7F29K":{
-name:"Labrada Whey Protein"
-},
-
-"TRU5MP91":{
-name:"Muscletech Whey Protein"
-},
-
-"LA24X8Q2":{
-name:"Ultimate Nutrition Whey"
-},
-
-"MPN84K2L":{
-name:"ON Gold Standard Whey"
-},
-
-"MBZ9X14A":{
-name:"MuscleBlaze Creatine"
-},
-
-"GNC3M78B":{
-name:"GNC Creatine"
-},
-
-"WEL4C8T2":{
-name:"Wellcore Creatine"
-},
-
-"LMG5P62C":{
-name:"Labrada Mass Gainer"
-},
-
-"MON8K43D":{
-name:"Monster Mass Gainer"
-}
-
-};
-
-
 /* VERIFY FUNCTION */
 
 function verifyCode(){
@@ -780,6 +649,13 @@ return;
 }
 
 
+/* OPEN POPUP */
+
+document.getElementById(
+"verification-overlay"
+).style.display="flex";
+
+
 /* REAL PRODUCT */
 
 if(productDatabase[code]){
@@ -795,28 +671,6 @@ document.querySelector(".verify-card p").innerText =
 
 document.querySelector(".verify-card").style.border =
 "3px solid #00ff00";
-
-/* POPUP OPEN */
-
-document.getElementById(
-"verification-overlay"
-).style.display="flex";
-
-/* INPUT CLEAR */
-
-document.getElementById(
-"manualCodeInput"
-).value = "";
-
-/* HIDE VERIFY AREA */
-
-setTimeout(function(){
-
-document.getElementById(
-"verifyArea"
-).style.display="none";
-
-},300);
 
 }
 
@@ -836,12 +690,6 @@ document.querySelector(".verify-card p").innerText =
 
 document.querySelector(".verify-card").style.border =
 "3px solid red";
-
-/* POPUP OPEN */
-
-document.getElementById(
-"verification-overlay"
-).style.display="flex";
 
 }
 
@@ -945,9 +793,6 @@ behavior:'smooth'
 });
 
 };
-
-</script>
-  
 
 </script>
 
