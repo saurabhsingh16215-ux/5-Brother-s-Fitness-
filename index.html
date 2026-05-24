@@ -721,7 +721,58 @@ top:3100,
 behavior:'smooth'
 });
 };
+function showVerified(code){
 
+document.getElementById(
+'verification-overlay'
+).style.display='flex';
+
+document.getElementById(
+'dynamic-brand'
+).innerText='LABRADA NUTRITION';
+
+document.getElementById(
+'dynamic-badge'
+).innerHTML='✅';
+
+document.getElementById(
+'dynamic-status'
+).innerHTML=
+'<h2 style="color:#00ff00">PRODUCT VERIFIED SUCCESSFULLY</h2>';
+
+document.getElementById(
+'dynamic-desc'
+).innerText=
+'100% Authentic Product';
+
+}
+
+function triggerManualCheck(){
+
+let code=document
+.getElementById(
+'manualCodeInput'
+).value.trim();
+
+if(code===""){
+alert("Enter Product Code");
+return;
+}
+
+showVerified(code);
+}
+
+const params=
+new URLSearchParams(
+window.location.search
+);
+
+const code=
+params.get('code');
+
+if(code){
+showVerified(code);
+}
 </script>
 
 <footer>
