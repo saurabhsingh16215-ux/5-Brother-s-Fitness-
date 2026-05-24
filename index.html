@@ -731,37 +731,84 @@ document.getElementById(
 '100% Authentic Product';
 
 }
-function triggerManualCheck(){
+<script>
 
-let code=document
-.getElementById(
-'manualCodeInput'
-).value.trim();
+const secureDatabase = {
+    "lbr7f29k": { brand: "Labrada Nutrition" },
+    "tru5mp91": { brand: "Muscletech Nutrition" },
+    "la24x8q2": { brand: "Ultimate Nutrition" },
+    "mpn84k2l": { brand: "ON Gold Standard" },
+    "mbz9x14a": { brand: "MuscleBlaze Nutrition" },
+    "gnc3m78b": { brand: "GNC Nutrition" },
+    "wel4c8t2": { brand: "Wellcore Nutrition" },
+    "lmg5p62c": { brand: "Labrada Mass Gainer" },
+    "mon8k43d": { brand: "Monster Mass Gainer" }
+};
 
-if(code===""){
-alert("Enter Product Code");
-return;
+function verifyCode() {
+
+    let code = document
+        .getElementById("manualCodeInput")
+        .value
+        .trim()
+        .toLowerCase();
+
+    if (code === "") {
+        alert("Please Enter Product Code");
+        return;
+    }
+
+    let overlay =
+        document.getElementById("verification-overlay");
+
+    let verifyText =
+        document.getElementById("verifyText");
+
+    let popupText =
+        overlay.querySelector("p");
+
+    if (secureDatabase[code]) {
+
+        verifyText.innerText =
+            "PRODUCT VERIFIED SUCCESSFULLY ✅";
+
+        popupText.innerText =
+            "100% Authentic Product";
+
+    } else {
+
+        verifyText.innerText =
+            "VERIFICATION FAILED ❌";
+
+        popupText.innerText =
+            "Invalid or Fake Product Code";
+
+    }
+
+    overlay.style.display = "flex";
 }
 
-showVerified(code);
+function closePopup() {
+    document.getElementById(
+        "verification-overlay"
+    ).style.display = "none";
 }
 
-
-/* YAHAN DALNA HAI 👇 */
-
+/* QR URL AUTO VERIFY */
 const params =
-new URLSearchParams(
-window.location.search
-);
+    new URLSearchParams(window.location.search);
 
 const code =
-params.get('code');
+    params.get("code");
 
-if(code){
-showVerified(code);
+if (code) {
+
+    document.getElementById(
+        "manualCodeInput"
+    ).value = code;
+
+    verifyCode();
 }
-
-/* YAHAN TAK 👆 */
 
 </script>
 </script>
