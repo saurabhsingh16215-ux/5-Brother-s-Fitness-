@@ -500,6 +500,14 @@ Close
 ₹4200
 </div>
 
+<button
+onclick="openMuscletechDetails()"
+class="buy-btn buy-call">
+
+View Details
+
+</button>
+
 <a href="https://wa.me/919990954574"
 class="buy-btn buy-wa">
 WhatsApp Order
@@ -511,7 +519,88 @@ Call Now
 </a>
 
 </div>
+<!-- MUSCLETECH DETAILS POPUP -->
 
+<div id="muscletech-popup" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.92);
+z-index:999999;
+justify-content:center;
+align-items:center;
+padding:20px;
+">
+
+<div style="
+background:#141414;
+max-width:700px;
+width:100%;
+padding:35px;
+border-radius:25px;
+border:2px solid #ffcc00;
+overflow:auto;
+max-height:90vh;
+">
+
+<h2 style="
+color:#ffcc00;
+margin-bottom:20px;
+text-align:center;
+">
+
+Muscletech Nitro Tech
+
+</h2>
+
+<p style="
+line-height:1.9;
+color:#ddd;
+font-size:15px;
+">
+
+✅ 30g Protein Per Serving<br><br>
+
+✅ Ultra Pure Whey Peptides & Isolate<br><br>
+
+✅ Helps Build Lean Muscle Faster<br><br>
+
+✅ Supports Strength & Recovery<br><br>
+
+✅ Fast Absorbing Formula<br><br>
+
+✅ Rich In BCAAs & Amino Acids<br><br>
+
+✅ Great Taste & Easy Mixing<br><br>
+
+✅ Premium Imported Whey Protein
+
+</p>
+
+<br>
+
+<button
+onclick="closeMuscletechDetails()"
+style="
+padding:14px 25px;
+background:#ffcc00;
+border:none;
+border-radius:12px;
+font-weight:bold;
+cursor:pointer;
+width:100%;
+">
+
+Close
+
+</button>
+
+</div>
+
+</div>
 <!-- PRODUCT 3 -->
 
 <div class="card">
@@ -1073,6 +1162,21 @@ document.getElementById(
 ).style.display="none";
 
   }
+  function openMuscletechDetails(){
+
+document.getElementById(
+"muscletech-popup"
+).style.display="flex";
+
+}
+
+function closeMuscletechDetails(){
+
+document.getElementById(
+"muscletech-popup"
+).style.display="none";
+
+}
 </script>
 
 <!-- FOOTER -->
