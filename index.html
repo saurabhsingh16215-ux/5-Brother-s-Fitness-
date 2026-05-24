@@ -625,6 +625,63 @@ class="buy-btn buy-call">
 Call Now
 </a>
 
+<!-- GNC DETAILS POPUP -->
+  
+  <div id="on-popup" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.92);
+z-index:999999;
+justify-content:center;
+align-items:center;
+padding:20px;
+">
+
+<div style="
+background:#141414;
+max-width:700px;
+width:100%;
+padding:35px;
+border-radius:25px;
+border:2px solid #ffcc00;
+overflow:auto;
+max-height:90vh;
+">
+
+<h2 style="color:#ffcc00;text-align:center;margin-bottom:20px;">
+ON Gold Standard Whey
+</h2>
+
+<p style="line-height:1.9;color:#ddd;font-size:15px;">
+
+✅ 24g Protein Per Serving<br><br>
+✅ Whey Isolate + Concentrate Blend<br><br>
+✅ Fast Absorption Formula<br><br>
+✅ Lean Muscle Growth Support<br><br>
+✅ Recovery After Workout<br><br>
+✅ Low Fat & Low Sugar<br><br>
+✅ Trusted Global Brand
+
+</p>
+
+<button onclick="closeONDetails()" style="
+padding:14px 25px;
+background:#ffcc00;
+border:none;
+border-radius:12px;
+font-weight:bold;
+cursor:pointer;
+width:100%;
+">
+Close
+</button>
+
+</div>
+  </div>
 </div>
 
 <!-- PRODUCT 4 -->
@@ -1177,6 +1234,15 @@ document.getElementById(
 ).style.display="none";
 
 }
+
+function openONDetails(){
+document.getElementById("on-popup").style.display="flex";
+}
+
+function closeONDetails(){
+document.getElementById("on-popup").style.display="none";
+  }
+  
 </script>
 
 <!-- FOOTER -->
