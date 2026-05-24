@@ -821,58 +821,6 @@ behavior:'smooth'
 });
 };
 
-menuButtons[2]
-.onclick=function(){
-window.scrollTo({
-top:1800,
-behavior:'smooth'
-});
-};
-
-menuButtons[3]
-.onclick=function(){
-window.scrollTo({
-top:2300,
-behavior:'smooth'
-});
-};
-
-menuButtons[4]
-.onclick=function(){
-window.scrollTo({
-top:2700,
-behavior:'smooth'
-});
-};
-
-menuButtons[5]
-.onclick=function(){
-window.scrollTo({
-top:3100,
-behavior:'smooth'
-});
-};
-window.onload=function(){
-
-const params =
-new URLSearchParams(
-window.location.search
-);
-
-const code =
-params.get('code');
-
-if(code){
-
-document.getElementById(
-'manualCodeInput'
-).value=code;
-
-verifyCode();
-
-}
-
-};
 </script>
 
 <footer>
