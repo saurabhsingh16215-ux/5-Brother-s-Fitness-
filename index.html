@@ -852,7 +852,27 @@ top:3100,
 behavior:'smooth'
 });
 };
+window.onload=function(){
 
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+const code =
+params.get('code');
+
+if(code){
+
+document.getElementById(
+'manualCodeInput'
+).value=code;
+
+verifyCode();
+
+}
+
+};
 </script>
 
 <footer>
