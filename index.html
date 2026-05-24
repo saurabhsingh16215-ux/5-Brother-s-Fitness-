@@ -746,47 +746,39 @@ document.getElementById(
 '100% Authentic Product';
 
 }
+function triggerManualCheck(){
 
-function showVerified(code){
+let code=document
+.getElementById(
+'manualCodeInput'
+).value.trim();
 
-document.getElementById(
-'verification-overlay'
-).style.display='flex';
-
-let products = {
-
-"LBR7F29K":"LABRADA WHEY PROTEIN",
-"ON89X2":"ON GOLD STANDARD WHEY",
-"MT45K9":"MUSCLETECH NITRO TECH",
-"MB77A1":"MUSCLEBLAZE CREATINE",
-"GNC22P":"GNC CREATINE",
-"WG55Z":"WELLCORE CREATINE"
-
-};
-
-let productName =
-products[code] || "PRODUCT VERIFIED";
-
-document.getElementById(
-'dynamic-brand'
-).innerText =
-productName;
-
-document.getElementById(
-'dynamic-badge'
-).innerHTML='✅';
-
-document.getElementById(
-'dynamic-status'
-).innerHTML=
-'<h2 style="color:#00ff00">PRODUCT VERIFIED SUCCESSFULLY</h2>';
-
-document.getElementById(
-'dynamic-desc'
-).innerText=
-'100% Authentic Product';
-
+if(code===""){
+alert("Enter Product Code");
+return;
 }
+
+showVerified(code);
+}
+
+
+/* YAHAN DALNA HAI 👇 */
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+const code =
+params.get('code');
+
+if(code){
+showVerified(code);
+}
+
+/* YAHAN TAK 👆 */
+
+</script>
 </script>
 
 <footer>
