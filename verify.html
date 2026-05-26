@@ -297,51 +297,75 @@ let currentCode="";
 
 window.onload=function(){
 
-const params=
+const params =
 new URLSearchParams(
 window.location.search
 );
 
-const code=
+const code =
 params.get("code");
 
-if(code){
+if(
+code &&
+products[
+code.trim().toUpperCase()
+]
+){
 
-currentCode=
+currentCode =
 code.trim().toUpperCase();
 
-if(products[currentCode]){
-
-let p=
+let p =
 products[currentCode];
 
 document.getElementById(
 "verifiedBrand"
-).innerText=
+).innerText =
 p.brand;
 
 document.getElementById(
 "portalBrand"
-).innerText=
+).innerText =
 p.brand;
 
 document.getElementById(
 "portalProduct"
-).innerText=
-p.product+
+).innerText =
+p.product +
 " AUTHENTICATION PORTAL";
 
 document.getElementById(
 "batchNo"
-).innerText=
+).innerText =
 p.batch;
 
-}
+}else{
+
+currentCode="";
+
+document.getElementById(
+"verifiedBrand"
+).innerText =
+"INVALID QR";
+
+document.getElementById(
+"portalBrand"
+).innerText =
+"INVALID QR";
+
+document.getElementById(
+"portalProduct"
+).innerText =
+"PRODUCT NOT FOUND";
+
+document.getElementById(
+"batchNo"
+).innerText =
+"----";
 
 }
 
 };
-
 
 /* OPEN WEBSITE */
 
