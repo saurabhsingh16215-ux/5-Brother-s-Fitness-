@@ -848,9 +848,9 @@ this.style.display="none";
 
 }
 
-/* AUTO QR VERIFY */
+/* AUTO QR VERIFY FIXED */
 
-window.onload=function(){
+window.onload = function () {
 
 const params =
 new URLSearchParams(
@@ -862,9 +862,13 @@ params.get("code");
 
 if(code){
 
+setTimeout(function(){
+
 showVerification(
-code.toUpperCase()
+code.trim().toUpperCase()
 );
+
+},300);
 
 }
 
