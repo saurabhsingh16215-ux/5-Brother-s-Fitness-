@@ -1197,47 +1197,5 @@ verifyCode();
 
 </script>
 
-document.getElementById(
-"verification-overlay"
-).style.display="flex";
-
-if(productDatabase[code]){
-
-document.querySelector(".brand")
-.innerText =
-productDatabase[code].name;
-
-document.getElementById(
-"verifyText"
-).innerHTML =
-"✅ PRODUCT IS AUTHENTIC";
-
-}
-
-else{
-
-document.querySelector(".brand")
-.innerText =
-"UNKNOWN PRODUCT";
-
-document.getElementById(
-"verifyText"
-).innerHTML =
-"❌ PRODUCT IS FAKE";
-
-}
-
-}
-
-function closePopupBox(){
-
-document.getElementById(
-"verification-overlay"
-).style.display="none";
-
-}
-
-</script>
-
 </body>
 </html>
