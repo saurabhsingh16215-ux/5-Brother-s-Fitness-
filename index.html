@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>BIGBROTHERS Supplement Store</title>
 
@@ -145,7 +146,8 @@ color:#ffcc00;
 
 .product-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:
+repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
 padding:20px;
 }
@@ -229,7 +231,7 @@ cursor:pointer;
 margin-top:20px;
 }
 
-/* POPUPS */
+/* POPUP */
 
 .popup{
 display:none;
@@ -239,9 +241,9 @@ left:0;
 width:100%;
 height:100%;
 background:rgba(0,0,0,.92);
-z-index:999999;
 justify-content:center;
 align-items:center;
+z-index:999999;
 padding:20px;
 }
 
@@ -288,35 +290,21 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,.95);
+background:rgba(0,0,0,.96);
 justify-content:center;
 align-items:center;
 z-index:999999;
-padding:20px;
 }
 
 #verify-box{
 background:#111;
-padding:40px 25px;
+padding:45px 30px;
 border-radius:25px;
 text-align:center;
-max-width:380px;
-width:100%;
-animation:popup .3s ease;
-}
-
-@keyframes popup{
-
-0%{
-transform:scale(.7);
-opacity:0;
-}
-
-100%{
-transform:scale(1);
-opacity:1;
-}
-
+width:90%;
+max-width:350px;
+border:3px solid #00ff00;
+box-shadow:0 0 25px #00ff00;
 }
 
 footer{
@@ -343,11 +331,13 @@ border-top:3px solid #ffcc00;
 
 <div class="head-btns">
 
-<a href="tel:9990954574" class="call-btn">
+<a href="tel:9990954574"
+class="call-btn">
 📞 Call
 </a>
 
-<a href="https://wa.me/919990954574" class="whatsapp-btn">
+<a href="https://wa.me/919990954574"
+class="whatsapp-btn">
 WhatsApp
 </a>
 
@@ -361,13 +351,33 @@ WhatsApp
 
 <div class="menu">
 
-<button onclick="showCategory('all')">All</button>
-<button onclick="showCategory('whey')">Whey</button>
-<button onclick="showCategory('creatine')">Creatine</button>
-<button onclick="showCategory('gainer')">Gainer</button>
-<button onclick="showCategory('preworkout')">Pre Workout</button>
-<button onclick="showCategory('multivitamin')">Multivitamin</button>
-<button onclick="showCategory('fishoil')">Fish Oil</button>
+<button onclick="showCategory('all')">
+All
+</button>
+
+<button onclick="showCategory('whey')">
+Whey
+</button>
+
+<button onclick="showCategory('creatine')">
+Creatine
+</button>
+
+<button onclick="showCategory('gainer')">
+Gainer
+</button>
+
+<button onclick="showCategory('preworkout')">
+Pre Workout
+</button>
+
+<button onclick="showCategory('multivitamin')">
+Multivitamin
+</button>
+
+<button onclick="showCategory('fishoil')">
+Fish Oil
+</button>
 
 </div>
 
@@ -375,9 +385,13 @@ WhatsApp
 
 <section class="hero">
 
-<h2>100% Authentic Supplements</h2>
+<h2>
+100% Authentic Supplements
+</h2>
 
-<p>Premium Supplements For Real Results</p>
+<p>
+Premium Supplements For Real Results
+</p>
 
 <div class="search-box">
 
@@ -400,7 +414,8 @@ placeholder="Search supplements...">
 
 <!-- LABRADA -->
 
-<div class="card" data-category="whey">
+<div class="card"
+data-category="whey">
 
 <img src="https://i.ibb.co/ynbr1YCw/download-1.webp">
 
@@ -408,25 +423,38 @@ placeholder="Search supplements...">
 
 <p>24g Protein • 5.2g BCAA</p>
 
-<div class="price">₹5900</div>
+<div class="price">
+₹5900
+</div>
 
-<button onclick="openPopup('labrada-popup')" class="buy-btn buy-call">
+<button
+onclick="openPopup('labrada-popup')"
+class="buy-btn buy-call">
+
 View Details
+
 </button>
 
-<a href="https://wa.me/919990954574" class="buy-btn buy-wa">
+<a href="https://wa.me/919990954574"
+class="buy-btn buy-wa">
+
 WhatsApp Order
+
 </a>
 
-<a href="tel:9990954574" class="buy-btn buy-call">
+<a href="tel:9990954574"
+class="buy-btn buy-call">
+
 Call Now
+
 </a>
 
 </div>
 
 <!-- MUSCLETECH -->
 
-<div class="card" data-category="whey">
+<div class="card"
+data-category="whey">
 
 <img src="https://i.ibb.co/MyLYJcjV/HVPM75-X4-2.jpg">
 
@@ -434,77 +462,38 @@ Call Now
 
 <p>30g Protein • 6.8g BCAA</p>
 
-<div class="price">₹4200</div>
-
-<button onclick="openPopup('muscletech-popup')" class="buy-btn buy-call">
-View Details
-</button>
-
-<a href="https://wa.me/919990954574" class="buy-btn buy-wa">
-WhatsApp Order
-</a>
-
-<a href="tel:9990954574" class="buy-btn buy-call">
-Call Now
-</a>
-
+<div class="price">
+₹4200
 </div>
 
-<!-- ON -->
+<button
+onclick="openPopup('muscletech-popup')"
+class="buy-btn buy-call">
 
-<div class="card" data-category="whey">
-
-<img src="https://i.ibb.co/Psd0wvRZ/1118910-1-af26fc31-6747-4679-8e5f-00dc04b9aecd.jpg">
-
-<h3>ON Gold Standard Whey</h3>
-
-<p>24g Protein • 5.5g BCAA</p>
-
-<div class="price">₹5200</div>
-
-<button onclick="openPopup('on-popup')" class="buy-btn buy-call">
 View Details
+
 </button>
 
-<a href="https://wa.me/919990954574" class="buy-btn buy-wa">
+<a href="https://wa.me/919990954574"
+class="buy-btn buy-wa">
+
 WhatsApp Order
+
 </a>
 
-<a href="tel:9990954574" class="buy-btn buy-call">
+<a href="tel:9990954574"
+class="buy-btn buy-call">
+
 Call Now
-</a>
 
-</div>
-
-<!-- GNC -->
-
-<div class="card" data-category="creatine">
-
-<img src="https://i.ibb.co/LjyCZMk/Artboard-1-copy.png">
-
-<h3>GNC Creatine</h3>
-
-<p>250g Unflavoured Creatine</p>
-
-<div class="price">₹899</div>
-
-<button onclick="openPopup('gnc-popup')" class="buy-btn buy-call">
-View Details
-</button>
-
-<a href="https://wa.me/919990954574" class="buy-btn buy-wa">
-WhatsApp Order
-</a>
-
-<a href="tel:9990954574" class="buy-btn buy-call">
-Call Now
 </a>
 
 </div>
 
 <!-- PRE WORKOUT -->
 
-<div class="card" data-category="preworkout">
+<div class="card"
+data-category="preworkout">
 
 <img src="https://i.ibb.co/9H4Qm7L/preworkout.jpg">
 
@@ -512,25 +501,38 @@ Call Now
 
 <p>Energy • Focus • Pump</p>
 
-<div class="price">₹1999</div>
+<div class="price">
+₹1999
+</div>
 
-<button onclick="openPopup('pre-popup')" class="buy-btn buy-call">
+<button
+onclick="openPopup('pre-popup')"
+class="buy-btn buy-call">
+
 View Details
+
 </button>
 
-<a href="https://wa.me/919990954574" class="buy-btn buy-wa">
+<a href="https://wa.me/919990954574"
+class="buy-btn buy-wa">
+
 WhatsApp Order
+
 </a>
 
-<a href="tel:9990954574" class="buy-btn buy-call">
+<a href="tel:9990954574"
+class="buy-btn buy-call">
+
 Call Now
+
 </a>
 
 </div>
 
 <!-- MULTIVITAMIN -->
 
-<div class="card" data-category="multivitamin">
+<div class="card"
+data-category="multivitamin">
 
 <img src="https://i.ibb.co/fv0J0Lx/multivitamin.jpg">
 
@@ -538,25 +540,38 @@ Call Now
 
 <p>Daily Health Support</p>
 
-<div class="price">₹1499</div>
+<div class="price">
+₹1499
+</div>
 
-<button onclick="openPopup('multi-popup')" class="buy-btn buy-call">
+<button
+onclick="openPopup('multi-popup')"
+class="buy-btn buy-call">
+
 View Details
+
 </button>
 
-<a href="https://wa.me/919990954574" class="buy-btn buy-wa">
+<a href="https://wa.me/919990954574"
+class="buy-btn buy-wa">
+
 WhatsApp Order
+
 </a>
 
-<a href="tel:9990954574" class="buy-btn buy-call">
+<a href="tel:9990954574"
+class="buy-btn buy-call">
+
 Call Now
+
 </a>
 
 </div>
 
 <!-- FISH OIL -->
 
-<div class="card" data-category="fishoil">
+<div class="card"
+data-category="fishoil">
 
 <img src="https://i.ibb.co/F7W0n4g/fishoil.jpg">
 
@@ -564,51 +579,37 @@ Call Now
 
 <p>Omega 3 Fish Oil</p>
 
-<div class="price">₹999</div>
+<div class="price">
+₹999
+</div>
 
-<button onclick="openPopup('fish-popup')" class="buy-btn buy-call">
+<button
+onclick="openPopup('fish-popup')"
+class="buy-btn buy-call">
+
 View Details
+
 </button>
 
-<a href="https://wa.me/919990954574" class="buy-btn buy-wa">
+<a href="https://wa.me/919990954574"
+class="buy-btn buy-wa">
+
 WhatsApp Order
+
 </a>
 
-<a href="tel:9990954574" class="buy-btn buy-call">
+<a href="tel:9990954574"
+class="buy-btn buy-call">
+
 Call Now
-</a>
 
-</div>
-
-<!-- GAINER -->
-
-<div class="card" data-category="gainer">
-
-<img src="https://i.ibb.co/sJjstZh7/Gainer-Choc-1-K-Front-1200x.jpg">
-
-<h3>Labrada Mass Gainer</h3>
-
-<p>52g Protein • 250g Carbs</p>
-
-<div class="price">₹3000</div>
-
-<button onclick="openPopup('gainer-popup')" class="buy-btn buy-call">
-View Details
-</button>
-
-<a href="https://wa.me/919990954574" class="buy-btn buy-wa">
-WhatsApp Order
-</a>
-
-<a href="tel:9990954574" class="buy-btn buy-call">
-Call Now
 </a>
 
 </div>
 
 </div>
 
-<!-- VERIFY SECTION -->
+<!-- VERIFY -->
 
 <section class="verify-section">
 
@@ -630,187 +631,142 @@ Verify Product
 
 <!-- LABRADA POPUP -->
 
-<div id="labrada-popup" class="popup">
+<div id="labrada-popup"
+class="popup">
+
 <div class="popup-box">
 
-<h2>Labrada Whey Protein</h2>
+<h2>
+Labrada Whey Protein
+</h2>
 
 <p>
 
 ✅ 24g Protein<br><br>
+
 ✅ Whey Protein Concentrate<br><br>
-✅ Supports Muscle Recovery<br><br>
-✅ Helps Muscle Growth<br><br>
-✅ Easily Mixes With Milk & Water
+
+✅ Fast Recovery<br><br>
+
+✅ Muscle Growth Support
 
 </p>
 
-<button onclick="closePopup('labrada-popup')" class="close-btn">
+<button
+onclick="closePopup('labrada-popup')"
+class="close-btn">
+
 Close
+
 </button>
 
 </div>
-</div>
 
-<!-- MUSCLETECH POPUP -->
-
-<div id="muscletech-popup" class="popup">
-<div class="popup-box">
-
-<h2>Muscletech Nitro Tech</h2>
-
-<p>
-
-✅ 30g Protein<br><br>
-✅ Added Creatine Formula<br><br>
-✅ Faster Muscle Recovery<br><br>
-✅ Lean Muscle Support
-
-</p>
-
-<button onclick="closePopup('muscletech-popup')" class="close-btn">
-Close
-</button>
-
-</div>
-</div>
-
-<!-- ON POPUP -->
-
-<div id="on-popup" class="popup">
-<div class="popup-box">
-
-<h2>ON Gold Standard Whey</h2>
-
-<p>
-
-✅ 24g Protein<br><br>
-✅ 5.5g BCAA<br><br>
-✅ Premium Whey Isolate Blend<br><br>
-✅ Fast Absorption Formula
-
-</p>
-
-<button onclick="closePopup('on-popup')" class="close-btn">
-Close
-</button>
-
-</div>
-</div>
-
-<!-- GNC POPUP -->
-
-<div id="gnc-popup" class="popup">
-<div class="popup-box">
-
-<h2>GNC Creatine</h2>
-
-<p>
-
-✅ Micronized Creatine<br><br>
-✅ Better Strength & Power<br><br>
-✅ Faster Recovery<br><br>
-✅ Unflavoured Formula
-
-</p>
-
-<button onclick="closePopup('gnc-popup')" class="close-btn">
-Close
-</button>
-
-</div>
 </div>
 
 <!-- PRE WORKOUT POPUP -->
 
-<div id="pre-popup" class="popup">
+<div id="pre-popup"
+class="popup">
+
 <div class="popup-box">
 
-<h2>Muscletech Pre Workout</h2>
+<h2>
+Muscletech Pre Workout
+</h2>
 
 <p>
 
-✅ Extreme Workout Energy<br><br>
-✅ Better Focus & Pump<br><br>
-✅ Improves Performance<br><br>
-✅ Great Taste Formula
+✅ Extreme Energy<br><br>
+
+✅ Better Focus<br><br>
+
+✅ Muscle Pump Support<br><br>
+
+✅ Faster Workout Performance
 
 </p>
 
-<button onclick="closePopup('pre-popup')" class="close-btn">
+<button
+onclick="closePopup('pre-popup')"
+class="close-btn">
+
 Close
+
 </button>
 
 </div>
+
 </div>
 
 <!-- MULTIVITAMIN POPUP -->
 
-<div id="multi-popup" class="popup">
+<div id="multi-popup"
+class="popup">
+
 <div class="popup-box">
 
-<h2>GNC Multivitamin</h2>
+<h2>
+GNC Multivitamin
+</h2>
 
 <p>
 
 ✅ Daily Health Support<br><br>
-✅ Immunity Support<br><br>
-✅ Energy & Recovery Support<br><br>
-✅ Essential Vitamins & Minerals
+
+✅ Better Immunity<br><br>
+
+✅ Vitamins & Minerals<br><br>
+
+✅ Energy Support
 
 </p>
 
-<button onclick="closePopup('multi-popup')" class="close-btn">
+<button
+onclick="closePopup('multi-popup')"
+class="close-btn">
+
 Close
+
 </button>
 
 </div>
+
 </div>
 
 <!-- FISH OIL POPUP -->
 
-<div id="fish-popup" class="popup">
+<div id="fish-popup"
+class="popup">
+
 <div class="popup-box">
 
-<h2>MuscleBlaze Fish Oil</h2>
+<h2>
+MuscleBlaze Fish Oil
+</h2>
 
 <p>
 
-✅ Omega 3 Formula<br><br>
-✅ Heart Health Support<br><br>
+✅ Omega 3 Support<br><br>
+
+✅ Heart Health<br><br>
+
 ✅ Joint Support<br><br>
+
 ✅ Better Recovery
 
 </p>
 
-<button onclick="closePopup('fish-popup')" class="close-btn">
+<button
+onclick="closePopup('fish-popup')"
+class="close-btn">
+
 Close
+
 </button>
 
 </div>
-</div>
 
-<!-- GAINER POPUP -->
-
-<div id="gainer-popup" class="popup">
-<div class="popup-box">
-
-<h2>Labrada Mass Gainer</h2>
-
-<p>
-
-✅ 52g Protein<br><br>
-✅ 250g Carbs<br><br>
-✅ High Calorie Formula<br><br>
-✅ Fast Weight Gain Support
-
-</p>
-
-<button onclick="closePopup('gainer-popup')" class="close-btn">
-Close
-</button>
-
-</div>
 </div>
 
 <!-- VERIFY POPUP -->
@@ -819,37 +775,49 @@ Close
 
 <div id="verify-box">
 
-<h1 id="brand-name" style="
+<h1 id="brand-name"
+style="
 color:#ffcc00;
-font-size:32px;
 margin-bottom:20px;
+font-size:32px;
 ">
-LABRADA NUTRITION
+
+PRODUCT
+
 </h1>
 
-<div id="verify-icon" style="
+<div id="verify-icon"
+style="
 font-size:70px;
 margin-bottom:15px;
 ">
+
 ✅
+
 </div>
 
-<h2 id="verify-status" style="
-font-size:30px;
+<h2 id="verify-status"
+style="
+color:#00ff00;
 margin-bottom:10px;
 ">
+
 PRODUCT VERIFIED
+
 </h2>
 
-<p id="verify-msg" style="
-font-size:18px;
-color:white;
-">
-100% Authentic Product
+<p id="verify-msg">
+
+100% Authentic
+
 </p>
 
-<button onclick="closeVerifyPopup()" class="close-btn">
+<button
+onclick="closeVerifyPopup()"
+class="close-btn">
+
 Close
+
 </button>
 
 </div>
@@ -868,35 +836,6 @@ BIGBROTHERS
 Multi Brand Supplement Store
 </p>
 
-<br>
-
-<a href="tel:9990954574"
-style="
-color:white;
-text-decoration:none;
-font-size:18px;
-">
-
-📞 9990954574
-
-</a>
-
-<br><br>
-
-<a href="https://wa.me/919990954574"
-style="
-background:#25D366;
-padding:14px 20px;
-border-radius:12px;
-text-decoration:none;
-color:white;
-font-weight:bold;
-">
-
-WhatsApp Order
-
-</a>
-
 </footer>
 
 <!-- SCRIPT -->
@@ -907,7 +846,8 @@ WhatsApp Order
 
 function showCategory(category){
 
-let cards=document.querySelectorAll(".card");
+let cards =
+document.querySelectorAll(".card");
 
 cards.forEach(function(card){
 
@@ -917,7 +857,9 @@ card.style.display="block";
 
 }
 
-else if(card.dataset.category===category){
+else if(
+card.dataset.category===category
+){
 
 card.style.display="block";
 
@@ -935,16 +877,27 @@ card.style.display="none";
 
 /* SEARCH */
 
-document.getElementById("searchInput")
-.addEventListener("keyup",function(){
+const searchInput =
+document.getElementById(
+"searchInput"
+);
 
-let value=this.value.toLowerCase();
+searchInput.addEventListener(
+"keyup",
+function(){
 
-let cards=document.querySelectorAll(".card");
+let value =
+this.value.toLowerCase();
+
+let cards =
+document.querySelectorAll(".card");
 
 cards.forEach(function(card){
 
-if(card.innerText.toLowerCase().includes(value)){
+let text =
+card.innerText.toLowerCase();
+
+if(text.includes(value)){
 
 card.style.display="block";
 
@@ -960,7 +913,7 @@ card.style.display="none";
 
 });
 
-/* POPUP */
+/* PRODUCT POPUP */
 
 function openPopup(id){
 
@@ -980,11 +933,15 @@ document.getElementById(id)
 
 function verifyCode(){
 
-let input=
-document.getElementById("manualCodeInput");
+let input =
+document.getElementById(
+"manualCodeInput"
+);
 
-let code=
-input.value.trim().toUpperCase();
+let code =
+input.value
+.trim()
+.toUpperCase();
 
 if(code===""){
 
@@ -997,12 +954,14 @@ return;
 const products={
 
 "LBR7F29K":"LABRADA NUTRITION",
-"ON84P2X":"OPTIMUM NUTRITION",
-"GNC3M78B":"GNC",
-"PRE9W7K2":"MUSCLETECH PRE WORKOUT",
-"MUL4V8T1":"GNC MULTIVITAMIN",
-"FIS8O2L9":"MUSCLEBLAZE FISH OIL",
-"LMG5P62C":"LABRADA MASS GAINER"
+
+"MUS4T8X2":"MUSCLETECH",
+
+"PRE9W8X1":"MUSCLETECH PRE WORKOUT",
+
+"MUL4T7V2":"GNC MULTIVITAMIN",
+
+"FSH6O3L9":"MUSCLEBLAZE FISH OIL"
 
 };
 
@@ -1014,36 +973,33 @@ if(products[code]){
 
 document.getElementById(
 "brand-name"
-).innerText=
+).innerText =
 products[code];
 
 document.getElementById(
-"verify-icon"
-).innerHTML="✅";
-
-document.getElementById(
 "verify-status"
-).innerHTML=
-"PRODUCT VERIFIED SUCCESSFULLY";
-
-document.getElementById(
-"verify-status"
-).style.color="#00ff00";
+).innerHTML =
+"PRODUCT VERIFIED";
 
 document.getElementById(
 "verify-msg"
-).innerText=
-"100% Authentic Product";
+).innerText =
+"100% Authentic";
+
+document.getElementById(
+"verify-icon"
+).innerHTML =
+"✅";
+
+document.getElementById(
+"verify-status"
+).style.color =
+"#00ff00";
 
 document.getElementById(
 "verify-box"
-).style.border=
+).style.border =
 "3px solid #00ff00";
-
-document.getElementById(
-"verify-box"
-).style.boxShadow=
-"0 0 25px #00ff00";
 
 }
 
@@ -1051,40 +1007,35 @@ else{
 
 document.getElementById(
 "brand-name"
-).innerText=
+).innerText =
 "UNKNOWN PRODUCT";
 
 document.getElementById(
-"verify-icon"
-).innerHTML="❌";
-
-document.getElementById(
 "verify-status"
-).innerHTML=
-"PRODUCT FAILED VERIFICATION";
-
-document.getElementById(
-"verify-status"
-).style.color="red";
+).innerHTML =
+"VERIFICATION FAILED";
 
 document.getElementById(
 "verify-msg"
-).innerText=
+).innerText =
 "Invalid Product Code";
 
 document.getElementById(
-"verify-box"
-).style.border=
-"3px solid red";
+"verify-icon"
+).innerHTML =
+"❌";
+
+document.getElementById(
+"verify-status"
+).style.color =
+"red";
 
 document.getElementById(
 "verify-box"
-).style.boxShadow=
-"0 0 25px red";
+).style.border =
+"3px solid red";
 
 }
-
-/* AUTO CLEAR INPUT */
 
 input.value="";
 
@@ -1100,23 +1051,24 @@ document.getElementById(
 
 }
 
-/* AUTO QR VERIFY */
+/* AUTO VERIFY */
 
 window.onload=function(){
 
-const params=
+const params =
 new URLSearchParams(
 window.location.search
 );
 
-const code=params.get("code");
+const code =
+params.get("code");
 
 if(code){
 
 document.getElementById(
 "manualCodeInput"
-).value=
-code;
+).value =
+code.toUpperCase();
 
 verifyCode();
 
