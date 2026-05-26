@@ -549,6 +549,84 @@ Call Now
 
 </div>
 
+<!-- PRE WORKOUT -->
+
+<div class="card" data-category="preworkout">
+
+<img src="https://i.ibb.co/9H4Qm7L/preworkout.jpg">
+
+<h3>Muscletech Pre Workout</h3>
+
+<p>Energy • Focus • Pump</p>
+
+<div class="price">₹1999</div>
+
+<button onclick="openPopup('pre-popup')" class="buy-btn buy-call">
+View Details
+</button>
+
+<a href="https://wa.me/919990954574" class="buy-btn buy-wa">
+WhatsApp Order
+</a>
+
+<a href="tel:9990954574" class="buy-btn buy-call">
+Call Now
+</a>
+
+</div>
+
+<!-- MULTIVITAMIN -->
+
+<div class="card" data-category="multivitamin">
+
+<img src="https://i.ibb.co/fv0J0Lx/multivitamin.jpg">
+
+<h3>GNC Multivitamin</h3>
+
+<p>Daily Health Support</p>
+
+<div class="price">₹1499</div>
+
+<button onclick="openPopup('multi-popup')" class="buy-btn buy-call">
+View Details
+</button>
+
+<a href="https://wa.me/919990954574" class="buy-btn buy-wa">
+WhatsApp Order
+</a>
+
+<a href="tel:9990954574" class="buy-btn buy-call">
+Call Now
+</a>
+
+</div>
+
+<!-- FISH OIL -->
+
+<div class="card" data-category="fishoil">
+
+<img src="https://i.ibb.co/F7W0n4g/fishoil.jpg">
+
+<h3>MuscleBlaze Fish Oil</h3>
+
+<p>Omega 3 Fish Oil</p>
+
+<div class="price">₹999</div>
+
+<button onclick="openPopup('fish-popup')" class="buy-btn buy-call">
+View Details
+</button>
+
+<a href="https://wa.me/919990954574" class="buy-btn buy-wa">
+WhatsApp Order
+</a>
+
+<a href="tel:9990954574" class="buy-btn buy-call">
+Call Now
+</a>
+
+</div>
+
 <!-- GAINER -->
 
 <div class="card" data-category="gainer">
@@ -572,6 +650,65 @@ WhatsApp Order
 <a href="tel:9990954574" class="buy-btn buy-call">
 Call Now
 </a>
+
+</div>
+
+</div>
+
+<!-- PRE WORKOUT POPUP -->
+
+<div id="pre-popup" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.92);
+z-index:999999;
+justify-content:center;
+align-items:center;
+padding:20px;
+">
+
+<div style="
+background:#141414;
+max-width:700px;
+width:100%;
+padding:35px;
+border-radius:25px;
+border:2px solid #ffcc00;
+overflow:auto;
+max-height:90vh;
+">
+
+<h2 style="color:#ffcc00;text-align:center;">
+Muscletech Pre Workout
+</h2>
+
+<p style="line-height:1.9;color:#ddd;">
+
+✅ Extreme Energy Boost<br><br>
+✅ Better Workout Focus<br><br>
+✅ Muscle Pump Support<br><br>
+✅ Faster Performance<br><br>
+✅ Great Taste Formula
+
+</p>
+
+<button onclick="closePopupBox('pre-popup')" style="
+padding:14px;
+width:100%;
+border:none;
+border-radius:12px;
+background:#ffcc00;
+font-weight:bold;
+margin-top:20px;
+">
+
+Close
+
+</button>
 
 </div>
 
@@ -983,6 +1120,20 @@ function closePopupBox(){
 document.getElementById(
 "verification-overlay"
 ).style.display="none";
+
+}
+
+function openPopup(id){
+
+document.getElementById(id)
+.style.display="flex";
+
+}
+
+function closePopupBox(id){
+
+document.getElementById(id)
+.style.display="none";
 
 }
 
