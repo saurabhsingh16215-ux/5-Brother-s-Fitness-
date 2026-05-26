@@ -305,15 +305,12 @@ window.location.search
 const code=
 params.get("code");
 
-if(
-code &&
-products[
-code.toUpperCase()
-]
-){
+if(code){
 
 currentCode=
-code.toUpperCase();
+code.trim().toUpperCase();
+
+if(products[currentCode]){
 
 let p=
 products[currentCode];
