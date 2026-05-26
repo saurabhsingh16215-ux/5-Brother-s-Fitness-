@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Product Verification</title>
 
@@ -79,7 +81,7 @@ font-weight:bold;
 cursor:pointer;
 }
 
-/* PORTAL */
+/* PORTAL SCREEN */
 
 #portalScreen{
 display:none;
@@ -88,7 +90,7 @@ min-height:100vh;
 }
 
 .portal-card{
-max-width:520px;
+max-width:500px;
 margin:auto;
 background:#111;
 padding:35px 25px;
@@ -105,32 +107,34 @@ margin-bottom:10px;
 }
 
 .portal-product{
-font-size:25px;
+font-size:26px;
+margin-bottom:10px;
 font-weight:bold;
-margin-bottom:8px;
 }
 
 .portal-sub{
 color:#bbb;
-margin-bottom:20px;
+margin-bottom:25px;
+font-size:17px;
 }
 
-.batch-box{
+.code-box{
 background:#181818;
-padding:16px;
-border-radius:15px;
-margin-bottom:15px;
-border:1px solid #333;
+border:2px dashed #ffcc00;
+padding:20px;
+border-radius:20px;
+margin-bottom:25px;
 }
 
-.batch-title{
-font-size:14px;
-color:#aaa;
+.code-title{
+font-size:18px;
+margin-bottom:10px;
 }
 
-.batch-number{
-font-size:22px;
+.code{
+font-size:28px;
 font-weight:bold;
+letter-spacing:2px;
 color:#00ff00;
 }
 
@@ -138,7 +142,7 @@ color:#00ff00;
 width:100%;
 padding:16px;
 border:none;
-border-radius:14px;
+border-radius:15px;
 font-size:18px;
 margin-bottom:15px;
 text-align:center;
@@ -148,7 +152,7 @@ text-align:center;
 width:100%;
 padding:16px;
 border:none;
-border-radius:14px;
+border-radius:15px;
 background:#ffcc00;
 font-size:18px;
 font-weight:bold;
@@ -169,55 +173,89 @@ font-weight:bold;
 
 <body>
 
+<!-- VERIFIED SCREEN -->
+
 <div id="verifiedScreen">
 
 <div class="verify-card">
 
-<div class="brand-name" id="verifiedBrand">
+<div class="brand-name"
+id="verifiedBrand">
+
 LABRADA NUTRITION
+
 </div>
 
-<div class="icon">✅</div>
+<div class="icon">
+✅
+</div>
 
 <div class="verify-title">
+
 PRODUCT VERIFIED
+
 </div>
 
 <div class="verify-msg">
+
 100% Authentic Product
+
 </div>
 
-<button class="open-btn" onclick="openPortal()">
+<button class="open-btn"
+onclick="openPortal()">
+
 OPEN WEBSITE
+
 </button>
 
 </div>
+
 </div>
+
+<!-- PORTAL SCREEN -->
 
 <div id="portalScreen">
 
 <div class="portal-card">
 
-<div class="portal-brand" id="portalBrand">
+<div class="portal-brand"
+id="portalBrand">
+
 LABRADA NUTRITION
+
 </div>
 
-<div class="portal-product" id="portalProduct">
-WHEY PROTEIN AUTHENTICATION PORTAL
+<div class="portal-product"
+id="portalProduct">
+
+WHEY PROTEIN
+AUTHENTICATION PORTAL
+
 </div>
 
 <div class="portal-sub">
-Please Enter Your Product Verification Code
+
+Please Enter Your Product
+Code Here
+
 </div>
 
-<div class="batch-box">
-<div class="batch-title">
-BATCH NUMBER
+<div class="code-box">
+
+<div class="code-title">
+
+Manual Verification Code
+
 </div>
 
-<div class="batch-number" id="batchNo">
-LW2401
+<div class="code"
+id="manualCode">
+
+LBR7F29K
+
 </div>
+
 </div>
 
 <input
@@ -229,145 +267,130 @@ placeholder="Enter Product Code">
 <button
 class="verify-btn"
 onclick="verifyProduct()">
+
 VERIFY PRODUCT
+
 </button>
 
-<div id="resultBox"></div>
+<div id="resultBox">
 
 </div>
+
+</div>
+
 </div>
 
 <script>
 
 const products={
 
-"LBR-A91X7K":{
+"LBR7F29K":{
+
 brand:"LABRADA NUTRITION",
-product:"WHEY PROTEIN",
-batch:"LW2401"
+product:"WHEY PROTEIN"
+
 },
 
-"LMG-A71P9X":{
+"LMG5P62C":{
+
 brand:"LABRADA NUTRITION",
-product:"MASS GAINER",
-batch:"LG2401"
+product:"MASS GAINER"
+
 },
 
-"MST-A44P8Q":{
+"TRU5MP91":{
+
 brand:"MUSCLETECH",
-product:"NITRO TECH",
-batch:"MT2401"
-},
+product:"NITRO TECH"
 
-"PRE-A72Q8L":{
+},"PRE9W7K2":{
+
 brand:"MUSCLETECH",
-product:"PRE WORKOUT",
-batch:"PW2401"
+product:"PRE WORKOUT"
+
 },
 
-"ON-A91T5Q":{
+"ON84P2X":{
+
 brand:"OPTIMUM NUTRITION",
-product:"GOLD STANDARD WHEY",
-batch:"ON2401"
+product:"GOLD STANDARD WHEY"
+
 },
 
-"GNC-A11P8Q":{
+"GNC3M78B":{
+
 brand:"GNC",
-product:"CREATINE",
-batch:"GC2401"
+product:"CREATINE"
+
 },
 
-"MUL-A91Q4L":{
+"MUL4V8T1":{
+
 brand:"GNC",
-product:"MULTIVITAMIN",
-batch:"MV2401"
+product:"MULTIVITAMIN"
+
 },
 
-"FIS-A72P8Q":{
+"FIS8O2L9":{
+
 brand:"MUSCLEBLAZE",
-product:"FISH OIL",
-batch:"FO2401"
+product:"FISH OIL"
+
 }
 
 };
 
 let currentCode="";
 
-/* QR LOAD */
-
 window.onload=function(){
 
-const params =
+const params=
 new URLSearchParams(
 window.location.search
 );
 
-const code =
-params.get("code");
+const code=params.get("code");
 
-if(
-code &&
-products[
-code.trim().toUpperCase()
-]
-){
+if(code &&
+products[code.toUpperCase()]){
 
-currentCode =
-code.trim().toUpperCase();
+currentCode=
+code.toUpperCase();
 
-let p =
+let p=
 products[currentCode];
 
 document.getElementById(
 "verifiedBrand"
-).innerText =
+).innerText=
 p.brand;
 
 document.getElementById(
 "portalBrand"
-).innerText =
+).innerText=
 p.brand;
 
 document.getElementById(
 "portalProduct"
-).innerText =
-p.product +
+).innerText=
+p.product+
 " AUTHENTICATION PORTAL";
 
 document.getElementById(
-"batchNo"
-).innerText =
-p.batch;
+"manualCode"
+).innerText=
+currentCode;
 
-}else{
+}
 
-currentCode="";
+else{
 
-document.getElementById(
-"verifiedBrand"
-).innerText =
-"INVALID QR";
-
-document.getElementById(
-"portalBrand"
-).innerText =
-"INVALID QR";
-
-document.getElementById(
-"portalProduct"
-).innerText =
-"PRODUCT NOT FOUND";
-
-document.getElementById(
-"batchNo"
-).innerText =
-"----";
+currentCode=
+"LBR7F29K";
 
 }
 
 };
-
-/* OPEN WEBSITE */
 
 function openPortal(){
 
@@ -387,8 +410,6 @@ behavior:"smooth"
 });
 
 }
-
-/* VERIFY */
 
 function verifyProduct(){
 
@@ -410,36 +431,10 @@ document.getElementById(
 result.style.display=
 "block";
 
-if(
-value===currentCode
-){
-
-let key=
-"verify_"+
-currentCode;
-
-let count=
-parseInt(
-localStorage.getItem(
-key
-)
-)||0;
-
-count++;
-
-localStorage.setItem(
-key,
-count
-);
-
-if(count<=20){
+if(value===currentCode){
 
 result.innerHTML=
-"✅ PRODUCT VERIFIED<br><br>Batch: "+
-products[currentCode]
-.batch+
-"<br><br>Verification Count: "
-+count+"/20";
+"✅ PRODUCT VERIFIED";
 
 result.style.background=
 "#002b00";
@@ -449,27 +444,6 @@ result.style.color=
 
 result.style.border=
 "2px solid #00ff00";
-
-}
-
-else{
-
-result.innerHTML=
-"⚠ CODE USED TOO MANY TIMES<br><br>Batch: "
-+
-products[currentCode]
-.batch;
-
-result.style.background=
-"#2b0000";
-
-result.style.color=
-"#ffcc00";
-
-result.style.border=
-"2px solid #ffcc00";
-
-}
 
 }
 
@@ -492,6 +466,7 @@ result.style.border=
 input.value="";
 
 }
+
 </script>
 
 </body>
