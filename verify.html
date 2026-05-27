@@ -6,80 +6,70 @@
     <title>Verification Portal</title>
     <style>
         * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
-        body { background:#0b0b0b; color:white; min-height:100vh; }
+        body { background:#0b0b0b; color:white; min-height:100vh; display:flex; justify-content:center; align-items:center; }
         
-        /* Popup Design */
-        #verifiedScreen { display:flex; justify-content:center; align-items:center; height:100vh; padding:20px; position:fixed; top:0; left:0; width:100%; background:rgba(0,0,0,0.8); z-index:1000; }
-        .popup-card { background:#111; padding:30px; border-radius:20px; width:100%; max-width:350px; text-align:center; border:2px solid #ffcc00; box-shadow: 0 0 20px rgba(255,204,0,0.3); }
-        .popup-brand { font-size:22px; font-weight:bold; color:#ffcc00; margin-bottom:15px; }
-        .popup-icon { font-size:50px; margin-bottom:10px; }
-        .popup-status { font-size:20px; font-weight:bold; color:#00ff00; margin-bottom:10px; }
-        .popup-msg { font-size:14px; color:#ddd; margin-bottom:20px; }
-        .popup-btn { background:#ffcc00; color:black; border:none; padding:12px 40px; border-radius:8px; font-weight:bold; cursor:pointer; }
-
-        /* Portal Design */
-        #portalScreen { padding:40px 20px; display:none; }
-        .card { max-width:400px; margin:auto; background:#111; padding:30px; border-radius:20px; border:2px solid #ffcc00; text-align:center; }
+        /* Portal Screen - Centre mein rahega */
+        #portalScreen { width:100%; max-width:400px; padding:20px; }
+        .card { background:#111; padding:30px; border-radius:20px; border:2px solid #ffcc00; text-align:center; }
+        .popup-brand { font-size:22px; font-weight:bold; color:#ffcc00; margin-bottom:20px; }
         .verify-input { width:100%; padding:15px; border-radius:10px; border:none; margin-bottom:15px; text-align:center; }
         .btn { width:100%; padding:15px; border:none; border-radius:10px; background:#ffcc00; font-weight:bold; cursor:pointer; }
+        
+        /* Verified Popup */
+        #verifiedScreen { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:1000; }
+        .popup-card { background:#111; padding:30px; border-radius:20px; width:90%; max-width:350px; text-align:center; border:2px solid #ffcc00; }
     </style>
 </head>
 <body>
 
-<!-- Verified Popup Screen -->
-<div id="verifiedScreen" style="display:none;">
-    <div class="popup-card">
-        <div class="popup-brand" id="popupBrand">BRAND NAME</div>
-        <div class="popup-icon">✅</div>
-        <div class="popup-status">PRODUCT VERIFIED SUCCESSFULLY</div>
-        <div class="popup-msg" id="thankMsg">Thank You for Choosing Us</div>
-        <button class="popup-btn" onclick="document.getElementById('verifiedScreen').style.display='none'">Close</button>
+<!-- Portal Screen -->
+<div id="portalScreen">
+    <div class="card">
+        <div class="popup-brand">PORTAL</div>
+        <input type="text" id="verifyInput" class="verify-input" placeholder="Enter Product Code">
+        <button class="btn" onclick="verifyProduct()">VERIFY PRODUCT</button>
+        <div id="resultBox" style="margin-top:15px; font-weight:bold;"></div>
     </div>
 </div>
 
-<!-- Portal Screen -->
-<div id="portalScreen" style="display:block;">
-    <div class="card">
-        <div class="popup-brand" id="portalBrand">PORTAL</div>
-        <input type="text" id="verifyInput" class="verify-input" placeholder="Enter Product Code">
-        <button class="btn" onclick="verifyProduct()">VERIFY PRODUCT</button>
-        <div id="resultBox" style="margin-top:20px; font-weight:bold;"></div>
+<!-- Verified Popup -->
+<div id="verifiedScreen">
+    <div class="popup-card">
+        <div class="popup-brand" id="popupBrand">BRAND NAME</div>
+        <div style="font-size:50px;">✅</div>
+        <div style="color:#00ff00; font-size:18px; font-weight:bold; margin:10px 0;">PRODUCT VERIFIED SUCCESSFULLY</div>
+        <div style="font-size:14px; color:#ddd; margin-bottom:20px;">Thank You for Choosing Us</div>
+        <button class="btn" onclick="document.getElementById('verifiedScreen').style.display='none'">Close</button>
     </div>
 </div>
 
 <script>
-    
     const products = {
-    "LBR7F29K": { brand: "LABRADA NUTRITION", product: "WHEY PROTEIN" },
-    "LMG5P62C": { brand: "LABRADA NUTRITION", product: "" }, // Sirf Labrada Nutrition dikhega
-    "TRU5MP91": { brand: "MUSCLETECH", product: "NITRO TECH" },
-    "PRE9W7K2": { brand: "MUSCLETECH", product: "PRE WORKOUT" },
-    "ON84P2X": { brand: "OPTIMUM NUTRITION", product: "GOLD STANDARD WHEY" },
-    "GNC3M78B": { brand: "GNC", product: "CREATINE" }, // Spelling correct kar di
-    "MUL4V8T1": { brand: "GNC", product: "MULTIVITAMIN" },
-    "FIS8O2L9": { brand: "MUSCLEBLAZE", product: "FISH OIL" },
-    "WG55Z": { brand: "WELLCORE", product: "CREATINE" } // Wellcore Creatine spelling corrected
-};
+        "LBR7F29K": { brand: "LABRADA NUTRITION", product: "WHEY PROTEIN" },
+        "LMG5P62C": { brand: "LABRADA NUTRITION", product: "" },
+        "TRU5MP91": { brand: "MUSCLETECH", product: "NITRO TECH" },
+        "PRE9W7K2": { brand: "MUSCLETECH", product: "PRE WORKOUT" },
+        "ON84P2X": { brand: "OPTIMUM NUTRITION", product: "GOLD STANDARD WHEY" },
+        "GNC3M78B": { brand: "GNC", product: "CREATINE" },
+        "MUL4V8T1": { brand: "GNC", product: "MULTIVITAMIN" },
+        "FIS8O2L9": { brand: "MUSCLEBLAZE", product: "FISH OIL" },
+        "WG55Z": { brand: "WELLCORE", product: "CREATINE" }
+    };
 
-  function verifyProduct() {
+    function verifyProduct() {
         let code = document.getElementById("verifyInput").value.trim().toUpperCase();
         let result = document.getElementById("resultBox");
         
         if (products[code]) {
             let p = products[code];
-            // Popup mein brand name set karein
             document.getElementById("popupBrand").innerText = p.brand;
             document.getElementById("verifiedScreen").style.display = "flex";
-            
-            // Result box mein message
-            result.innerHTML = "✅ Verified!";
-            result.style.color = "#00ff00";
+            result.innerText = ""; // Result box saaf kar diya
         } else {
-            result.innerHTML = "❌ INVALID CODE";
+            result.innerText = "❌ INVALID CODE";
             result.style.color = "red";
         }
     }
 </script>
 </body>
 </html>
-
