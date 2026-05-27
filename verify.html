@@ -3,9 +3,7 @@
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Product Verification</title>
 
@@ -24,12 +22,19 @@ color:white;
 min-height:100vh;
 }
 
-/* BOTH SCREENS */
+/* SCREENS */
 
-#verifiedScreen,
-#portalScreen{
+#verifiedScreen{
 min-height:100vh;
 display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+#portalScreen{
+min-height:100vh;
+display:none;
 justify-content:center;
 align-items:center;
 padding:20px;
@@ -59,7 +64,7 @@ line-height:1.2;
 text-transform:uppercase;
 }
 
-/* VERIFIED */
+/* VERIFIED TEXT */
 
 .verify-text{
 color:#00ff00;
@@ -150,8 +155,7 @@ OPEN WEBSITE
 
 <!-- PORTAL SCREEN -->
 
-<div id="portalScreen"
-style="display:none;">
+<div id="portalScreen">
 
 <div class="card">
 
@@ -263,7 +267,7 @@ document.getElementById(
 ).innerText =
 p.brand;
 
-/* PORTAL */
+/* PORTAL SCREEN */
 
 document.getElementById(
 "portalBrand"
@@ -279,24 +283,14 @@ code.toUpperCase();
 
 }
 
-/* INVALID QR */
+/* NO QR */
 
 else{
 
 document.getElementById(
 "screenBrand"
 ).innerText =
-"AUTHENTICATION FAILED";
-
-document.getElementById(
-"portalBrand"
-).innerText =
-"INVALID PRODUCT";
-
-document.getElementById(
-"displayCode"
-).innerText =
-"INVALID QR";
+"SCAN PRODUCT QR";
 
 }
 
@@ -318,7 +312,7 @@ document.getElementById(
 
 }
 
-/* VERIFY PRODUCT */
+/* VERIFY */
 
 function verifyProduct(){
 
@@ -360,7 +354,7 @@ box.style.color =
 
 }
 
-/* SUCCESS */
+/* VERIFIED */
 
 else{
 
