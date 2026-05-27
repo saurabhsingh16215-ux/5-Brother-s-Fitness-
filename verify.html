@@ -3,43 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verification Portal</title>
+    <title>Product Verification</title>
     <style>
         * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
         body { background:#0b0b0b; color:white; min-height:100vh; display:flex; justify-content:center; align-items:center; }
         
-        /* Portal Screen - Centre mein rahega */
-        #portalScreen { width:100%; max-width:400px; padding:20px; }
-        .card { background:#111; padding:30px; border-radius:20px; border:2px solid #ffcc00; text-align:center; }
-        .popup-brand { font-size:22px; font-weight:bold; color:#ffcc00; margin-bottom:20px; }
-        .verify-input { width:100%; padding:15px; border-radius:10px; border:none; margin-bottom:15px; text-align:center; }
+        /* PORTAL STYLING */
+        .card { background:#111; padding:30px; border-radius:25px; width:90%; max-width:400px; text-align:center; border:2px solid #ffcc00; }
+        .brand { font-size:24px; font-weight:bold; color:#ffcc00; margin-bottom:15px; }
+        .code-box { background:#181818; border:2px dashed #ffcc00; padding:20px; border-radius:15px; margin:20px 0; }
+        .verify-input { width:100%; padding:15px; border-radius:10px; border:none; margin-bottom:15px; text-align:center; font-size:16px; }
         .btn { width:100%; padding:15px; border:none; border-radius:10px; background:#ffcc00; font-weight:bold; cursor:pointer; }
         
-        /* Verified Popup */
+        /* POPUP STYLING */
         #verifiedScreen { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:1000; }
         .popup-card { background:#111; padding:30px; border-radius:20px; width:90%; max-width:350px; text-align:center; border:2px solid #ffcc00; }
     </style>
 </head>
 <body>
 
-<!-- Portal Screen -->
+<!-- PORTAL SCREEN -->
 <div id="portalScreen">
     <div class="card">
-        <div class="popup-brand">PORTAL</div>
+        <div class="brand">AUTHENTICATION PORTAL</div>
+        <div class="code-box">
+            <div style="font-size:12px; color:#888;">MANUAL VERIFICATION CODE</div>
+            <div id="displayCode" style="font-size:22px; color:#00ff00; margin-top:10px;">SCAN QR CODE</div>
+        </div>
         <input type="text" id="verifyInput" class="verify-input" placeholder="Enter Product Code">
         <button class="btn" onclick="verifyProduct()">VERIFY PRODUCT</button>
         <div id="resultBox" style="margin-top:15px; font-weight:bold;"></div>
     </div>
 </div>
 
-<!-- Verified Popup -->
+<!-- VERIFIED POPUP -->
 <div id="verifiedScreen">
     <div class="popup-card">
-        <div class="popup-brand" id="popupBrand">BRAND NAME</div>
+        <div class="brand" id="popupBrand">BRAND NAME</div>
         <div style="font-size:50px;">✅</div>
         <div style="color:#00ff00; font-size:18px; font-weight:bold; margin:10px 0;">PRODUCT VERIFIED SUCCESSFULLY</div>
         <div style="font-size:14px; color:#ddd; margin-bottom:20px;">Thank You for Choosing Us</div>
-        <button class="btn" onclick="document.getElementById('verifiedScreen').style.display='none'">Close</button>
+        <button class="btn" onclick="document.getElementById('verifiedScreen').style.display='none'">CLOSE</button>
     </div>
 </div>
 
@@ -48,12 +52,17 @@
         "LBR7F29K": { brand: "LABRADA NUTRITION", product: "WHEY PROTEIN" },
         "LMG5P62C": { brand: "LABRADA NUTRITION", product: "" },
         "TRU5MP91": { brand: "MUSCLETECH", product: "NITRO TECH" },
-        "PRE9W7K2": { brand: "MUSCLETECH", product: "PRE WORKOUT" },
         "ON84P2X": { brand: "OPTIMUM NUTRITION", product: "GOLD STANDARD WHEY" },
         "GNC3M78B": { brand: "GNC", product: "CREATINE" },
-        "MUL4V8T1": { brand: "GNC", product: "MULTIVITAMIN" },
-        "FIS8O2L9": { brand: "MUSCLEBLAZE", product: "FISH OIL" },
-        "WG55Z": { brand: "WELLCORE", product: "CREATINE" }
+        "FIS8O2L9": { brand: "MUSCLEBLAZE", product: "FISH OIL" }
+    };
+
+    window.onload = function() {
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get("code");
+        if (code && products[code.toUpperCase()]) {
+            document.getElementById("displayCode").innerText = code.toUpperCase();
+        }
     };
 
     function verifyProduct() {
@@ -61,10 +70,17 @@
         let result = document.getElementById("resultBox");
         
         if (products[code]) {
-            let p = products[code];
-            document.getElementById("popupBrand").innerText = p.brand;
-            document.getElementById("verifiedScreen").style.display = "flex";
-            result.innerText = ""; // Result box saaf kar diya
+            let count = parseInt(localStorage.getItem("usage_" + code)) || 0;
+            if (count < 2) {
+                count++;
+                localStorage.setItem("usage_" + code, count);
+                document.getElementById("popupBrand").innerText = products[code].brand;
+                document.getElementById("verifiedScreen").style.display = "flex";
+                result.innerText = "";
+            } else {
+                result.innerText = "⚠️ ALREADY USED (2/2)";
+                result.style.color = "#ffcc00";
+            }
         } else {
             result.innerText = "❌ INVALID CODE";
             result.style.color = "red";
