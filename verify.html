@@ -413,58 +413,51 @@ behavior:"smooth"
 
 function verifyProduct(){
 
-let input=
-document.getElementById(
-"verifyInput"
-);
+let input = document.getElementById("verifyInput");
+let value = input.value.trim().toUpperCase();
 
-let value=
-input.value
-.trim()
-.toUpperCase();
+let result = document.getElementById("resultBox");
+result.style.display = "block";
 
-let result=
-document.getElementById(
-"resultBox"
-);
+if(value === currentCode){
 
-result.style.display=
-"block";
+  let key = "manual_" + currentCode;
 
-if(value===currentCode){
+  let count = parseInt(localStorage.getItem(key)) || 0;
+  count++;
 
-result.innerHTML=
-"✅ PRODUCT VERIFIED";
+  localStorage.setItem(key, count);
 
-result.style.background=
-"#002b00";
+  if(count <= 2){
 
-result.style.color=
-"#00ff00";
+    result.innerHTML =
+      "✅ PRODUCT VERIFIED<br><br>Used: " + count + "/2";
 
-result.style.border=
-"2px solid #00ff00";
+    result.style.background = "#002b00";
+    result.style.color = "#00ff00";
+    result.style.border = "2px solid #00ff00";
+
+  } else {
+
+    result.innerHTML =
+      "⚠ CODE LIMIT EXCEEDED (2 TIMES ONLY)";
+
+    result.style.background = "#2b0000";
+    result.style.color = "#ffcc00";
+    result.style.border = "2px solid #ffcc00";
+  }
 
 }
-
 else{
 
-result.innerHTML=
-"❌ PRODUCT FAILED";
+  result.innerHTML = "❌ PRODUCT FAILED";
 
-result.style.background=
-"#2b0000";
-
-result.style.color=
-"red";
-
-result.style.border=
-"2px solid red";
-
+  result.style.background = "#2b0000";
+  result.style.color = "red";
+  result.style.border = "2px solid red";
 }
 
-input.value="";
-
+input.value = "";
 }
 
 </script>
