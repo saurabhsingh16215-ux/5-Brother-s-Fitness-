@@ -7,39 +7,48 @@
     <style>
         * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
         body { background:#0b0b0b; color:white; min-height:100vh; }
+        
         #verifiedScreen { display:flex; justify-content:center; align-items:center; height:100vh; padding:20px; }
         #portalScreen { display:none; padding:30px 20px; min-height:100vh; }
+        
         .card { background:#111; padding:30px; border-radius:25px; width:100%; max-width:400px; text-align:center; border:2px solid #ffcc00; margin:auto; }
         .brand { font-size:24px; font-weight:bold; color:#ffcc00; margin-bottom:5px; }
         .product-name { font-size:18px; color:#fff; margin-bottom:15px; }
+        
         .code-box { background:#181818; border:2px dashed #ffcc00; padding:20px; border-radius:15px; margin:20px 0; }
         .verify-input { width:100%; padding:15px; border-radius:10px; border:none; margin-bottom:15px; text-align:center; font-size:16px; }
         .btn { width:100%; padding:15px; border:none; border-radius:10px; background:#ffcc00; font-weight:bold; cursor:pointer; }
+        
         #resultBox { display:none; margin-top:20px; padding:15px; border-radius:10px; font-weight:bold; line-height:1.5; }
     </style>
 </head>
 <body>
 
+<!-- SCREEN 1: VERIFIED POPUP -->
 <div id="verifiedScreen">
     <div class="card">
         <div class="brand" id="verifiedBrand">AUTHENTIC PRODUCT</div>
         <div style="font-size:50px; margin:10px 0;">✅</div>
         <div style="color:#00ff00; font-size:20px; font-weight:bold;">PRODUCT VERIFIED</div>
-        <button class="btn" style="margin-top:20px;" onclick="openPortal()">CLOSE</button>
+        <button class="btn" style="margin-top:20px;" onclick="openPortal()">OPEN WEBSITE</button>
     </div>
 </div>
 
+<!-- SCREEN 2: PORTAL -->
 <div id="portalScreen">
     <div class="card">
         <div class="brand" id="portalBrand">BRAND NAME</div>
         <div class="product-name" id="portalProduct">PRODUCT NAME</div>
+        
         <div class="code-box">
             <div style="font-size:12px; color:#888;">MANUAL VERIFICATION CODE</div>
             <div id="displayCode" style="font-size:22px; color:#00ff00; margin-top:10px;">---</div>
         </div>
+
         <input type="text" id="verifyInput" class="verify-input" placeholder="Enter Product Code">
         <button class="btn" onclick="verifyProduct()">VERIFY PRODUCT</button>
         <div id="resultBox"></div>
+        
         <button style="margin-top:20px; background:none; border:none; color:#444; cursor:pointer; font-size:10px;" 
                 onclick="localStorage.clear(); alert('Data Reset!'); location.reload();">RESET TESTING DATA</button>
     </div>
@@ -48,7 +57,7 @@
 <script>
     const products = {
         "LBR7F29K": { brand: "LABRADA NUTRITION", product: "WHEY PROTEIN" },
-        "LMG5P62C": { brand: "LABRADA NUTRITION", product: "" }, // Product khali chhod diya
+        "LMG5P62C": { brand: "LABRADA NUTRITION", product: "" },
         "TRU5MP91": { brand: "MUSCLETECH", product: "NITRO TECH" },
         "PRE9W7K2": { brand: "MUSCLETECH", product: "PRE WORKOUT" },
         "ON84P2X": { brand: "OPTIMUM NUTRITION", product: "GOLD STANDARD WHEY" },
@@ -87,9 +96,8 @@
             if (count < 2) {
                 count++;
                 localStorage.setItem("usage_" + code, count);
-                // Professional Message
-                let msg = "✅ Thank you for choosing " + products[code].brand + ".<br>Your product is verified.";
-                result.innerHTML = msg + "<br><br>Used: " + count + "/2";
+                let displayText = products[code].brand + (products[code].product ? " - " + products[code].product : "");
+                result.innerHTML = "✅ Thank you for choosing " + displayText + ".<br>Your product is verified.<br>Used: " + count + "/2";
                 result.style.background = "#002b00"; result.style.color = "#00ff00"; result.style.border = "1px solid #00ff00";
             } else {
                 result.innerHTML = "⚠️ ALREADY USED<br>Limit reached (2/2)";
