@@ -183,7 +183,12 @@ const products = {
 
 /* QR AUTO DETECT */
 
+
 window.onload = function(){
+
+/* RESET OLD SESSION */
+
+sessionStorage.clear();
 
 const params =
 new URLSearchParams(window.location.search);
@@ -211,7 +216,7 @@ document.getElementById("displayCode")
 
 }
 
-/* INVALID QR Or Fake Product */
+/* INVALID QR */
 
 else{
 
@@ -221,59 +226,6 @@ document.getElementById("scanBrand")
 }
 
 };
-
-/* OPEN WEBSITE */
-
-function openPortal(){
-
-document.getElementById("verifiedScreen")
-.style.display = "none";
-
-document.getElementById("portalScreen")
-.style.display = "flex";
-
-}
-
-/* VERIFY PRODUCT */
-
-function verifyProduct(){
-
-let code =
-document.getElementById("verifyInput")
-.value
-.trim()
-.toUpperCase();
-
-let box =
-document.getElementById("resultBox");
-
-/* VALID CODE */
-
-if(products[code]){
-
-let used =
-parseInt(
-sessionStorage.getItem("used_"+code)
-) || 0;
-
-/* LIMIT */
-
-if(used >= 2){
-
-box.innerHTML =
-"⚠️ ALREADY USED";
-
-box.style.color =
-"#ffcc00";
-
-}
-
-/* VERIFIED */
-
-else{
-
-used++;
-
 sessionStorage.setItem(
 "used_"+code,
 used
