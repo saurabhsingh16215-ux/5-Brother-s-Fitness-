@@ -5,91 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authentication Portal</title>
     <style>
-        body { background: #0b0b0b; color: white; margin: 0; font-family: Arial, sans-serif; }
-        /* First Page Popup */
-        #page1 { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: flex; justify-content: center; align-items: center; z-index: 9999; }
-        .popup { background: #111; padding: 30px; border-radius: 20px; border: 2px solid #ffcc00; text-align: center; width: 90%; max-width: 350px; }
-        
-        /* Second Page Portal */
-        #page2 { display: none; padding: 20px; text-align: center; }
-        .portal-card { background: #111; padding: 25px; border-radius: 15px; border: 2px solid #ffcc00; max-width: 400px; margin: auto; }
-        .input-box { width: 100%; padding: 12px; margin: 15px 0; border-radius: 5px; border: none; text-align: center; }
-        .btn { width: 100%; padding: 12px; background: #ffcc00; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
-        #statusBox { margin-top: 15px; padding: 10px; border-radius: 5px; display: none; font-weight: bold; }
+        body { background:#0b0b0b; color:white; display:flex; justify-content:center; align-items:center; min-height:100vh; margin:0; }
+        .card { background:#111; padding:25px; border-radius:15px; border:2px solid #ffcc00; width:90%; max-width:350px; text-align:center; }
+        .title { color:#ffcc00; font-weight:bold; margin-bottom:5px; font-size:20px; }
+        .subtitle { font-size:12px; color:#ccc; margin-bottom:15px; }
+        .code-box { border:1px dashed #ffcc00; padding:15px; margin-bottom:15px; border-radius:5px; }
+        .verify-input { width:100%; padding:12px; border-radius:5px; border:none; margin-bottom:10px; text-align:center; }
+        .btn { width:100%; padding:12px; border:none; border-radius:5px; background:#ffcc00; font-weight:bold; cursor:pointer; color:black; }
+        #resultBox { margin-top:15px; padding:10px; border-radius:5px; display:none; font-weight:bold; }
     </style>
 </head>
 <body>
 
-<!-- PAGE 1: VERIFIED POPUP -->
-<div id="page1">
-    <div class="popup">
-        <h2 id="brandTitle" style="color:#ffcc00;">BRAND NAME</h2>
-        <div style="font-size: 50px; margin: 10px 0;">✅</div>
-        <p style="color:#00ff00; font-weight:bold;">PRODUCT VERIFIED SUCCESSFULLY</p>
-        <button class="btn" onclick="goToPortal()">Close</button>
+<div class="card">
+    <div id="brandDisplay" class="title">AUTHENTICATION PORTAL</div>
+    <div class="subtitle">MANUAL VERIFICATION CODE</div>
+    <div class="code-box">
+        <div id="manualCodeDisplay" style="color:#0f0; font-weight:bold;">SCAN QR CODE</div>
     </div>
-</div>
-
-<!-- PAGE 2: AUTHENTICATION PORTAL -->
-<div id="page2">
-    <div class="portal-card">
-        <h2 id="portalBrand" style="color:#ffcc00;">BRAND NAME</h2>
-        <p>AUTHENTICATION PORTAL</p>
-        <div style="border: 2px dashed #ffcc00; padding: 15px; margin: 15px 0;">
-            <p style="font-size: 12px;">MANUAL VERIFICATION CODE</p>
-            <h3 id="displayCode" style="color:#0f0;">---</h3>
-        </div>
-        <input type="text" id="codeInput" class="input-box" placeholder="Enter Product Code">
-        <button class="btn" onclick="checkCode()">VERIFY PRODUCT</button>
-        <div id="statusBox"></div>
-    </div>
+    <input type="text" id="verifyInput" class="verify-input" placeholder="Enter Product Code">
+    <button class="btn" onclick="verifyProduct()">VERIFY PRODUCT</button>
+    <div id="resultBox"></div>
 </div>
 
 <script>
-    const db = {
+    const products = {
         "ON84P2X": "OPTIMUM NUTRITION",
         "LBR7F29K": "LABRADA NUTRITION"
     };
-    for(let i = 1; i <= 100; i++) { db["LBR-" + (1000 + i)] = "LABRADA NUTRITION"; }
+    for(let i = 1; i <= 100; i++) { products["LBR-" + (1000 + i)] = "LABRADA NUTRITION"; }
 
-    function goToPortal() {
-        document.getElementById('page1').style.display = 'none';
-        document.getElementById('page2').style.display = 'block';
-    }
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
 
-    function checkCode() {
-        let code = document.getElementById('codeInput').value.trim().toUpperCase();
-        let box = document.getElementById('statusBox');
-        box.style.display = 'block';
+        if (code && products[code.toUpperCase()]) {
+            const brand = products[code.toUpperCase()];
+            document.getElementById('brandDisplay').innerText = brand;
+            document.getElementById('manualCodeDisplay').innerText = code.toUpperCase();
+            document.getElementById('verifyInput').value = code.toUpperCase();
+        }
+    };
 
-        if (!db[code]) {
-            box.style.background = "#500"; box.style.color = "red";
-            box.innerHTML = "❌ INVALID CODE";
+    function verifyProduct() {
+        let code = document.getElementById('verifyInput').value.trim().toUpperCase();
+        let res = document.getElementById('resultBox');
+        res.style.display = 'block';
+
+        if (!products[code]) {
+            res.style.background = "#400"; res.style.color = "red";
+            res.innerHTML = "❌ INVALID CODE";
             return;
         }
+
+        // Update brand name if user typed a valid code manually
+        document.getElementById('brandDisplay').innerText = products[code];
+        document.getElementById('manualCodeDisplay').innerText = code;
 
         let count = parseInt(localStorage.getItem("use_" + code)) || 0;
         if (count < 3) {
             count++;
             localStorage.setItem("use_" + code, count);
-            box.style.background = "#030"; box.style.color = "#0f0";
-            box.innerHTML = "✅ PRODUCT VERIFIED<br>Thanks for choosing " + db[code] + "!<br>Verification: " + count + "/3";
+            res.style.background = "#020"; res.style.color = "#0f0";
+            res.innerHTML = "✅ " + products[code] + "<br>Thanks for choosing " + products[code] + "!<br>Verification: " + count + "/3";
         } else {
-            box.style.background = "#530"; box.style.color = "#ff0";
-            box.innerHTML = "⚠️ ALREADY USED<br>Maximum limit (3/3) reached.";
-        }
-    }
-
-    // Auto-setup page based on QR scan
-    window.onload = () => {
-        let code = new URLSearchParams(window.location.search).get("code")?.toUpperCase();
-        if(code && db[code]) {
-            document.getElementById('brandTitle').innerText = db[code];
-            document.getElementById('portalBrand').innerText = db[code];
-            document.getElementById('displayCode').innerText = code;
-        } else {
-            document.getElementById('page1').style.display = 'none';
-            document.getElementById('page2').style.display = 'block';
+            res.style.background = "#420"; res.style.color = "#ff0";
+            res.innerHTML = "⚠️ ALREADY USED (3/3)";
         }
     }
 </script>
