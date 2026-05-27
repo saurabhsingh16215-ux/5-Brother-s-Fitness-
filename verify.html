@@ -1,211 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Product Verification</title>
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:#0b0b0b;
-color:white;
-min-height:100vh;
-}
-
-/* SCREENS */
-
-#verifiedScreen{
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
-}
-
-#portalScreen{
-min-height:100vh;
-display:none;
-justify-content:center;
-align-items:center;
-padding:20px;
-}
-
-/* CARD */
-
-.card{
-background:#111;
-padding:30px;
-border-radius:25px;
-width:100%;
-max-width:400px;
-text-align:center;
-border:2px solid #ffcc00;
-box-shadow:0 0 20px rgba(255,204,0,0.25);
-}
-
-/* BRAND */
-
-.brand{
-font-size:34px;
-font-weight:900;
-color:#ffcc00;
-margin-bottom:20px;
-line-height:1.2;
-text-transform:uppercase;
-}
-
-/* VERIFIED TEXT */
-
-.verify-text{
-color:#00ff00;
-font-size:22px;
-font-weight:bold;
-margin-top:10px;
-}
-
-/* BUTTON */
-
-.btn{
-width:100%;
-padding:15px;
-border:none;
-border-radius:12px;
-background:#ffcc00;
-font-weight:bold;
-font-size:15px;
-cursor:pointer;
-margin-top:15px;
-}
-
-/* CODE BOX */
-
-.code-box{
-background:#181818;
-border:2px dashed #ffcc00;
-padding:20px;
-border-radius:15px;
-margin:20px 0;
-}
-
-/* INPUT */
-
-.verify-input{
-width:100%;
-padding:15px;
-border-radius:12px;
-border:none;
-outline:none;
-font-size:16px;
-text-align:center;
-margin-top:10px;
-}
-
-/* RESULT */
-
-#resultBox{
-margin-top:20px;
-font-weight:bold;
-font-size:18px;
-min-height:40px;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<!-- FIRST SCREEN -->
-
-<div id="verifiedScreen">
-
-<div class="card">
-
-<div class="brand"
-id="screenBrand">
-AUTHENTIC PRODUCT
-</div>
-
-<div style="font-size:65px;">
-✅
-</div>
-
-<div class="verify-text">
-PRODUCT VERIFIED
-</div>
-
-<button class="btn"
-onclick="openPortal()">
-OPEN WEBSITE
-</button>
-
-</div>
-
-</div>
-
-<!-- PORTAL SCREEN -->
-
-<div id="portalScreen">
-
-<div class="card">
-
-<div class="brand"
-id="portalBrand">
-BRAND NAME
-</div>
-
-<div class="code-box">
-
-<div style="
-font-size:13px;
-color:#888;">
-MANUAL VERIFICATION CODE
-</div>
-
-<div id="displayCode"
-style="
-font-size:30px;
-font-weight:bold;
-color:#00ff00;
-margin-top:10px;">
----
-</div>
-
-</div>
-
-<input type="text"
-id="verifyInput"
-class="verify-input"
-placeholder="ENTER PRODUCT CODE">
-
-<button class="btn"
-onclick="verifyProduct()">
-VERIFY PRODUCT
-</button>
-
-<div id="resultBox"></div>
-
-</div>
-
-</div>
-
 <script>
 
-/* PRODUCTS */
+/* =========================
+ALL PRODUCTS + ALL CODES
+========================= */
 
 const products = {
 
-/* LABRADA */
+/* =========================
+LABRADA NUTRITION
+========================= */
 
 "LBRA7X9K1":{brand:"LABRADA NUTRITION"},
 "LBRB4M2Q8":{brand:"LABRADA NUTRITION"},
@@ -217,28 +20,94 @@ const products = {
 "LBRH7T1L9":{brand:"LABRADA NUTRITION"},
 "LBRJ3X6P5":{brand:"LABRADA NUTRITION"},
 "LBRK8Q2D1":{brand:"LABRADA NUTRITION"},
+"LBRL5N7F4":{brand:"LABRADA NUTRITION"},
+"LBRM1C8R6":{brand:"LABRADA NUTRITION"},
+"LBRN9B4W2":{brand:"LABRADA NUTRITION"},
+"LBRP6Y1T8":{brand:"LABRADA NUTRITION"},
+"LBRQ2D5K7":{brand:"LABRADA NUTRITION"},
+"LBRR7M9X3":{brand:"LABRADA NUTRITION"},
+"LBRS4P1V6":{brand:"LABRADA NUTRITION"},
+"LBRT8L2Q5":{brand:"LABRADA NUTRITION"},
+"LBRU3W7N1":{brand:"LABRADA NUTRITION"},
+"LBRV9C4T8":{brand:"LABRADA NUTRITION"},
 
-/* MUSCLETECH */
+/* =========================
+MUSCLETECH
+========================= */
 
+"MTX7P9Q2":{brand:"MUSCLETECH"},
+"MTX4L8W1":{brand:"MUSCLETECH"},
+"MTX1R5K9":{brand:"MUSCLETECH"},
+"MTX8D2V4":{brand:"MUSCLETECH"},
+"MTX3Y7B6":{brand:"MUSCLETECH"},
 "TRU5MP91":{brand:"MUSCLETECH"},
 "PRE9W7K2":{brand:"MUSCLETECH"},
 
-/* ON */
+/* =========================
+OPTIMUM NUTRITION
+========================= */
 
 "ON84P2X":{brand:"OPTIMUM NUTRITION"},
+"ONX7K2P5":{brand:"OPTIMUM NUTRITION"},
+"ONQ4V8M1":{brand:"OPTIMUM NUTRITION"},
+"ONT9D3W6":{brand:"OPTIMUM NUTRITION"},
+"ONR5Y1B8":{brand:"OPTIMUM NUTRITION"},
 
-/* GNC */
+/* =========================
+GNC
+========================= */
 
 "GNC3M78B":{brand:"GNC"},
 "MUL4V8T1":{brand:"GNC"},
+"GNC8P2Q5":{brand:"GNC"},
+"GNC1W7K4":{brand:"GNC"},
+"GNC6D9R2":{brand:"GNC"},
 
-/* WELLCORE */
+/* =========================
+WELLCORE
+========================= */
 
-"WEL7C91X":{brand:"WELLCORE"}
+"WEL7C91X":{brand:"WELLCORE"},
+"WEL4Q8M2":{brand:"WELLCORE"},
+"WEL1K5P9":{brand:"WELLCORE"},
+"WEL8V2D6":{brand:"WELLCORE"},
+"WEL3Y7R1":{brand:"WELLCORE"},
+
+/* =========================
+MUSCLEBLAZE
+========================= */
+
+"MBX7P2K9":{brand:"MUSCLEBLAZE"},
+"MBX4W8D1":{brand:"MUSCLEBLAZE"},
+"MBX1R5Q7":{brand:"MUSCLEBLAZE"},
+"MBX9V3M2":{brand:"MUSCLEBLAZE"},
+"MBX6Y1T8":{brand:"MUSCLEBLAZE"},
+
+/* =========================
+AVVATAR
+========================= */
+
+"AVV7P9K2":{brand:"AVVATAR"},
+"AVV4L8W5":{brand:"AVVATAR"},
+"AVV1R3D9":{brand:"AVVATAR"},
+"AVV8Y2Q6":{brand:"AVVATAR"},
+"AVV5M7T1":{brand:"AVVATAR"},
+
+/* =========================
+BIGMUSCLES
+========================= */
+
+"BIG7P2K8":{brand:"BIGMUSCLES"},
+"BIG4W9D1":{brand:"BIGMUSCLES"},
+"BIG1R5Q7":{brand:"BIGMUSCLES"},
+"BIG8V3M2":{brand:"BIGMUSCLES"},
+"BIG6Y1T4":{brand:"BIGMUSCLES"}
 
 };
 
-/* QR AUTO DETECT */
+/* =========================
+QR AUTO DETECT
+========================= */
 
 window.onload = function(){
 
@@ -283,20 +152,22 @@ code.toUpperCase();
 
 }
 
-/* NO QR */
+/* INVALID */
 
 else{
 
 document.getElementById(
 "screenBrand"
 ).innerText =
-"SCAN PRODUCT QR";
+"INVALID PRODUCT QR";
 
 }
 
 };
 
-/* OPEN WEBSITE */
+/* =========================
+OPEN WEBSITE
+========================= */
 
 function openPortal(){
 
@@ -312,7 +183,9 @@ document.getElementById(
 
 }
 
-/* VERIFY */
+/* =========================
+VERIFY PRODUCT
+========================= */
 
 function verifyProduct(){
 
@@ -354,7 +227,7 @@ box.style.color =
 
 }
 
-/* VERIFIED */
+/* SUCCESS */
 
 else{
 
@@ -402,6 +275,3 @@ input.focus();
 }
 
 </script>
-
-</body>
-</html>
