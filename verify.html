@@ -7,11 +7,14 @@
     <style>
         * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
         body { background:#0b0b0b; color:white; min-height:100vh; }
+        
         #verifiedScreen { display:none; justify-content:center; align-items:center; height:100vh; padding:20px; position:fixed; top:0; left:0; width:100%; background:rgba(0,0,0,0.95); z-index:9999; }
-        #portalScreen { padding:30px 20px; min-height:100vh; display:block; }
+        #portalScreen { display:none; padding:30px 20px; min-height:100vh; }
+        
         .card { background:#111; padding:30px; border-radius:25px; width:100%; max-width:400px; text-align:center; border:2px solid #ffcc00; margin:auto; }
         .brand { font-size:24px; font-weight:bold; color:#ffcc00; margin-bottom:5px; }
         .btn { width:100%; padding:15px; border:none; border-radius:10px; background:#ffcc00; font-weight:bold; cursor:pointer; margin-top:20px; }
+        .verify-input { width:100%; padding:15px; border-radius:10px; border:none; margin-bottom:15px; text-align:center; font-size:16px; }
         #resultBox { display:none; margin-top:20px; padding:15px; border-radius:10px; font-weight:bold; }
     </style>
 </head>
@@ -28,42 +31,44 @@
 
 <div id="portalScreen">
     <div class="card">
-        <div class="brand" id="portalBrand">PORTAL</div>
+        <div class="brand">PORTAL</div>
         <div id="resultBox"></div>
-        <input type="text" id="verifyInput" class="verify-input" style="width:100%; padding:15px; margin-top:10px;" placeholder="Enter Code">
+        <input type="text" id="verifyInput" class="verify-input" placeholder="Enter Code">
         <button class="btn" onclick="verifyProduct()">VERIFY PRODUCT</button>
     </div>
 </div>
 
 <script>
-    // AUTOMATED PRODUCT LIST
     const products = {
         "LBR7F29K": { brand: "LABRADA", product: "WHEY" },
         "ON84P2X": { brand: "OPTIMUM", product: "GOLD STANDARD" }
     };
 
-    // Auto-generate 100 Labrada Codes (Professional Format)
+    // Auto-generate 100 codes
     for(let i = 1; i <= 100; i++) {
-        let code = "LBR-" + (1000 + i);
-        products[code] = { brand: "LABRADA NUTRITION", product: "PREMIUM WHEY" };
+        products["LBR-" + (1000 + i)] = { brand: "LABRADA NUTRITION", product: "PREMIUM WHEY" };
     }
 
     window.onload = function() {
         const params = new URLSearchParams(window.location.search);
         const code = params.get("code");
+        
         if (code && products[code.toUpperCase()]) {
             let p = products[code.toUpperCase()];
             document.getElementById("verifiedBrand").innerText = p.brand;
             document.getElementById("verifiedScreen").style.display = "flex";
+        } else {
+            document.getElementById("portalScreen").style.display = "block";
         }
     };
 
     function openPortal() {
         document.getElementById("verifiedScreen").style.display = "none";
         document.getElementById("portalScreen").style.display = "block";
+        
         const params = new URLSearchParams(window.location.search);
         const code = params.get("code");
-        if(code) {
+        if(code && products[code.toUpperCase()]) {
             let p = products[code.toUpperCase()];
             let res = document.getElementById("resultBox");
             res.style.display = "block";
