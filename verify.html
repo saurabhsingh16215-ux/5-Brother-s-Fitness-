@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
 <title>Product Verification</title>
 
 <style>
@@ -20,7 +24,8 @@ color:white;
 min-height:100vh;
 }
 
-/* SCAN SCREEN + PORTAL */
+/* BOTH SCREENS */
+
 #verifiedScreen,
 #portalScreen{
 min-height:100vh;
@@ -31,6 +36,7 @@ padding:20px;
 }
 
 /* CARD */
+
 .card{
 background:#111;
 padding:30px;
@@ -39,10 +45,11 @@ width:100%;
 max-width:400px;
 text-align:center;
 border:2px solid #ffcc00;
-box-shadow:0 0 20px rgba(255,204,0,0.2);
+box-shadow:0 0 20px rgba(255,204,0,0.25);
 }
 
 /* BRAND */
+
 .brand{
 font-size:34px;
 font-weight:900;
@@ -52,7 +59,8 @@ line-height:1.2;
 text-transform:uppercase;
 }
 
-/* VERIFY TEXT */
+/* VERIFIED */
+
 .verify-text{
 color:#00ff00;
 font-size:22px;
@@ -61,6 +69,7 @@ margin-top:10px;
 }
 
 /* BUTTON */
+
 .btn{
 width:100%;
 padding:15px;
@@ -74,6 +83,7 @@ margin-top:15px;
 }
 
 /* CODE BOX */
+
 .code-box{
 background:#181818;
 border:2px dashed #ffcc00;
@@ -83,6 +93,7 @@ margin:20px 0;
 }
 
 /* INPUT */
+
 .verify-input{
 width:100%;
 padding:15px;
@@ -95,6 +106,7 @@ margin-top:10px;
 }
 
 /* RESULT */
+
 #resultBox{
 margin-top:20px;
 font-weight:bold;
@@ -103,26 +115,32 @@ min-height:40px;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <!-- FIRST SCREEN -->
+
 <div id="verifiedScreen">
 
 <div class="card">
 
-<div class="brand" id="screenBrand">
-LABRADA NUTRITION
+<div class="brand"
+id="screenBrand">
+AUTHENTIC PRODUCT
 </div>
 
-<div style="font-size:65px;">✅</div>
+<div style="font-size:65px;">
+✅
+</div>
 
 <div class="verify-text">
 PRODUCT VERIFIED
 </div>
 
-<button class="btn" onclick="openPortal()">
+<button class="btn"
+onclick="openPortal()">
 OPEN WEBSITE
 </button>
 
@@ -130,26 +148,32 @@ OPEN WEBSITE
 
 </div>
 
-<!-- PORTAL -->
-<div id="portalScreen" style="display:none;">
+<!-- PORTAL SCREEN -->
+
+<div id="portalScreen"
+style="display:none;">
 
 <div class="card">
 
-<div class="brand" id="portalBrand">
-LABRADA NUTRITION
+<div class="brand"
+id="portalBrand">
+BRAND NAME
 </div>
 
 <div class="code-box">
 
-<div style="font-size:13px;color:#888;">
+<div style="
+font-size:13px;
+color:#888;">
 MANUAL VERIFICATION CODE
 </div>
 
 <div id="displayCode"
-style="font-size:28px;
+style="
+font-size:30px;
+font-weight:bold;
 color:#00ff00;
-margin-top:10px;
-font-weight:bold;">
+margin-top:10px;">
 ---
 </div>
 
@@ -176,146 +200,37 @@ VERIFY PRODUCT
 /* PRODUCTS */
 
 const products = {
-  "LBRA7X9K1": { brand:"LABRADA NUTRITION" },
-  "LBRB4M2Q8": { brand:"LABRADA NUTRITION" },
-  "LBRC8P5T3": { brand:"LABRADA NUTRITION" },
-  "LBRD1W7Y6": { brand:"LABRADA NUTRITION" },
-  "LBRE9K3N2": { brand:"LABRADA NUTRITION" },
-  "LBRF6R8C4": { brand:"LABRADA NUTRITION" },
-  "LBRG2V5B7": { brand:"LABRADA NUTRITION" },
-  "LBRH7T1L9": { brand:"LABRADA NUTRITION" },
-  "LBRJ3X6P5": { brand:"LABRADA NUTRITION" },
-  "LBRK8Q2D1": { brand:"LABRADA NUTRITION" },
-  "LBRL5N7F4": { brand:"LABRADA NUTRITION" },
-  "LBRM1C8R6": { brand:"LABRADA NUTRITION" },
-  "LBRN9B4W2": { brand:"LABRADA NUTRITION" },
-  "LBRP6Y1T8": { brand:"LABRADA NUTRITION" },
-  "LBRQ2D5K7": { brand:"LABRADA NUTRITION" },
-  "LBRR7M9X3": { brand:"LABRADA NUTRITION" },
-  "LBRS4P1V6": { brand:"LABRADA NUTRITION" },
-  "LBRT8L2Q5": { brand:"LABRADA NUTRITION" },
-  "LBRU3W7N1": { brand:"LABRADA NUTRITION" },
-  "LBRV9C4T8": { brand:"LABRADA NUTRITION" },
-  "LBRW5K1B6": { brand:"LABRADA NUTRITION" },
-  "LBRX2R8Y4": { brand:"LABRADA NUTRITION" },
-  "LBRY7D3P9": { brand:"LABRADA NUTRITION" },
-  "LBRZ1N6M5": { brand:"LABRADA NUTRITION" },
-  "LBR1T9Q2C": { brand:"LABRADA NUTRITION" },
-  "LBR2V4L8W": { brand:"LABRADA NUTRITION" },
-  "LBR3X7B1K": { brand:"LABRADA NUTRITION" },
-  "LBR4M2P6R": { brand:"LABRADA NUTRITION" },
-  "LBR5Q8T3N": { brand:"LABRADA NUTRITION" },
-  "LBR6Y1D7F": { brand:"LABRADA NUTRITION" },
-  "LBR7C5W9L": { brand:"LABRADA NUTRITION" },
-  "LBR8K2V4X": { brand:"LABRADA NUTRITION" },
-  "LBR9R6B1P": { brand:"LABRADA NUTRITION" },
-  "LBRA4N8Q7": { brand:"LABRADA NUTRITION" },
-  "LBRB1T5M9": { brand:"LABRADA NUTRITION" },
-  "LBRC7D2Y6": { brand:"LABRADA NUTRITION" },
-  "LBRD3W8C1": { brand:"LABRADA NUTRITION" },
-  "LBRE9P4K5": { brand:"LABRADA NUTRITION" },
-  "LBRF2L7V8": { brand:"LABRADA NUTRITION" },
-  "LBRG6X1N3": { brand:"LABRADA NUTRITION" },
-  "LBRH5Q9B4": { brand:"LABRADA NUTRITION" },
-  "LBRJ8R2T7": { brand:"LABRADA NUTRITION" },
-  "LBRK1M6D9": { brand:"LABRADA NUTRITION" },
-  "LBRL4Y8W2": { brand:"LABRADA NUTRITION" },
-  "LBRM7C3P5": { brand:"LABRADA NUTRITION" },
-  "LBRN2K9X1": { brand:"LABRADA NUTRITION" },
-  "LBRP5V4Q8": { brand:"LABRADA NUTRITION" },
-  "LBRQ1T7B6": { brand:"LABRADA NUTRITION" },
-  "LBRR8D2N4": { brand:"LABRADA NUTRITION" },
-  "LBRS3W6M9": { brand:"LABRADA NUTRITION" },
-  "LBRT9P1Y5": { brand:"LABRADA NUTRITION" },
-  "LBRU4K8C2": { brand:"LABRADA NUTRITION" },
-  "LBRV7X3Q1": { brand:"LABRADA NUTRITION" },
-  "LBRW2R9T6": { brand:"LABRADA NUTRITION" },
-  "LBRX5M1B8": { brand:"LABRADA NUTRITION" },
-  "LBRY8N4D3": { brand:"LABRADA NUTRITION" },
-  "LBRZ6W7P2": { brand:"LABRADA NUTRITION" },
-  "LBR1Q3K9V": { brand:"LABRADA NUTRITION" },
-  "LBR2T8X4C": { brand:"LABRADA NUTRITION" },
-  "LBR3B1R7M": { brand:"LABRADA NUTRITION" },
-  "LBR4D5Y2N": { brand:"LABRADA NUTRITION" },
-  "LBR5P9W6Q": { brand:"LABRADA NUTRITION" },
-  "LBR6K2C8T": { brand:"LABRADA NUTRITION" },
-  "LBR7X4M1B": { brand:"LABRADA NUTRITION" },
-  "LBR8R7N5D": { brand:"LABRADA NUTRITION" },
-  "LBR9V3Q2P": { brand:"LABRADA NUTRITION" },
-  "LBRA6T1Y8": { brand:"LABRADA NUTRITION" },
-  "LBRB9K4W7": { brand:"LABRADA NUTRITION" },
-  "LBRC2M8C5": { brand:"LABRADA NUTRITION" },
-  "LBRD7P1X9": { brand:"LABRADA NUTRITION" },
-  "LBRE4Q6B2": { brand:"LABRADA NUTRITION" },
-  "LBRF8N3T1": { brand:"LABRADA NUTRITION" },
-  "LBRG5Y7M4": { brand:"LABRADA NUTRITION" },
-  "LBRH1C9R8": { brand:"LABRADA NUTRITION" },
-  "LBRJ6W2D5": { brand:"LABRADA NUTRITION" },
-  "LBRK3V8Q7": { brand:"LABRADA NUTRITION" },
-  "LBRL9T1P4": { brand:"LABRADA NUTRITION" },
-  "LBRM2X5K6": { brand:"LABRADA NUTRITION" },
-  "LBRN7B4Y1": { brand:"LABRADA NUTRITION" },
-  "LBRP8D6W3": { brand:"LABRADA NUTRITION" },
-  "LBRQ4M1C9": { brand:"LABRADA NUTRITION" },
-  "LBRR1P7T2": { brand:"LABRADA NUTRITION" },
-  "LBRS6Q3X8": { brand:"LABRADA NUTRITION" },
-  "LBRT2Y9B5": { brand:"LABRADA NUTRITION" },
-  "LBRU7K4N1": { brand:"LABRADA NUTRITION" },
-  "LBRV3W8D6": { brand:"LABRADA NUTRITION" },
-  "LBRW9C1P7": { brand:"LABRADA NUTRITION" },
-  "LBRX4R5M2": { brand:"LABRADA NUTRITION" },
-  "LBRY1T8Q9": { brand:"LABRADA NUTRITION" },
-  "LBRZ7V3K4": { brand:"LABRADA NUTRITION" },
-  "LBR1N6X2B": { brand:"LABRADA NUTRITION" },
-  "LBR2P4Y8D": { brand:"LABRADA NUTRITION" },
-  "LBR3Q1W5C": { brand:"LABRADA NUTRITION" },
-  "LBR4K9T7M": { brand:"LABRADA NUTRITION" },
-  "LBR5X2R6P": { brand:"LABRADA NUTRITION" },
-  "LBR6B8N1Q": { brand:"LABRADA NUTRITION" },
-  "LBR7D4Y3W": { brand:"LABRADA NUTRITION" },
-  "LBR8M1C9T": { brand:"LABRADA NUTRITION" },
-  "LBR9P5K2X": { brand:"LABRADA NUTRITION" },
-  "LBRA3V7B6": { brand:"LABRADA NUTRITION" },
-  "LBRB8W1N4": { brand:"LABRADA NUTRITION" },
-  "LBRC5T9Q2": { brand:"LABRADA NUTRITION" },
-  "LBRD2Y6M8": { brand:"LABRADA NUTRITION" },
-  "LBRE7R3C1": { brand:"LABRADA NUTRITION" },
-  "LBRF1X8P5": { brand:"LABRADA NUTRITION" },
-  "LBRG4Q2D9": { brand:"LABRADA NUTRITION" },
-  "LBRH9K5W7": { brand:"LABRADA NUTRITION" }
-};
 
-"LBR7F29K":{
-brand:"LABRADA NUTRITION"
-},
+/* LABRADA */
 
-"LMG5P62C":{
-brand:"LABRADA NUTRITION"
-},
+"LBRA7X9K1":{brand:"LABRADA NUTRITION"},
+"LBRB4M2Q8":{brand:"LABRADA NUTRITION"},
+"LBRC8P5T3":{brand:"LABRADA NUTRITION"},
+"LBRD1W7Y6":{brand:"LABRADA NUTRITION"},
+"LBRE9K3N2":{brand:"LABRADA NUTRITION"},
+"LBRF6R8C4":{brand:"LABRADA NUTRITION"},
+"LBRG2V5B7":{brand:"LABRADA NUTRITION"},
+"LBRH7T1L9":{brand:"LABRADA NUTRITION"},
+"LBRJ3X6P5":{brand:"LABRADA NUTRITION"},
+"LBRK8Q2D1":{brand:"LABRADA NUTRITION"},
 
-"TRU5MP91":{
-brand:"MUSCLETECH"
-},
+/* MUSCLETECH */
 
-"PRE9W7K2":{
-brand:"MUSCLETECH"
-},
+"TRU5MP91":{brand:"MUSCLETECH"},
+"PRE9W7K2":{brand:"MUSCLETECH"},
 
-"ON84P2X":{
-brand:"OPTIMUM NUTRITION"
-},
+/* ON */
 
-"GNC3M78B":{
-brand:"GNC"
-},
+"ON84P2X":{brand:"OPTIMUM NUTRITION"},
 
-"MUL4V8T1":{
-brand:"GNC"
-},
+/* GNC */
 
-"WEL7C91X":{
-brand:"WELLCORE"
-}
+"GNC3M78B":{brand:"GNC"},
+"MUL4V8T1":{brand:"GNC"},
+
+/* WELLCORE */
+
+"WEL7C91X":{brand:"WELLCORE"}
 
 };
 
@@ -323,23 +238,65 @@ brand:"WELLCORE"
 
 window.onload = function(){
 
-const params = new URLSearchParams(window.location.search);
+const params =
+new URLSearchParams(
+window.location.search
+);
 
-const code = params.get("code");
+const code =
+params.get("code");
 
-if(code && products[code.toUpperCase()]){
+/* VALID QR */
 
-let p = products[code.toUpperCase()];
+if(
+code &&
+products[code.toUpperCase()]
+){
 
-/* SCAN SCREEN BRAND */
-document.getElementById("screenBrand").innerText = p.brand;
+let p =
+products[code.toUpperCase()];
 
-/* PORTAL BRAND */
-document.getElementById("portalBrand").innerText = p.brand;
+/* FIRST SCREEN */
 
-/* CODE SHOW */
-document.getElementById("displayCode").innerText =
+document.getElementById(
+"screenBrand"
+).innerText =
+p.brand;
+
+/* PORTAL */
+
+document.getElementById(
+"portalBrand"
+).innerText =
+p.brand;
+
+/* CODE */
+
+document.getElementById(
+"displayCode"
+).innerText =
 code.toUpperCase();
+
+}
+
+/* INVALID QR */
+
+else{
+
+document.getElementById(
+"screenBrand"
+).innerText =
+"AUTHENTICATION FAILED";
+
+document.getElementById(
+"portalBrand"
+).innerText =
+"INVALID PRODUCT";
+
+document.getElementById(
+"displayCode"
+).innerText =
+"INVALID QR";
 
 }
 
@@ -349,34 +306,49 @@ code.toUpperCase();
 
 function openPortal(){
 
-document.getElementById("verifiedScreen").style.display="none";
+document.getElementById(
+"verifiedScreen"
+).style.display =
+"none";
 
-document.getElementById("portalScreen").style.display="flex";
+document.getElementById(
+"portalScreen"
+).style.display =
+"flex";
 
 }
 
-/* VERIFY */
+/* VERIFY PRODUCT */
 
 function verifyProduct(){
 
 let input =
-document.getElementById("verifyInput");
+document.getElementById(
+"verifyInput"
+);
 
 let code =
-input.value.trim().toUpperCase();
+input.value
+.trim()
+.toUpperCase();
 
 let box =
-document.getElementById("resultBox");
+document.getElementById(
+"resultBox"
+);
 
-/* VALID CODE */
+/* VALID */
 
 if(products[code]){
 
 let used =
-parseInt(localStorage.getItem("used_"+code))
-|| 0;
+parseInt(
+localStorage.getItem(
+"used_"+code
+)
+) || 0;
 
-/* LIMIT REACHED */
+/* LIMIT */
 
 if(used >= 2){
 
@@ -388,7 +360,7 @@ box.style.color =
 
 }
 
-/* VERIFY SUCCESS */
+/* SUCCESS */
 
 else{
 
